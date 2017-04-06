@@ -39,26 +39,26 @@ of language which require the real world knowledge.
 <br>www.icodejava.com [Development Work]
 
 There are several use of what will be outcome of your work
-<br> Computer writing Nepali Articles/Poems/Stories with some human guidance
-<br> Nepali Grammar Checker
-<br> Text To Speech and Speech To Text
-<br> Nepali Unicode to Roman English following both ISO Standards and common usage.
-<br> Automatic Rashi Fal Generation
-<br> Meaning extraction from the articles
-<br> Automatic Summarization of a Nepali article
-<br> Plagiarism Detection in Nepali Languages
+<br> - Computer writing Nepali Articles/Poems/Stories with some human guidance
+<br> - Nepali Grammar Checker
+<br> - Text To Speech and Speech To Text
+<br> - Nepali Unicode to Roman English following both ISO Standards and common usage.
+<br> - Automatic Rashi Fal Generation
+<br> - Meaning extraction from the articles
+<br> - Automatic Summarization of a Nepali article
+<br> - Plagiarism Detection in Nepali Languages
 
 
 We will be using a lot of 
-<br> Machine Learning
-<br> Deep Learning
-<br> Artificial Neural Networks
+<br> - Machine Learning
+<br> - Deep Learning
+<br> - Artificial Neural Networks
 
 There are several programming languages that will be used:
-<br>Java/Groovy/Grails
-<br>R 
-<br>Python
-<br>PHP
+<br> - Java/Groovy/Grails
+<br> - R 
+<br> - Python
+<br> - PHP
 
 
-
+If you are interested in our work and would like to volunteer, you can contact us at contact@sanjaal.com
