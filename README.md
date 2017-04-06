@@ -1,7 +1,7 @@
 # NepaliNLPWebApp
 The web app used for Nepali Language Natural Language Processing - Work in Progres
 
-We have targeted to crawl over 1 million webpages in Nepali Language (as of 4/6/2017 - We have crawled little over 150000 pages)
+We have targeted to crawl over 1 million webpages in Nepali Language (as of 4/6/2017 - We have crawled little over 150000 pages) to extract corpus, extract meaning. Data without information extract is useless.
 
 Natural Language Processing Involves 6 stages, generally speaking.
 <br>
@@ -37,3 +37,28 @@ of language which require the real world knowledge.
 <br>www.sanjaal.com [Our Parent Company - Sanjaal Corps]
 <br>www.inepal.org [A subdivision dedicated to stuffs in Nepali Language only]
 <br>www.icodejava.com [Development Work]
+
+There are several use of what will be outcome of your work
+<br> Computer writing Nepali Articles/Poems/Stories with some human guidance
+<br> Nepali Grammar Checker
+<br> Text To Speech and Speech To Text
+<br> Nepali Unicode to Roman English following both ISO Standards and common usage.
+<br> Automatic Rashi Fal Generation
+<br> Meaning extraction from the articles
+<br> Automatic Summarization of a Nepali article
+<br> Plagiarism Detection in Nepali Languages
+
+
+We will be using a lot of 
+<br> Machine Learning
+<br> Deep Learning
+<br> Artificial Neural Networks
+
+There are several programming languages that will be used:
+<br>Java/Groovy/Grails
+<br>R 
+<br>Python
+<br>PHP
+
+
+
