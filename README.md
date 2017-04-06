@@ -62,3 +62,6 @@ There are several programming languages that will be used:
 
 
 If you are interested in our work and would like to volunteer, you can contact us at contact@sanjaal.com
+
+WhoAMI?
+I am a software developer, a computer scientist, a nerd and a family man with a great sense of humor. I have over 11 years of experience developing and providing software development cosultations for several companies in United States. 
