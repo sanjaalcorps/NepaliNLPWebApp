@@ -4,7 +4,7 @@ The web app used for Nepali Language Natural Language Processing - Work in Progr
 We have targeted to crawl over 1 million webpages in Nepali Language (as of 4/6/2017 - We have crawled little over 150000 pages)
 
 Natural Language Processing Involves 6 stages, generally speaking.
-<b>Corpus Formation<b>
+<b>Corpus Formation</b>
 This step is where you would build a large dictionary like structure of most words used in a language. The data can be gathered
 from a variety of sources including web, books, pdfs,texts. The data would then be pre-procesed, words/sentences extracted,
 parts of speech tagged, lemmas defined. We are currently at this stage.
@@ -33,6 +33,6 @@ During this analysis what was said is re-interpreted on what it actually meant. 
 of language which require the real world knowledge.
 
 
-www.sanjaal.com [Our Parent Company - Sanjaal Corps]
-www.inepal.org [A subdivision dedicated to stuffs in Nepali Language only]
-www.icodejava.com [Development Work]
+<br>www.sanjaal.com [Our Parent Company - Sanjaal Corps]
+<br>www.inepal.org [A subdivision dedicated to stuffs in Nepali Language only]
+<br>www.icodejava.com [Development Work]
