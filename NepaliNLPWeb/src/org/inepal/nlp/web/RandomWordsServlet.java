@@ -3,6 +3,7 @@ package org.inepal.nlp.web;
 import java.io.IOException;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,14 +34,18 @@ public class RandomWordsServlet extends HttpServlet {
 		
 		try {
 			WordsUnreferencedDB.selectRandomRecords(100);
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		getWordIDs(request);
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String nextJSP = "/jsp/index.jsp?p=successful";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request,response);
 		
 	}
 
