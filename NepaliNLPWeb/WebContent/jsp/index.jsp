@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List"%>
-<%@ page
-	import="com.icodejava.research.nlp.database.WordsUnreferencedDB"%>
-<%@ page import="com.icodejava.research.nlp.domain.Word"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NLP - Word Classify</title>
 <link href="../css/jquery-ui.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
 <style>
 body {
 	width:350px;
@@ -25,73 +22,19 @@ div.right {
 	width:350x;
 	align:right;
 }
-
 </style>
 </head>
 <body>
 
-
-<%
-if("successful".equalsIgnoreCase(request.getParameter("result"))) {
-%>
-	<div class="ui-widget">
-		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-			Previous words have been updated. Submit more below.</p>
-		</div>
-	</div>
-	<br>
-<%}%>
-
-	<form action="/NepaliNLPWeb/RandomWordsServlet" method="post">
-
-
-		<%
-			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(10);
-			for (Word word : words) {
-		%>
-		
-		<fieldset>
-			<legend><%=word.getWord()%></legend>
-			<div id="controlgroup_<%=word.getId()%>" class="class1">
-			
-				<label for="word_root_<%=word.getId()%>">Root</label>
-				<input type="checkbox" name="word_root_<%=word.getId()%>" id="word_root_<%=word.getId()%>">
-				<label for="word_derived_<%=word.getId()%>">Derived</label> 
-				<input type="checkbox" name="word_derived_<%=word.getId()%>" id="word_derived_<%=word.getId()%>">
-				<label for="word_person_<%=word.getId()%>">Person</label> 
-				<input type="checkbox" name="word_person_<%=word.getId()%>" id="word_person_<%=word.getId()%>">
-				<label for="word_firstname_<%=word.getId()%>">Firstname</label> 
-				<input type="checkbox" name="word_firstName_<%=word.getId()%>" id="word_firstname_<%=word.getId()%>">
-				<label for="word_surname_<%=word.getId()%>">Surname</label> 
-				<input type="checkbox" name="word_surname_<%=word.getId()%>" id="word_surname_<%=word.getId()%>">
-				<label for="word_location_<%=word.getId()%>">Location</label> 
-				<input type="checkbox" name="word_location_<%=word.getId()%>" id="word_location_<%=word.getId()%>">
-				<label for="word_english_<%=word.getId()%>">English</label> 
-				<input type="checkbox" name="word_english_<%=word.getId()%>" id="word_english_<%=word.getId()%>">
-				<label for="word_sports_<%=word.getId()%>">Sports</label> 
-				<input type="checkbox" name="word_sports_<%=word.getId()%>" id="word_sports_<%=word.getId()%>">
-				<label for="word_politics_<%=word.getId()%>">Politics</label> 
-				<input type="checkbox" name="word_politics_<%=word.getId()%>" id="word_politics_<%=word.getId()%>">
-				<label for="word_dirty_<%=word.getId()%>">Dirty</label> 
-				<input type="checkbox" name="word_dirty_<%=word.getId()%>" id="word_dirty_<%=word.getId()%>">
-			</div>
+	Welcome to iNepal.ORG's natural language processing portal. You can do the following in this page.
+	<br><a href="word_classify.jsp">Classify Words</a>
+	<br><a href="word_search.jsp">Search Word</a>
+	<br><a href="word_verify.jsp">Verify Words</a>
+	<br><a href="sentence_classify.jsp">Classify Sentences</a>
+	<br><a href="sentence_search.jsp">Sentence Search</a>
 	
-		</fieldset>
-
-
-		<%
-			}
-		%>
-		<br/>
-		<input type="submit" value="Submit">
-		
-	</form>
-
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
-	<script>
-		$("[id*=controlgroup]").controlgroup();
-	</script>
+	<script src="../js/bootstrap.js"></script>
 </body>
 </html>
