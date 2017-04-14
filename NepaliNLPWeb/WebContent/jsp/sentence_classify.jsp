@@ -31,5 +31,8 @@ Sentence Classify - Nepali NLP
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
 	<script src="../js/bootstrap.js"></script>
+		<script>
+		$("[id*=controlgroup]").controlgroup();
+	</script>
 </body>
 </html>

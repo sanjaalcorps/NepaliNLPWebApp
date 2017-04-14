@@ -32,6 +32,8 @@ div.right {
 	<br><a href="word_verify.jsp">Verify Words</a>
 	<br><a href="sentence_classify.jsp">Classify Sentences</a>
 	<br><a href="sentence_search.jsp">Sentence Search</a>
+	<br><a href="word_roman_validate.jsp">Validate Romanization</a>
+	
 	
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>

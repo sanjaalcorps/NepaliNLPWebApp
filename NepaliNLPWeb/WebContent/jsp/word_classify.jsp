@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-<%@ page
-	import="com.icodejava.research.nlp.database.WordsUnreferencedDB"%>
+<%@ page import="com.icodejava.research.nlp.database.WordsUnreferencedDB"%>
 <%@ page import="com.icodejava.research.nlp.domain.Word"%>
+
 <!doctype html>
 <html>
 <head>
@@ -50,7 +49,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 
 
 		<%
-			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(10);
+			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(5);
 			for (Word word : words) {
 		%>
 		
