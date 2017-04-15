@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Word Search - Nepali NLP</title>
+<title>Word Romanization - Nepali NLP</title>
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../css/bootstrap.css" rel="stylesheet">
 <style>
@@ -34,7 +34,7 @@ div.right {
 
 	<input type="submit" value="Submit">
 		<%
-			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(10);
+			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(50);
 			for (Word word : words) {
 		%>
 		
