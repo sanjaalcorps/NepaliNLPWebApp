@@ -1,0 +1,24 @@
+select word, count(*) from words_unreferenced group by word having count(*) > 2 order by 2 desc
+
+--SELECT DataId, COUNT(*) c FROM DataTab GROUP BY DataId HAVING c > 1;
+delete from words_unreferenced where (word='को'  OR word='औँ'  OR word='पृ' OR word='ले' )AND VERIFIED IS NULL
+
+select * from words_unreferenced where word like '%की'
+
+--update words_unreferenced set is_compound_word = NULL WHERE word like '%की'
+
+SELECT IS_COMPOUND_WORD, COUNT(*) FROM WORDS_UNREFERENCED GROUP BY IS_COMPOUND_WORD
+
+SELECT IS_COMPOUND_WORD, COUNT(*) FROM WORDS_UNREFERENCED GROUP BY IS_COMPOUND_WORD AND NOT (WORD LIKE '%मा' OR WORD LIKE '%की' OR WORD LIKE '%ले' OR WORD LIKE '%को')
+
+select * from words_unreferenced where word_romanized is not null
+
+select sentence, count(*) from sentence_unreferenced group by sentence having count(*) > 1 order by 2 desc
+
+delete from sentence_unreferenced where sentence='////'
+
+//WORD COUNT IN SENTENCE NULLL
+select count(*) from sentence_unreferenced where words_count is null
+
+//WORD COUNT IN SENTENCE NOT NULL
+select count(*) from sentence_unreferenced where words_count is not null

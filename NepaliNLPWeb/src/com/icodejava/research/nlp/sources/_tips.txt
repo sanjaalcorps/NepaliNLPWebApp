@@ -1,0 +1,6 @@
+Deleting the matches in sublime text
+
+Select the string (every line containing this string is to be removed).
+Press ALT+F3 .
+Press Ctrl+L .
+Press Delete .

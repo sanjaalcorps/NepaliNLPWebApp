@@ -1,0 +1,9 @@
+Parts of Speech Taggers
+http://prajna.sourceforge.net/
+Brills Tagger
+CSAIL (MIT)
+UNITAG
+
+List of Parts of Speech Taggers: http://kechnology.blogspot.com/2012/05/part-of-speech-taggers-freely.html
+
+http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ GOOD

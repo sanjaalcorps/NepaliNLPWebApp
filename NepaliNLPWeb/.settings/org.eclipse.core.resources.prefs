@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/com/icodejava/research/nlp/domain/CompoundWordEnding.java=UTF-8
+encoding//src/com/icodejava/research/nlp/domain/Grammar.java=UTF-8
+encoding//src/com/icodejava/research/nlp/domain/Tags.java=UTF-8
+encoding//src/com/icodejava/research/nlp/domain/verbs.txt=UTF-8
+encoding//src/com/icodejava/research/nlp/services/WordsUnreferencedService.java=UTF-8
+encoding//src/com/icodejava/research/nlp/test/DevanagariUnicodeToRomanEnglishTest.java=UTF-8
+encoding//src/com/icodejava/research/nlp/test/NepaliStemmerTest.java=UTF-8
+encoding/src=UTF-8

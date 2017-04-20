@@ -30,6 +30,18 @@ div.right {
 </head>
 <body>
 
+<%
+if("successful".equalsIgnoreCase(request.getParameter("result"))) {
+%>
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			Previous words have been updated. Total Count: <%=request.getParameter("count")%> Submit more below.</p>
+		</div>
+	</div>
+	<br>
+<%}%>
+
 <form action="/NepaliNLPWeb/ValidateRomanizationServlet" method="post">
 
 	<input type="submit" value="Submit">
@@ -39,7 +51,7 @@ div.right {
 		%>
 		
 		<fieldset>
-			<legend><%=word.getWord()%> - Romanized: + <%=DevanagariUnicodeToRomanEnglish.convertUnicodeNepaliToRomanizedEnglish(word.getWord())%> </legend>
+			<legend><%=word.getWord()%> - Romanized: + <%=DevanagariUnicodeToRomanEnglish.convertWord(word.getWord())%> </legend>
 			<div id="controlgroup_<%=word.getId()%>" class="class1">
 			
 				<label for="word_romanized_<%=word.getId()%>">Correctly Romanized</label>

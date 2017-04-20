@@ -21,7 +21,7 @@ import com.icodejava.research.nlp.utils.DevanagariUnicodeToRomanEnglish;
  * Servlet implementation class RandomWordsServlet
  */
 @WebServlet("/ValidateRomanizationServlet")
-public class ValidateRomanizationServlet extends HttpServlet {
+public class ValidateRomanizationServlet extends AbstractNLPServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,12 +41,10 @@ public class ValidateRomanizationServlet extends HttpServlet {
 		List<Word> words = getWords(request);
 		
 		WordsUnreferencedService.romanizeAndSaveWords(words);
-
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		String nextJSP = "jsp/word_roman_validate.jsp?result=successful";
-//		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-//		dispatcher.forward(request,response);
+		int count = WordsUnreferencedService.getRomanizedWordCount();
+		
+		String nextJSP = "jsp/word_roman_validate.jsp?result=successful&count="+count;
 		response.sendRedirect(nextJSP);
 		
 	}
@@ -84,17 +82,6 @@ public class ValidateRomanizationServlet extends HttpServlet {
 		
 		return words;
 
-	}
-
-	private Word getWordById(List<Word> words, int id) {
-		Word aWord = null;
-		for(Word word:words) {
-			if (word.getId() == id) {
-				aWord = word;
-				break;
-			}
-		}
-		return aWord;
 	}
 
 	/**

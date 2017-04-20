@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.icodejava.research.nlp.database.WordsUnreferencedDB"%>
+<%@ page import="com.icodejava.research.nlp.services.WordsUnreferencedService"%>
 <%@ page import="com.icodejava.research.nlp.domain.Word"%>
 
 <!doctype html>
@@ -45,11 +46,11 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	<br>
 <%}%>
 
-	<form action="/NepaliNLPWeb/RandomWordsServlet" method="post">
+	<form action="/NepaliNLPWeb/WordsClassificationServlet" method="post">
 
 
 		<%
-			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(5);
+			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(100);
 			for (Word word : words) {
 		%>
 		
