@@ -312,6 +312,7 @@ public class NepaliTokenizer {
 		}
 		
 		string = string.replaceAll("अो", "ओ");
+		string = string.replace("अा", "आ");
 		return string;
 	}
 	
