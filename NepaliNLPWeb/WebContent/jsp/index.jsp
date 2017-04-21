@@ -28,12 +28,13 @@ div.right {
 
 	Welcome to iNepal.ORG's natural language processing portal. You can do the following in this page.
 	<br><a href="word_classify.jsp">Classify Words</a>
+	<br><a href="word_classify_root.jsp">Classify ROOT Words</a>
 	<br><a href="word_search.jsp">Search Word</a>
 	<br><a href="word_verify.jsp">Verify Words</a>
 	<br><a href="sentence_classify.jsp">Classify Sentences</a>
 	<br><a href="sentence_search.jsp">Sentence Search</a>
 	<br><a href="word_roman_validate.jsp">Validate Romanization</a>
-	<br><a href="word_root_validate.jsp">Word Root Romanization</a>
+	<br><a href="word_root_validate.jsp">Word Root Validation</a>
 	<br><a href="pos_tagger.jsp">POS Tagger</a>
 	
 	

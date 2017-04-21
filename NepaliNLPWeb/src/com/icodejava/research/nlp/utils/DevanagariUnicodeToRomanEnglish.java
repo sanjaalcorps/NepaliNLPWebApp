@@ -235,6 +235,33 @@ public class DevanagariUnicodeToRomanEnglish {
 
 		return transformed;
 		
+		
+		/**
+When applied to a semivowel (y, r, l, ḷ or v), in contrast to its application to a vowel, candrabindu is placed before the semivowel. 
+For example, सय्ँयन्ता is written sa:m̐yyantā and not saym̐yantā.
+The standard nasal signs (ṁ and ṃ) are only to be used at the end of words 
+OR when it is crucial to keep the distinction between Bindi and Tippi use in Gurmukhi. 
+Otherwise, the following rules should be enforced:
+
+When followed by		ISO 15919	IPA
+k, kh, g, gh or ṅ
+q, ḵẖ, or ġ				ṅ			ŋ
+
+c, ch, j, jh or ñ
+z						ñ			ɲ
+
+ṭ, ṭh, ḍ, ḍh, or ṇ		ṇ			ɳ
+
+t, th, d dh, or n		n			n
+
+p, ph, b bh, or m
+f						m			m
+y, r, l, v, ś, ṣ, 
+s, h ẏ					n			n
+
+https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration
+		 */
+		
 	
 		
 	}

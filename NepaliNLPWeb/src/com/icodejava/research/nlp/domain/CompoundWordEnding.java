@@ -20,6 +20,7 @@ public enum CompoundWordEnding {
 	BHANDAA("भन्दा"),
 	BHAR("भर"),
 	BHAYEKO("भएको"),
+	BHAYEKI("भएकी"),
 	BHAYO("भयो"),
 	BHITRA("भित्र"),
 	BHITRAI("भित्रै"),
@@ -28,8 +29,8 @@ public enum CompoundWordEnding {
 	BICH_1("बीच"),
 	BICH_2("बिच"),
 	BICH_KO_1("बीचको"),
-	BICH_KO_2("बिचमा"),
-	BICH_MA_1("बीचको"),
+	BICH_KO_2("बिचको"),
+	BICH_MA_1("बीचमा"),
 	BICH_MA_2("बिचमा"),
 	BIHEEN("बिहीन"),
 	BIHEENAI("बिहीनै"),
@@ -61,41 +62,50 @@ public enum CompoundWordEnding {
 	HARU_MATHI_4("हरूमाथी"),
 	HARU_PRATI_1("हरुप्रती"),
 	HARU_PRATI_2("हरूप्रती"),
-	HARU_PRATI_3("हरुप्रती"),
-	HARU_PRATI_4("हरूप्रती"),
+	HARU_PRATI_3("हरुप्रति"),
+	HARU_PRATI_4("हरूप्रति"),
 	HARU_SAMET_1("हरुसमेत"),
 	HARU_SAMET_2("हरूसमेत"),
 	HARU_SANGA_1("हरुसंग"),
-	HARU_SANGA_2("हरूसँग"),
-	HARU_SANGA_3("हरुसंग"),
-	HARU_SANGA_4("हरुसँग"),
+	HARU_SANGA_2("हरूसंग"),
+	HARU_SANGA_3("हरुसँग"),
+	HARU_SANGA_4("हरूसँग"),
+	HARU_SANGA_5("हरुसङ्ग"),
+	HARU_SANGA_6("हरूसङ्ग"),
 	HARU_SANGA_KO_1("हरुसँगको"),
-	HARU_SANGA_KO_2("हरुसंगको"),
+	HARU_SANGA_KO_2("हरूसंगको"),
 	HARU_SANGA_KO_3("हरुसंगको"),
-	HARU_SANGA_KO_4("हरुसँगको"),
-	HARU_SANGAI_2("हरूसँगै"),
-	HARU_SANGAI_3("हरुसंगै"),
-	HARU_SANGAI_4("हरुसँगै"),
+	HARU_SANGA_KO_4("हरूसँगको"),
+	HARU_SANGA_KO_5("हरुसङ्गको"),
+	HARU_SANGA_KO_6("हरूसङ्गको"),
+	HARU_SANGAI_1("हरुसंगै"),
+	HARU_SANGAI_2("हरूसंगै"),
+	HARU_SANGAI_3("हरुसँगै"),
+	HARU_SANGAI_4("हरूसँगै"),
 	HARUBAATA_1("हरुबाट"), 
 	HARUBAATA_2("हरूबाट"), 
+	HARUBAATA_3("हरुवाट"), 
+	HARUBAATA_4("हरूवाट"), 
 	HARUDWARA_1("हरुद्धारा"),
 	HARUDWARA_2("हरूद्धारा"),
-	HARUKA("हरूका"),
 	HARUKA_1("हरुका"),
 	HARUKA_2("हरूका"),
 	HARUKO_1("हरुको"),
 	HARUKO_2("हरूको"),
-	HARULAI_1("हरुलाई"), 
-	HARULAI_2("हरूलाई"), 
+	HARULAI_1("हरुलाइ"), 
+	HARULAI_2("हरूलाइ"), 
 	HARULE_1("हरुले"),
 	HARULE_2("हरूले"),
 	HARUMA_1("हरुमा"), 
 	HARUMA_2("हरूमा"),
 	HARUSAMMA_1("हरुसम्म"),
 	HARUSAMMA_2("हरूसम्म"),
+	HARUSAMMA_MA_1("हरुसम्ममा"),
+	HARUSAMMA_MA_2("हरूसम्ममा"),
 	HARUSITA_1("हरुसित"),
 	HARUSITA_2("हरूसित"),
-	HHARU_SANGAI_1("हरुसंगै"),
+	HARUSITAI_1("हरुसितै"),
+	HARUSITAI_2("हरूसितै"),
 	JASTA("जस्ता"),
 	JASTAI("जस्तै"),
 	JASTO("जस्तो"),
@@ -152,8 +162,8 @@ public enum CompoundWordEnding {
 	SAATHAI("साथै"),
 	SAHIT("सहित"),
 	SAHITAI("सहितै"),
-	SAHITKA("सहितका"),
-	SAHITKAA("सहितका"),
+	SAHITKA_1("सहितका"),
+	SAHITKA_2("सहीतका"),
 	SAKEKA("सकेका"),
 	SAKEKO("सकेको"),
 	SAMAKSHA("समक्ष"),
@@ -200,10 +210,15 @@ public enum CompoundWordEnding {
 जत्तिकै
 पूर्वकै
 
+रोल्पावासी
+
+भरि
+भरी
+मुनि
+मुनी
+मुन्तिर
+
 Yatra
-Bhari
-Bhayeko
-Bhayeki
 Muni
 चोटिमा
 Patak
@@ -220,7 +235,6 @@ sammako
 भइसकेकाले
 लगायतमा
 हत्यापछाडिको
-ग्यारेजसम्ममा
 
 verbs
 हुन्छ
@@ -230,8 +244,6 @@ verbs
 नछुट्टाएर
  होइनन
  बिर्सिदिन्छु
- उपकथाहरुले
- तिमिहरूमाथी
  देवकोटाजीकै 
  संसद्सम्मै
  साबिकै

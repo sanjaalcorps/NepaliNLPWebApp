@@ -22,7 +22,7 @@ public class WordsUnreferencedService {
 		// printCompoundWords();
 		// printCompoundWordsNotTagged();
 		// romanizeAndSaveWords(HOW_MANY_WORDS_TO_ROMANIZE);
-		// WordsUnreferencedDB.selectCompoundWordsNotTagged("योस्");
+		 WordsUnreferencedDB.selectCompoundWordsNotTagged("मुन्तिर");
 		// WordsUnreferencedDB.selectCompoundWordsNotTagged("मै");
 
 		//extractAndTagRootWords(); // Multiple
@@ -30,10 +30,10 @@ public class WordsUnreferencedService {
 		 //tagCompoundWords(HOW_MANY_WORDS);
 		// processUnreferencedWords(10000);
 		// processWordsFromFile("src/com/icodejava/research/nlp/sources/other/misc_words.txt");
-		 getRomanizedWordCount();
+		// getRomanizedWordCount();
 		 //removeDuplication();
 		 
-		 getRandomCompoundWords(1000);
+		// getRandomCompoundWords(1000);
 
 	}
 

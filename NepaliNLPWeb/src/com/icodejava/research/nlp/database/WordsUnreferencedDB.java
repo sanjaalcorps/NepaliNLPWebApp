@@ -47,7 +47,9 @@ public class WordsUnreferencedDB extends DBUtility {
 		
 		//selectCompoundWords("लाई");
 		//selectRecordsNotMarkedAsCompoundRandom(10);
-		selectRandomCompoundWords(10);
+		//selectRandomCompoundWords(10);
+		
+		selectRootWordsNotClassified(100);
 		
 	}
 	
@@ -310,6 +312,7 @@ public class WordsUnreferencedDB extends DBUtility {
 	 */
 	public static List<Word> selectCompoundWordsNotTagged(String endsWith) {
 		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" where IS_COMPOUND_WORD IS NULL AND WORD LIKE '%"+endsWith+"'";
+		System.out.println(sql);
 
 		List<Word> words = new ArrayList<Word>();
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
@@ -399,6 +402,30 @@ public class WordsUnreferencedDB extends DBUtility {
 		return words;
 	}
 	
+	public static List<Word> selectRootWordsNotClassified(int limit) {
+		List<Word> words = new ArrayList<Word>();
+		// SELECT * FROM table WHERE id IN (SELECT id FROM table ORDER BY
+		// RANDOM() LIMIT x)
+		String sql = "SELECT * FROM " + Tables.WORDS_UNREFERENCED + " WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED
+				+ " WHERE WORD=ROOT_WORD AND CLASSIFICATION_1 IS NULL AND CLASSIFICATION_2 IS NULL AND CLASSIFICATION_3 IS NULL AND CLASSIFICATION_4 IS NULL AND CLASSIFICATION_5 IS NULL  ORDER BY RANDOM()  LIMIT "
+				+ limit + ") ORDER BY WORD ASC";
+
+		System.out.println(sql);
+		try (Connection conn = DriverManager.getConnection(DATABASE_URL); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+
+			while (rs.next()) {
+				words.add(new Word(rs.getInt("ID"), rs.getString("WORD"), rs.getString("VERIFIED")));
+				// System.out.println(rs.getInt("ID") + "\t" +
+				// rs.getString("WORD") + "\t" + rs.getString("VERIFIED"));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("Found: " + words.size() + " records");
+
+		return words;
+	}
 	
 	public static void selectRecordCountByLength() {
 		String sql = "SELECT Length(WORD), count (*) FROM " +  Tables.WORDS_UNREFERENCED +" GROUP BY LENGTH(WORD) ORDER BY 1 DESC";
