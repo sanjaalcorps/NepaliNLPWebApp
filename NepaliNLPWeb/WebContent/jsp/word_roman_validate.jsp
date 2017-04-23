@@ -57,10 +57,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 				<label for="word_romanized_<%=word.getId()%>">Correctly Romanized</label>
 				<input type="checkbox" name="word_romanized_<%=word.getId()%>" id="word_romanized_<%=word.getId()%>">
 			</div>
-	
 		</fieldset>
-
-
 		<%
 			}
 		%>
