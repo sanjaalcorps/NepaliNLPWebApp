@@ -133,19 +133,22 @@ public class ArticlesDB extends DBUtility {
         }
     }
     
-    public static void selectArticlesCount(){
+    public static int getArticlesCount(){
         String sql = "SELECT COUNT (*) FROM ARTICLES";
+        int count = 0;
 
         try (Connection conn = DriverManager.getConnection( DATABASE_URL);
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
 
             if (rs.next()) {
-                System. out.println("Total Articles in the Database: " + rs.getInt(1));
+                //System. out.println("Total Articles in the Database: " + rs.getInt(1));
+                count = rs.getInt(1);
             }
         } catch (SQLException e) {
             System. out.println(e.getMessage());
         }
+        return count;
     }
 
 
@@ -167,19 +170,23 @@ public class ArticlesDB extends DBUtility {
 	}
 	
 	
-	public static void selectArticlesCountProcessedForUnreferenceWord() {
+	public static int getArticlesCount_ProcessedForUnreferenceWord() {
 		String sql = "SELECT count(*) FROM ARTICLES WHERE WORD_EXTRACT_UNREFERENCED=\"Y\"";
+		int count = 0;
 
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql)) {
 
 			if (rs.next()) {
-				System.out.println("Total Articles Processed for extracing Unreferenced Words: " + rs.getInt(1));
+//				System.out.println("Total Articles Processed for extracing Unreferenced Words: " + rs.getInt(1));
+				count = rs.getInt(1);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return count;
 
 	}
 	

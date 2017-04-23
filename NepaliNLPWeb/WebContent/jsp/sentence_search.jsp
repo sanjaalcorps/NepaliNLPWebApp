@@ -28,6 +28,45 @@ div.right {
 <body>
 Sentence Search - Nepali NLP
 
+<!-- 
+
+<select id="myselect">
+    <option value="1">Mr</option>
+    <option value="2">Mrs</option>
+    <option value="3">Ms</option>
+    <option value="4">Dr</option>
+    <option value="5">Prof</option>
+</select>
+
+$("button").click(function(){
+    $.ajax({url: "demo_test.txt", success: function(result){
+        $("#div1").html(result);
+    }});
+});
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").load("demo_test.txt");
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html>
+
+ -->
+
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
 	<script src="../js/bootstrap.js"></script>

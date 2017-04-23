@@ -275,7 +275,7 @@ public class WordsUnreferencedService {
 		WordsUnreferencedDB.cleanStrangeWords();
 		
 		//finally print report
-		ReportingService.printUnreferencedWordReport();
+		//System.out.println(ReportingService.printUnreferencedWordReport(new StringBuffer()));
 		
 	}
 	

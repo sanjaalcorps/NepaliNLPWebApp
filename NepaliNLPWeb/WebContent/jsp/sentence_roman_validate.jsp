@@ -1,17 +1,14 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-<%@ page
-	import="com.icodejava.research.nlp.services.SentenceUnreferencedService"%>
+<%@ page import="com.icodejava.research.nlp.services.SentenceUnreferencedService"%>
 <%@ page import="com.icodejava.research.nlp.domain.Sentence"%>
-<%@ page
-	import="com.icodejava.research.nlp.utils.DevanagariUnicodeToRomanEnglish"%>
+<%@ page import="com.icodejava.research.nlp.utils.DevanagariUnicodeToRomanEnglish"%>
 <!doctype html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Word Romanization - Nepali NLP</title>
+<title>Sentence Romanization - Nepali NLP</title>
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../css/bootstrap.css" rel="stylesheet">
 <style>
@@ -43,10 +40,8 @@ div.right {
 			style="margin-top: 20px; padding: 0 .7em;">
 			<p>
 				<span class="ui-icon ui-icon-info"
-					style="float: left; margin-right: .3em;"></span> Previous sentences
-				have been updated. Total Count:
-				<%=request.getParameter("count")%>
-				Submit more below.
+					style="float: left; margin-right: .3em;"></span> 
+					Previous sentences have been updated. Total Count: <%=request.getParameter("count")%> Submit more below.
 			</p>
 		</div>
 	</div>
@@ -54,9 +49,8 @@ div.right {
 	<%
 		}
 	%>
-
-	<form action="/NepaliNLPWeb/ValidateSentenceRomanizationServlet"
-		method="post">
+<%--
+	<form action="/NepaliNLPWeb/ValidateSentenceRomanizationServlet" method="post">
 
 		<input type="submit" value="Submit">
 				<%
@@ -86,6 +80,8 @@ div.right {
 		<br /> <input type="submit" value="Submit">
 
 	</form>
+	
+	--%>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
 	<script src="../js/bootstrap.js"></script>
@@ -93,4 +89,4 @@ div.right {
 		$("[id*=controlgroup]").controlgroup();
 	</script>
 </body>
-</html> --%>
+</html> 

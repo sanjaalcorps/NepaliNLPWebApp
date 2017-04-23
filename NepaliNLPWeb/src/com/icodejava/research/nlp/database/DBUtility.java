@@ -127,7 +127,8 @@ public class DBUtility {
              ResultSet rs    = stmt.executeQuery(sql)){
 
             if (rs.next()) {
-                System. out.println("\n=================\nTotal Row Count in "+table+" table " + (rowCount = rs.getInt(1))+"\n=================");
+            	rowCount = rs.getInt(1);
+                //System. out.println("\n=================\nTotal Row Count in "+table+" table " + rowCount +"\n=================");
             }
         } catch (SQLException e) {
             System. out.println(e.getMessage());

@@ -65,7 +65,7 @@ public class LinksInsertService {
 		}
 
 		// Print the report
-		ReportingService.printRowCountStatus();
+		//System.out.println(ReportingService.printRowCountStatus(new StringBuffer()));
 	}
 
 }
