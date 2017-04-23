@@ -13,7 +13,11 @@ public class NepaliTokenizerTest {
 		//cleanBadExamplesTest();
 		//cleanSentences();
 		//System.out.println(NPTokenizer.cleanWordToken("िदपक"));
-		System.out.println(NepaliTokenizer.isMalformedWord("अाऊन"));
+		//System.out.println(NepaliTokenizer.isMalformedWord("अाऊन"));
+//		System.out.println(NepaliTokenizer.isMalformedWord("छाेपे "));
+		System.out.println(NepaliTokenizer.fixMalformedWord("छाेपे "));
+		
+		
 //		String str;
 //		System.out.println(str = NPTokenizer.cleanSentence(",        ,       .        ,    -     (     -  ).  ’         (      ) ,                    .            .        –  .                ’   ’  मन परे हरियो नपरे रातो"));
 //		System.out.println(str = NPTokenizer.cleanSentence(",               ’       .                                    +                 + +  +          ,          =   मन परे हरियो नपरे रातो,"));
