@@ -231,7 +231,7 @@ public class DevanagariUnicodeToRomanEnglish {
 
 		}
 
-		System.out.println("Original: " + word + " Transformed: " + transformed);
+		//System.out.println("Original: " + word + " Transformed: " + transformed);
 
 		return transformed;
 		

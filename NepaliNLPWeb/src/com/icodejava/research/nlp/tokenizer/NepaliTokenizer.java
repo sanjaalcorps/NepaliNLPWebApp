@@ -303,7 +303,7 @@ public class NepaliTokenizer {
 	public static String fixMalformedWord(String string) {
 		//SET_OF_MATRAS = "ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ्" 
 //		System.out.println(string + " " + string.length());
-//		NPTokenizer.printChracters(string);
+		NepaliTokenizer.printChracters(string);
 		
 		if(string.indexOf('ि') == 0 && string.length() > 1) {
 			System.out.println("Fixing: " + string);
@@ -312,7 +312,12 @@ public class NepaliTokenizer {
 		}
 		
 		string = string.replaceAll("अो", "ओ");
-		string = string.replace("अा", "आ");
+		string = string.replaceAll("अा", "आ");
+		
+//		System.out.println(string.indexOf(2366));
+//		System.out.println(string.indexOf((char)2366 +""+ (char)2375));
+		string = string.replaceAll((char)2366 +""+ (char)2375, "\u094B");//छाेपे  -> छोपे
+		
 		return string;
 	}
 	

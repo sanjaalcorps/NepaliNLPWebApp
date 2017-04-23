@@ -53,7 +53,7 @@ public class NepaliStemmer {
 		
 		if(cweMatraReplaced.length() == 1) {
 			String matraReplacedWord = replaceMatras(compoundWord.replaceAll(cwe, "")); //TODO: Document this
-			allowed = matraReplacedWord.length() > 3; //to prvent words like थुम्का being split as थुम् + का
+			allowed = matraReplacedWord.length() > 2; //to prvent words like थुम्का being split as थुम् + का
 			
 		}
 		
