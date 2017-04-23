@@ -27,7 +27,9 @@ public class SentencesUnreferencedDB extends DBUtility {
 		//selectAllRecords();
 		//selectSentencesWithLengthGreaterThan(50);
 		//selectRecordsBetweenIds(1,10);
-		selectUnverifiedSentencesRandom(10,5,20);
+		//selectUnverifiedSentencesRandom(10,5,20);
+		
+		selectRandomRecords(20);
 	}
 	
 	public static void createSentencesUnreferencedTable() {
@@ -69,7 +71,6 @@ public class SentencesUnreferencedDB extends DBUtility {
 		}
 		
 		return sentences;
-		
 		
 	}
 	
@@ -476,6 +477,24 @@ public class SentencesUnreferencedDB extends DBUtility {
 		
 		return count;
 	}
+	
+	
+	public static void selectRandomRecords(int limit) {
+		
+		String sql = "SELECT * FROM " +  Tables.SENTENCES_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.SENTENCES_UNREFERENCED +" ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY SENTENCE ASC";
+
+		System.out.println(sql);
+		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql)) {
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("ID") + "\t" + rs.getString("SENTENCE") + "\t" + rs.getString("VERIFIED"));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
 
 	
@@ -536,23 +555,7 @@ public class SentencesUnreferencedDB extends DBUtility {
 		}
 	}
 	
-	public static void selectRandomRecords(int limit) {
-		
-		 //SELECT * FROM table WHERE id IN (SELECT id FROM table ORDER BY RANDOM() LIMIT x)
-		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
 
-		System.out.println(sql);
-		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql)) {
-
-			while (rs.next()) {
-				System.out.println(rs.getInt("ID") + "\t" + rs.getString("WORD") + "\t" + rs.getString("VERIFIED"));
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-	}
 	
 
 	

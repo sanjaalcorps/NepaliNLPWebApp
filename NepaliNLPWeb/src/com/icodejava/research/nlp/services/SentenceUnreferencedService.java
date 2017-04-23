@@ -45,7 +45,7 @@ public class SentenceUnreferencedService {
 		
 	}
 
-	private static void updateWordCount(int limit) {
+	public static void calculateAndStoreWordCount(int limit) {
 		
 		//OPERATE 5000 SETENCES AT A TIME
 		int batch = limit / 5000 + 1;
@@ -59,7 +59,26 @@ public class SentenceUnreferencedService {
 			
 			SentencesUnreferencedDB.updateSentencesWordCount(sentences);
 			
+		}
+		
+	}
+	
+	public static void recomputeAndStoreWordCount(int limit) {
+		
+		//OPERATE 5000 SETENCES AT A TIME
+		int perBatchSize = 5000;
+		int numberOfBatches = limit / perBatchSize + 1;
+		int startId = 0;
+		for(int i=0;i<numberOfBatches; i ++ ) {
+		System.out.println("Processing Batch: " + i + " out of " +  numberOfBatches);	
+			//Bring records
+			List<Sentence> sentences = SentencesUnreferencedDB.selectRecordsBetweenIds(startId, startId + perBatchSize);
 			
+			calculateWordCount(sentences);
+			
+			SentencesUnreferencedDB.updateSentencesWordCount(sentences);
+			
+			startId = startId + perBatchSize;
 			
 		}
 		

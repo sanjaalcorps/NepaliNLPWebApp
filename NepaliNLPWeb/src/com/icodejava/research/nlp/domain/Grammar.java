@@ -26,16 +26,30 @@ public class Grammar {
 	प्रा० — प्राकृत  
 	अव्य०  — अव्यय  
 	प्रे० क्रि० — प्रेरणार्थक क्रिया  
-
 	उप० — उपसर्ग  
 	ब० व० — बहुवचन  
-	क० क्रि० — कर्मवाच्य क्रिया  
+	क० क्रि० — कर्मवाच्य क्रिया
+	 क्रि० प० — क्रिया–पदावली  
+	 क्रि० वि० — क्रियाविशेषण  
+ 	 वि० — विशेषण  
+	 ति० रू० — तिर्यक् रूप  
+	 विप० — विपरीतार्थक  
+	 वि० बो० — विस्मयादिबोधक  
+	 तुल० — तुलना, तुलनीय  
+	 विभ० — विभक्ति  
+	 संक्षे० — सङ्क्षेपीकृत रूप  
+	 संयु० — संयुक्त  
+	 द्वि० — द्वित्व  
+	  स० क्रि० — सकर्मक क्रिया 
+	   ना० — नाम  
+	   सर्व० — सर्वनाम  
+	   ना० यो० — नामयोगी  
+
+	  
 	बा० बो० — बालबोली  
 	कथ्य० — कथ्य भाषा  
 	भा० इ० — भारत–इरानेली 
-	 क्रि० प० — क्रिया–पदावली  
 	 भो० — भोजपुरी  
-	 क्रि० वि० — क्रियाविशेषण  
 	 भो० ब० — भोट–बर्मेली  
 	 ग्री० — ग्रीक, ग्रीस, ग्रिसेली  
 	 मग० — मगराँती  
@@ -46,27 +60,15 @@ public class Grammar {
 	 डो० — डोटेली  
 	 लि० — लिम्बू भाषा  
 	 तामा० — तामाङ्गी  
-	 वि० — विशेषण  
-	 ति० रू० — तिर्यक् रूप  
-	 विप० — विपरीतार्थक  
-	 तु० — तुर्की, 
-	 तुर्केली  
-	 वि० बो० — विस्मयादिबोधक  
-	 तुल० — तुलना, तुलनीय  
-	 विभ० — विभक्ति  
+
+	 
+	 तु० — तुर्की, तुर्केली  
 	 था० — थारू  
 	 सं० — संस्कृत  
 	 दङ० — दङाली  
-	 संक्षे० — सङ्क्षेपीकृत रूप  
 	 दिव्य० — दिव्यउपदेश  
-	 संयु० — संयुक्त  
-	 द्वि० — द्वित्व  
 	 संयो० — संयोजक 
 	  धिमा० — धिमाल  
-	  स० क्रि० — सकर्मक क्रिया 
-	   ना० — नाम  
-	   सर्व० — सर्वनाम  
-	   ना० यो० — नामयोगी  
 	   सात० — सातत्य  
 	   निपा० — निपात  
 	   स्त्री० — स्त्रीलिङ्ग  
@@ -92,18 +94,24 @@ public class Grammar {
 	
 	public static final String POS_ADJECTIVE = "ADJECTIVE"; //Bisheshan
 	public static final String POS_ADVERB = "ADVERB"; //Kriya Bisheshan. E.g. Yo, Tyo, Tini, Uni
-	public static final String POS_CONJUNCTION = "CONJUNCTION";
+	public static final String POS_CONJUNCTION = "CONJUNCTION"; // ra, ani, kinabhane, yadi, tara
 	public static final String POS_DETERMINER = "DETERMINER";
 	public static final String POS_INJTERJECTION = "INTERJECTION"; //Anukaranatmak Shabda
 	public static final String MORPHEME = "MORPHEME";
-	public static final String POS_NOUN = "NOUN";//Naam or Sangya - Jaati Bachak, Byakti Bachak, samuha bachak, draba bachak, bhab bachak
+	
+	public static final String POS_NOUN = "NOUN";//Naam or Sangya - Jaati Bachak, Byakti Bachak, samuha bachak, drabua bachak, bhab bachak
+	public static final String POS_NOUN_PROPER = "NOUN_PROPER"; //e.g. Bimala, Nepal, New York - BYAKTI BACHAK
+	public static final String POS_NOUN_COMMON = "NOUN_COMMON"; //e.g. Manchhe, Nadi, Kukur, Biralo, Kitab - JATI BACHAK
+	public static final String POS_NOUN_ABSTRACT = "NOUN_ABSTRACT"; //e.g. Maya, Sundarata, Buddhi, Daya, Dharma - BHAV BACHAK
+	public static final String POS_NOUN_COLLECTIVE = "NOUN_COLLECTIVE"; //e.g. Kakshya, Samuha, Bhid, Pariwar, Jhunda - SAMUHA BACHAK 
+	
 	public static final String NUMERAL = "NUMERAL";
 	public static final String PARTICLE = "PARTICLE";
 	public static final String PHRASE = "PHRASE"; //Bakyanksha
 	public static final String PREPOSITION = "PREPOSITION";
 	public static final String POSTPOSITION = "POSTPOSITION";
 	public static final String PRONOUN = "PRONOUN"; //Sarba Nam: Ma, Hami, Timi
-	public static final String VERB = "VERB"; //Kriya
+	public static final String VERB_BASE = "VERB"; //Kriya e.g. Kha
 	
 	
 	public static boolean isMatra(Character c) {

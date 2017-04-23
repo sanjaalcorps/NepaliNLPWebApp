@@ -10,7 +10,7 @@ import com.icodejava.research.nlp.database.WordsUnreferencedDB;
 public class ReportingService {
 	
 	public static void main (String args []) {
-		//printReportOnConsole();
+		printReportOnConsole();
 		//System.out.println(getHTMLReport());
 	}
 

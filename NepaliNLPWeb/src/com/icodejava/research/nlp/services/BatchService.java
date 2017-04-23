@@ -13,7 +13,9 @@ public class BatchService {
 	public static void main(String [] args) {
 		
 		//Process Unreferenced Words - Extract Words from Articles
+		WordsUnreferencedService.processUnreferencedWords(1000000);
 		
+		//clean words in the database
 		WordsUnreferencedService.cleanWordsInDatabase(0, 1000000);
 		
 		//cleaning words can always leave duplicates, so remove duplicates. 
@@ -32,6 +34,7 @@ public class BatchService {
 		//clean sentences
 		
 		//recalculate word count
+		//SentenceUnreferencedService.recomputeAndStoreWordCount(20000000);
 		
 		//Extract Word Linkage
 		
