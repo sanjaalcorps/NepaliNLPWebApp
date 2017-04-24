@@ -26,6 +26,7 @@ public enum CompoundWordEnding {
 	BHITRAI("भित्रै"),
 	BHITRAKA("भित्रका"),
 	BHITRAMA("भित्रमा"),
+	BHITRA_SAMET("भित्रसमेत"),
 	BICH_1("बीच"),
 	BICH_2("बिच"),
 	BICH_KO_1("बीचको"),
@@ -118,6 +119,7 @@ public enum CompoundWordEnding {
 	KEE("की"),
 	KHALKO("खालको"),
 	KO("को"),
+	KO_LAGI("कोलागी"),
 	LAEE("लाई"),
 	LAGAYAT("लगायत"),
 	LAGAYATKA("लगायतका"),
@@ -143,6 +145,9 @@ public enum CompoundWordEnding {
 	MOOLAK_1("मुलक"),
 	MOOLAK_2("मूलक"),
 	MUKHI("मुखी"),
+	MUNI_1("मुनि"),
+	MUNI_2("मुनी"),
+	MUNTIRA("मुन्तिर"),
 	PACHHI_1("पछि"),
 	PACHHI_2("पछी"),
 	PACHHIKA("पछिका"),
@@ -171,6 +176,7 @@ public enum CompoundWordEnding {
 	SAMET("समेत"),
 	SAMETAI("समेतै"),
 	SAMMA("सम्म"),
+	SAMMAI("सम्मै"),
 	SAMMAKO("सम्मको"),
 	SAMMALE("सम्मले"),
 	SAMMAMA("सम्ममा"),
@@ -195,37 +201,23 @@ public enum CompoundWordEnding {
 	VIRUDDHA("विरुद्ध"),
 	YOS_1("योस"),
 	YOS_2("योस्"),
+	BHARI_1("भरि"),
+	BHARI_2("भरी"),
 	YUKTA("युक्त");
 
 	
 	/*
-	 * आकाशमुन्तिर 
 	 * पाटनहरूमै
 	 * बित्तिकैदेखि
-	 * 
-	 * 
-
-बीचको
-सम्मै
 जत्तिकै
 पूर्वकै
-
 रोल्पावासी
-
-भरि
-भरी
-मुनि
-मुनी
-मुन्तिर
-
 Yatra
-Muni
 चोटिमा
 Patak
 करण (e.g. Adhunikikaran, bargikaran
 घारणात्मक
 
-sammako
 चौरको
 वाणी
 बस्न्परेको
@@ -245,9 +237,7 @@ verbs
  होइनन
  बिर्सिदिन्छु
  देवकोटाजीकै 
- संसद्सम्मै
  साबिकै
- 
  अधिनायकत्व 
  खोजिरहेकाहरू 
 	 */
