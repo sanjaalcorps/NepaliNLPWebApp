@@ -317,6 +317,23 @@ public class WordsUnreferencedService {
 			WordsUnreferencedDB.updateWordRootWordAndTag(word);
 		}
 	}
-	
-	
+
+	public static List<Word> searchWords(String searchQuery, String searchType, int limit) {
+		System.out.println("SearchType: " + searchType);
+		String sqlBase = "SELECT * FROM " + Tables.WORDS_UNREFERENCED + " where word like ";
+		String sql = "";
+		if ("anywhere".equalsIgnoreCase(searchType)) {
+			sql = sqlBase + "\'%" + searchQuery + "%\';";
+		} else if ("start".equalsIgnoreCase(searchType)) {
+			sql = sqlBase + "\'" + searchQuery + "%\';";
+		} else if ("end".equalsIgnoreCase(searchType)) {
+			sql = sqlBase + "\'%" + searchQuery + "\';";
+		}
+		
+		sql = sql + " LIMIT " +  limit;
+
+		System.out.println(sql);
+
+		return WordsUnreferencedDB.selectWithQuery(sql);
+	}
 }

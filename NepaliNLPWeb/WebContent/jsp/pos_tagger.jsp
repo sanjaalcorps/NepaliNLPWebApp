@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.icodejava.research.nlp.services.WordsUnreferencedService"%>
+<%@ page import="com.icodejava.research.nlp.domain.Word"%>
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Parts of Speech Tagger</title>
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../css/bootstrap.css" rel="stylesheet">
@@ -26,6 +28,45 @@ div.right {
 </head>
 <body>
 Parts of Speech Tagger
+
+
+<%
+if("successful".equalsIgnoreCase(request.getParameter("result"))) {
+%>
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			Previous words have been updated. Submit more below.</p>
+		</div>
+	</div>
+	<br>
+<%}%>
+
+	<form action="/NepaliNLPWeb/POSTaggerServlet" method="post">
+
+
+		<%
+			List<Word> words = WordsUnreferencedService.selectRecordsNotMarkedAsCompoundRandom(100);
+			for (Word word : words) {
+		%>
+		
+		<fieldset>
+			<legend><%=word.getWord()%></legend>
+			<div id="controlgroup_<%=word.getId()%>" class="class1">
+			
+				
+			</div>
+	
+		</fieldset>
+
+
+		<%
+			}
+		%>
+		<br/>
+		<input type="submit" value="Submit">
+		
+	</form>
 
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>

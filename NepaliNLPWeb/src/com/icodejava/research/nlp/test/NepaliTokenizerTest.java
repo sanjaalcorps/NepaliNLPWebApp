@@ -42,6 +42,13 @@ public class NepaliTokenizerTest {
 		String expected = "टीभीमा";
 		Assert.assertThat(output, is(expected));
 	}
+	@Test
+	public void test_double_AA_on_A() {
+		String input = "अाज";
+		String output = NepaliTokenizer.fixMalformedWord(input);
+		String expected = "आज";
+		Assert.assertThat(output, is(expected));
+	}
 	
 	
 	

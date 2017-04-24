@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="com.icodejava.research.nlp.database.WordsUnreferencedDB"%>
 <%@ page import="com.icodejava.research.nlp.services.WordsUnreferencedService"%>
 <%@ page import="com.icodejava.research.nlp.domain.Word"%>
@@ -50,7 +51,13 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 
 
 		<%
-			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(100);
+			List<Word> words = new ArrayList<Word>();
+			if(request.getSession().getAttribute("wordSearchResult") != null) {
+				System.out.println("Found Search Results");
+				words = (List<Word>) request.getSession().getAttribute("wordSearchResult");
+			} else {
+				words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(100);
+			}
 			for (Word word : words) {
 		%>
 		
@@ -88,8 +95,9 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 		%>
 		<br/>
 		<input type="submit" value="Submit">
-		
 	</form>
+	
+	Go to <a href = "jsp/word_search.jsp">Word Search</a>
 
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!doctype html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,7 +27,29 @@ div.right {
 </head>
 <body>
 
-Word Search - Nepali NLP
+
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			Search Words Below</p>
+		</div>
+	</div>
+	<br>
+
+	<form action="/NepaliNLPWeb/WordSearchServlet" method="post">
+
+		Search Term: <input type="text" name="word_search_query" value=""><br/>
+		<br/>
+		The Search Term appears in the word at (Select One):
+		&nbsp;&nbsp;&nbsp;<input type="radio" name="word_search_type" value="anywhere"> Anywhere<br/>
+		&nbsp;&nbsp;&nbsp;<input type="radio" name="word_search_type" value="start"> Start<br/>
+		&nbsp;&nbsp;&nbsp;<input type="radio" name="word_search_type" value="end"> End<br/>
+		<br/>
+		<input type="submit" value="Search Words">
+		
+	</form>
+
+
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
 	<script src="../js/bootstrap.js"></script>
