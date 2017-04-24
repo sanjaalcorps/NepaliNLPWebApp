@@ -199,7 +199,22 @@ public class FileUtilities {
     	System.out.println("Successfully Trimmed Line Spaces in file: " + fileName);
     }
     
-    
-    
+    /**
+     * Returns a list of all the files that are in a folder (does not go inside subfolder)
+     */
+    public List<String> getFilesInAFolder(String folderName) {
+
+        List<String> results = new ArrayList<String>();
+
+        File[] files = new File(folderName).listFiles();
+        // If this pathname does not denote a directory, then listFiles() returns null.
+
+        for (File file : files) {
+            if (file.isFile()) {
+                results.add(file.getName());
+            }
+        }
+        return results;
+    }
  
 }

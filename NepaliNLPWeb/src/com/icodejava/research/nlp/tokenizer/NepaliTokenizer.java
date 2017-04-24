@@ -1,6 +1,5 @@
 package com.icodejava.research.nlp.tokenizer;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,44 +11,21 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import com.icodejava.research.nlp.domain.CompoundWordEnding;
 import com.icodejava.research.nlp.domain.Grammar;
 import com.icodejava.research.nlp.domain.WordFrequency;
 
 
 public class NepaliTokenizer {
-    /*
-    private static NPTokenizer tokenizer;
-    public static NPTokenizer getInstance() {
-        return tokenizer!=null ? tokenizer : (tokenizer=new NPTokenizer());
-    }*/
 
     public static void main(String args[]) throws FileNotFoundException, IOException {
 
         //String text = new String(FileUtilities.loadFile("C:\\Users\\paudyals\\Desktop\\NLP\\nepali_sambidhan.txt"));
-        
         //String text = ArticlesDB.selectArticleTextByID(7000);
-        
     	//String text = HtmlTextExtractor.extractTextFromWeb("http://www.hongkongnepali.com/2008-12-29-07-00-23/9088-2011-10-04-17-26-34.html");
-        
-
-        
-        //System.out.println("=====OriginalText=====\n" + text);
-
-//        System.out.println("\n=====TokenizedSentences=====\n");
         //tokenizeSentence(text, Terminator.NP);
-
-        //System.out.println("\n=====TokenizedWords=====\n");
         //tokenizeWords(text);
-
-
-        /*
-        extractAdjancentWords(AdjacentWords.THREE_WORDS.getDepth(),
-            "This is a test sentence really good one");
-*/
-
+        //extractAdjancentWords(AdjacentWords.THREE_WORDS.getDepth(),"This is a test sentence really good one");
         //getWordFrequencyMap(text);
-        
     }
 
     /**
@@ -182,32 +158,6 @@ public class NepaliTokenizer {
 
     }
 
-    /**
-     * Returns a list of all the files that are in a folder (does not go inside subfolder)
-     */
-    public List<String> getFilesInAFolder(String folderName) {
-
-        List<String> results = new ArrayList<String>();
-
-        File[] files = new File(folderName).listFiles();
-        // If this pathname does not denote a directory, then listFiles() returns null.
-
-        for (File file : files) {
-            if (file.isFile()) {
-                results.add(file.getName());
-            }
-        }
-        return results;
-    }
-
-    /**
-     * Create Word Permutations
-     */
-/*    public List<String> getWordPermuations(String sentence) {
-        List<String> words = tokenizeWords(sentence);
-    }*/
-
-
     public static Map<String,Integer> getWordFrequencyMap(String text) {
             List<String> words = tokenizeWords(text);
             Map<String, Integer> frequencyMap = new HashMap<String, Integer>();
@@ -302,8 +252,7 @@ public class NepaliTokenizer {
 	
 	public static String fixMalformedWord(String string) {
 		//SET_OF_MATRAS = "ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ्" 
-//		System.out.println(string + " " + string.length());
-		NepaliTokenizer.printChracters(string);
+		//NepaliTokenizer.printChracters(string);
 		
 		if(string.indexOf('ि') == 0 && string.length() > 1) {
 			System.out.println("Fixing: " + string);
@@ -313,10 +262,8 @@ public class NepaliTokenizer {
 		
 		string = string.replaceAll("अो", "ओ");
 		string = string.replaceAll("अा", "आ");
-		
-//		System.out.println(string.indexOf(2366));
-//		System.out.println(string.indexOf((char)2366 +""+ (char)2375));
 		string = string.replaceAll((char)2366 +""+ (char)2375, "\u094B");//छाेपे  -> छोपे
+		string = string.replace("\u093E" + "" + "\u093E", "\u093E");//टीभीमाा -> टीभीमा
 		
 		return string;
 	}
@@ -363,10 +310,5 @@ public class NepaliTokenizer {
 		return isMalformed;
 		
 	}
-	
-
-
-
-
 
 }
