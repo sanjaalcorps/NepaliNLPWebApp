@@ -2,8 +2,13 @@
 
 import java.util.List;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
 import com.icodejava.research.nlp.utils.FileUtilities;
+
+import static org.hamcrest.CoreMatchers.*;
 
 public class NepaliTokenizerTest {
 	
@@ -30,6 +35,13 @@ public class NepaliTokenizerTest {
 		
 	}
 	
+	@Test
+	public void test_double_AA() {
+		String input = "टीभीमाा";
+		String output = NepaliTokenizer.fixMalformedWord(input);
+		String expected = "टीभीमा";
+		Assert.assertThat(output, is(expected));
+	}
 	
 	
 	
