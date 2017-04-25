@@ -137,26 +137,7 @@ public class NepaliTokenizer {
 		return title;
 	}
 
-    /**
-     * Given a sentence, this method will return a collection of n (i.e. level) adjacent words
-     */
-    private static void extractAdjancentWords(int level, String sentence) {
 
-        List<String> words = tokenizeWords(sentence);
-
-        int levelTemp = level;
-        for (int i = 0; i < words.size(); i++) {
-
-            while (level > 0 && (i + levelTemp - 1) < words.size()) {
-                System.out.print(words.get(i + levelTemp - level) + " ");
-                level--;
-            }
-            System.out.println();
-            // restore
-            level = levelTemp;
-        }
-
-    }
 
     public static Map<String,Integer> getWordFrequencyMap(String text) {
             List<String> words = tokenizeWords(text);
