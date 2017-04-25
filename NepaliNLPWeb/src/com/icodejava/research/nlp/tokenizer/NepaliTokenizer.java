@@ -244,7 +244,8 @@ public class NepaliTokenizer {
 		string = string.replaceAll("अो", "ओ");
 		string = string.replaceAll("अा", "आ");
 		string = string.replaceAll((char)2366 +""+ (char)2375, "\u094B");//छाेपे  -> छोपे
-		string = string.replace("\u093E" + "" + "\u093E", "\u093E");//टीभीमाा -> टीभीमा
+		string = string.replaceAll("\u093E" + "" + "\u093E", "\u093E");//टीभीमाा -> टीभीमा
+		string = string.replaceAll("\u094D" + "\u094C" , "\u094C") ; //सम्झ्ौता -> सम्झौता
 		
 		return string;
 	}

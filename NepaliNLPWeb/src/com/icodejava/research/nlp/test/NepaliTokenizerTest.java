@@ -49,6 +49,15 @@ public class NepaliTokenizerTest {
 		String expected = "आज";
 		Assert.assertThat(output, is(expected));
 	}
+	@Test
+	public void test_au() {
+		String input = "सम्झ्ौता";
+		String output = NepaliTokenizer.fixMalformedWord(input);
+		String expected = "सम्झौता";
+		Assert.assertThat(output, is(expected));
+
+		
+	}
 	
 	
 	
