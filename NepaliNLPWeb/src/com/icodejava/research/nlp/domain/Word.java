@@ -33,6 +33,9 @@ public class Word {
 		this.modified = false;
 	}
 
+	public Word() {
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -2,6 +2,7 @@ package com.icodejava.research.nlp.services;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class WordsUnreferencedService {
 		// printCompoundWords();
 		// printCompoundWordsNotTagged();
 		// romanizeAndSaveWords(HOW_MANY_WORDS_TO_ROMANIZE);
-		 WordsUnreferencedDB.selectCompoundWordsNotTagged("मुन्तिर");
+		// WordsUnreferencedDB.selectCompoundWordsNotTagged("मुन्तिर");
 		// WordsUnreferencedDB.selectCompoundWordsNotTagged("मै");
 
 		//extractAndTagRootWords(); // Multiple
@@ -34,6 +35,8 @@ public class WordsUnreferencedService {
 		 //removeDuplication();
 		 
 		// getRandomCompoundWords(1000);
+		 
+		 updateWordRootFromKnownRoots();
 
 	}
 
@@ -337,7 +340,33 @@ public class WordsUnreferencedService {
 		return WordsUnreferencedDB.selectWithQuery(sql);
 	}
 
+	
 	public static int getRootWordExtractionCount() {
 		return WordsUnreferencedDB.getVerifiedRootWordExtractionCount();
 	}
+	
+	public static void updateWordRootFromKnownRoots() {
+		//find all the distinct root words
+		List<String> words = WordsUnreferencedDB.getDistinctRootWords();
+		System.out.println("Found: " + words.size() + "Distinct Words");
+		//
+		List<Word> wordsRootExtraction = new ArrayList<Word>();
+		for(String wordStr: words) {
+			Word word = WordsUnreferencedDB.selectWordByWordValue(wordStr);
+			
+			if( word != null && !word.getWord().equalsIgnoreCase(word.getRootWord())) {
+				word.setRootWord(word.getWord());
+				word.setIsRootWordExtracted("Y");
+				wordsRootExtraction.add(word);
+			}
+			
+		}
+		
+		System.out.println(wordsRootExtraction.size() + " words will be marked as root root");
+		
+		
+		WordsUnreferencedDB.updateWordTagRootWords(wordsRootExtraction);
+	}
+	
+	
 }

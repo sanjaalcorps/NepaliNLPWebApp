@@ -41,6 +41,8 @@ public class ValidateRootWordServlet extends AbstractNLPServlet {
 		
 		WordsUnreferencedService.updateWordRoot(words);
 		
+		WordsUnreferencedService.updateWordRootFromKnownRoots();
+		
 		int count = WordsUnreferencedService.getRootWordExtractionCount();
 		
 		

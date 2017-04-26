@@ -68,6 +68,15 @@ public class NepaliTokenizerTest {
 		
 		
 	}
+	@Test
+	public void test_0002() {
+		String input = "दुुर्घटनामा";
+		String output = NepaliTokenizer.fixMalformedWord(input);
+		String expected = "दुर्घटनामा";
+		Assert.assertThat(output, is(expected));
+		
+		
+	}
 	
 	
 	

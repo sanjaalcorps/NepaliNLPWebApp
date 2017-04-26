@@ -604,7 +604,7 @@ public class WordsUnreferencedDB extends DBUtility {
 	}
 	
 	/**
-	 * Queries the database and gets a list of words by Word Value
+	 * Queries the database and gets a list of words by Word Value. List because there could be duplicates.
 	 * @param wordValue
 	 * @return
 	 */
@@ -628,6 +628,27 @@ public class WordsUnreferencedDB extends DBUtility {
 		
 		//System.out.println("Found: " + words.size() + " records of " +  wordValue);
 		return words;
+	}
+	
+	public static Word selectWordByWordValue(String wordValue) {
+		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE WORD=\""+wordValue+ "\" ORDER BY WORD ASC";
+
+		Word word = null;
+		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql)) {
+
+			if (rs.next()) { //get first only in case of duplicates
+				//System.out.println("Found: " + rs.getInt("ID") + "\t" + rs.getString("WORD") + "\t" );
+				word = new Word(rs.getInt("ID"), rs.getString("WORD"), null);
+				word.setRootWord(rs.getString("ROOT_WORD"));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//System.out.println("Found: " + words.size() + " records of " +  wordValue);
+		return word;
 	}
 	
 	public static List<Word> selectWordsNotRomanized(int limit) {
@@ -791,7 +812,7 @@ public class WordsUnreferencedDB extends DBUtility {
 				"\", ROOT_WORD_EXTRACTED= \"" + word.getIsRootWordExtracted() + 
 				"\", VERIFIED = \"Y" + 
 				"\" WHERE ID=" +word.getId();
-		//System.out.println(sql);
+		System.out.println(sql);
 
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
 				Statement stmt = conn.createStatement();)
@@ -910,7 +931,7 @@ public class WordsUnreferencedDB extends DBUtility {
 
 	public static int getVerifiedRootWordExtractionCount() {
 		int count = 0;
-		String sql = "select distinct root_word from words_unreferenced where verified = 'Y';";
+		String sql = "select count (distinct root_word) from words_unreferenced where verified = 'Y';";
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql)) {
@@ -925,6 +946,24 @@ public class WordsUnreferencedDB extends DBUtility {
 		}
 
 		return count;
+	}
+	
+	public static List<String> getDistinctRootWords() {
+		List<String> wordsStr = new ArrayList<String>();
+		String sql = "select distinct root_word from words_unreferenced where verified = 'Y';";
+		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql)) {
+
+			while (rs.next()) {
+				wordsStr.add(rs.getString(1));
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return wordsStr;
 	}
 
 
