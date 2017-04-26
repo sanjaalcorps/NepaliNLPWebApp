@@ -59,6 +59,16 @@ public class NepaliTokenizerTest {
 		
 	}
 	
+	@Test
+	public void test_0001() {
+		String input = "प्ााण्डेले";
+		String output = NepaliTokenizer.fixMalformedWord(input);
+		String expected = "पाण्डेले";
+		Assert.assertThat(output, is(expected));
+		
+		
+	}
+	
 	
 	
 	private static void textReplaceTest() {

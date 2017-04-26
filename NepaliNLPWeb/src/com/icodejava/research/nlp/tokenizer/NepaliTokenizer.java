@@ -246,6 +246,7 @@ public class NepaliTokenizer {
 		string = string.replaceAll((char)2366 +""+ (char)2375, "\u094B");//छाेपे  -> छोपे
 		string = string.replaceAll("\u093E" + "" + "\u093E", "\u093E");//टीभीमाा -> टीभीमा
 		string = string.replaceAll("\u094D" + "\u094C" , "\u094C") ; //सम्झ्ौता -> सम्झौता
+		string = string.replaceAll("\u094D" + "\u093E", "\u093E");//प्ााण्डेले -> पाण्डेले
 		
 		return string;
 	}
