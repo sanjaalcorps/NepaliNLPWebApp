@@ -785,7 +785,12 @@ public class WordsUnreferencedDB extends DBUtility {
 			return;
 		}
 		
-		String sql = "UPDATE " + Tables.WORDS_UNREFERENCED + " SET ROOT_WORD=\""+word.getRootWord()+"\", ROOT_WORD_EXTRACTED= \""+word.getIsRootWordExtracted()+"\" WHERE ID=" +word.getId();
+		String sql = "UPDATE " + 
+				Tables.WORDS_UNREFERENCED + 
+				" SET ROOT_WORD=\"" + word.getRootWord() + 
+				"\", ROOT_WORD_EXTRACTED= \"" + word.getIsRootWordExtracted() + 
+				"\", VERIFIED = \"Y" + 
+				"\" WHERE ID=" +word.getId();
 		//System.out.println(sql);
 
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
@@ -900,6 +905,26 @@ public class WordsUnreferencedDB extends DBUtility {
 			count++;
 		}
 		
+	}
+
+
+	public static int getVerifiedRootWordExtractionCount() {
+		int count = 0;
+		String sql = "select distinct root_word from words_unreferenced where verified = 'Y';";
+		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql)) {
+
+			if (rs.next()) {
+				//System.out.println("Word Already Exists in "+ Tables.WORDS_UNREFERENCED);
+				count = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return count;
 	}
 
 

@@ -41,8 +41,8 @@ public class ValidateRootWordServlet extends AbstractNLPServlet {
 		
 		WordsUnreferencedService.updateWordRoot(words);
 		
-		//int count = WordsUnreferencedService.getRootWordExtractionCount();
-		int count = 0;
+		int count = WordsUnreferencedService.getRootWordExtractionCount();
+		
 		
 		String nextJSP = "jsp/word_root_validate.jsp?result=successful&count="+count;
 		response.sendRedirect(nextJSP);
@@ -76,6 +76,7 @@ public class ValidateRootWordServlet extends AbstractNLPServlet {
 				
 				if (name.startsWith("word_root_correct_")) {
 					word.setRootWord(NepaliStemmer.getNepaliRootWord(wordValue));
+					word.setIsRootWordExtracted("Y");
 					//System.out.println("Word Root Correct");
 				} else if(name.startsWith("word_root_incorrect_")) {
 					word.setRootWord(NepaliStemmer.getNepaliRootWord(wordValue));//so we know what is not correct

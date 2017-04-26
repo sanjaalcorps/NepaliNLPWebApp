@@ -323,11 +323,11 @@ public class WordsUnreferencedService {
 		String sqlBase = "SELECT * FROM " + Tables.WORDS_UNREFERENCED + " where word like ";
 		String sql = "";
 		if ("anywhere".equalsIgnoreCase(searchType)) {
-			sql = sqlBase + "\'%" + searchQuery + "%\';";
+			sql = sqlBase + "\'%" + searchQuery + "%\'";
 		} else if ("start".equalsIgnoreCase(searchType)) {
-			sql = sqlBase + "\'" + searchQuery + "%\';";
+			sql = sqlBase + "\'" + searchQuery + "%\'";
 		} else if ("end".equalsIgnoreCase(searchType)) {
-			sql = sqlBase + "\'%" + searchQuery + "\';";
+			sql = sqlBase + "\'%" + searchQuery + "\'";
 		}
 		
 		sql = sql + " LIMIT " +  limit;
@@ -335,5 +335,9 @@ public class WordsUnreferencedService {
 		System.out.println(sql);
 
 		return WordsUnreferencedDB.selectWithQuery(sql);
+	}
+
+	public static int getRootWordExtractionCount() {
+		return WordsUnreferencedDB.getVerifiedRootWordExtractionCount();
 	}
 }

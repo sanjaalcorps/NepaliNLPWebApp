@@ -58,11 +58,12 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 			} else {
 				words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(100);
 			}
+			int count = 0;
 			for (Word word : words) {
 		%>
 		
 		<fieldset>
-			<legend><%=word.getWord()%></legend>
+			<legend><%= count++ + " - " + word.getWord()%></legend>
 			<div id="controlgroup_<%=word.getId()%>" class="class1">
 			
 				<label for="word_root_<%=word.getId()%>">Root</label>

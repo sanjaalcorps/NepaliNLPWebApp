@@ -124,6 +124,7 @@ public enum CompoundWordEnding {
 	LAGAYAT("लगायत"),
 	LAGAYATKA("लगायतका"),
 	LAGAYATKO("लगायतको"),
+	LAGAYATMA("लगायतमा"),
 	LAI("लाइ"),
 	LE("ले"),
 	MA("मा"),
@@ -203,8 +204,12 @@ public enum CompoundWordEnding {
 	YOS_2("योस्"),
 	BHARI_1("भरि"),
 	BHARI_2("भरी"),
+	SHEEL("शील"),
 	YUKTA("युक्त");
 
+	//सामु
+	//भाव
+	//अघि
 	
 	/*
 	 * पाटनहरूमै
@@ -225,7 +230,6 @@ Patak
 अनुरुप
 तन्नाकोलागी
 भइसकेकाले
-लगायतमा
 हत्यापछाडिको
 
 verbs

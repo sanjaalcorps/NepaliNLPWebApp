@@ -38,7 +38,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	<div class="ui-widget">
 		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
 			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-			Previous words have been updated. Total Count: <%=request.getParameter("count")%> Submit more below.</p>
+			Previous words have been updated. Total Verified Root Count: <%=request.getParameter("count")%> Submit more below.</p>
 		</div>
 	</div>
 	<br>

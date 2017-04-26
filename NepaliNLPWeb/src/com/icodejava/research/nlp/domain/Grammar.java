@@ -16,6 +16,9 @@ public class Grammar {
 	public static final String [] BIBHAKTI_PANCHAMA = new String [] {};
 	public static final String [] BIBHAKTI_SHASHTHI = new String [] {};
 	public static final String [] BIBHAKTI_SAPTAMI = new String [] {};
+	
+	//उदयपुरे, गाउँले
+	//कूकाम 
 
 	
 	/*
