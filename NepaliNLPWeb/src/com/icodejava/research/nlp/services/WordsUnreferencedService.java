@@ -29,14 +29,14 @@ public class WordsUnreferencedService {
 		//extractAndTagRootWords(); // Multiple
 
 		 //tagCompoundWords(HOW_MANY_WORDS);
-		// processUnreferencedWords(10000);
+		processUnreferencedWords(10000);
 		// processWordsFromFile("src/com/icodejava/research/nlp/sources/other/misc_words.txt");
 		// getRomanizedWordCount();
 		 //removeDuplication();
 		 
 		// getRandomCompoundWords(1000);
 		 
-		 updateWordRootFromKnownRoots();
+		 //updateWordRootFromKnownRoots();
 
 	}
 
