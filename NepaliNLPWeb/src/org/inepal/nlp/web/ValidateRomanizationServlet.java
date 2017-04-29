@@ -73,6 +73,14 @@ public class ValidateRomanizationServlet extends AbstractNLPServlet {
 					word.setValueRomanizedISOStandard("***SHOULD_ROMANIZE");
 					System.out.println("Should Romanize");
 				}
+				
+				
+				if(name.startsWith("word_classification_")) {
+					classifyWord(word, request.getParameter(name));
+					
+					System.out.println("Word "  + word + " isClassified? " +  word.isClassified());
+				}
+				
 				words.add(word);
 
 				System.out.println("Found: " + name + " " + value);
@@ -84,11 +92,57 @@ public class ValidateRomanizationServlet extends AbstractNLPServlet {
 
 	}
 
+	private void classifyWord(Word word, String value) {
+		switch(value) {
+		case "location" :
+			word.setClassification2("Place");
+			break;
+		case "Person":
+			word.setClassification1("Person");
+			break;
+		case "Firstname":
+			word.setClassification2("Firstname");
+			break;
+			
+		case "surname":
+			word.setClassification2("Surname");
+			break;
+			
+		case "English":
+			word.setClassification5("English");
+			break;
+			
+		case "Politics":
+			word.setClassification1("Politics");
+			break;
+			
+		case "Sports":
+			word.setClassification1("Sports");
+			break;
+			
+		case "Dirty":
+			word.setNeedsCleaning("Y");
+			break;
+
+		case "Delete":
+			word.setMarkedForDeletion(true);
+			break;
+			
+		case "Derived":
+			word.setIsCompoundWord("Y");
+			break;
+			
+		case "Root":
+			word.setIsCompoundWord("N");
+			break;
+			
+		}
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	

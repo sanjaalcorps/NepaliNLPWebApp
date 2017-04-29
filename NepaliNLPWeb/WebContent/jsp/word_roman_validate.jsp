@@ -57,12 +57,13 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 				<label for="word_romanized_<%=word.getId()%>">Correct</label>
 				<input type="checkbox" name="word_romanized_<%=word.getId()%>" id="word_romanized_<%=word.getId()%>">
 				
-				<select id="word_classification_<%=word.getId()%>">
+				<select name="word_classification_<%=word.getId()%>">
+					<option value=""></option>
 				    <option value="location">Location</option>
 				    <option value="Person">Person</option>
 				    <option value="Fistname">Firstname</option>
 				    <option value="Surname">Surname</option>
-				    <option value="English">"English"</option>
+				    <option value="English">English</option>
 				    <option value="Politics">Politics</option>
 				    <option value="Sports">Sports</option>
 				    <option value="Root">Root</option>

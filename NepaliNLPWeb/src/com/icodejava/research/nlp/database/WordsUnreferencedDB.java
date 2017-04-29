@@ -768,11 +768,11 @@ public class WordsUnreferencedDB extends DBUtility {
 	public static void updateWordClassification(Word word) {
 		
 		String sql = "UPDATE " +  Tables.WORDS_UNREFERENCED + " SET IS_COMPOUND_WORD = \"" + word.getIsCompoundWord() + "\"," + 
-			" CLASSIFICATION_1=\"" +  word.getClassfication1() + "\","  +
-			" CLASSIFICATION_2=\"" +  word.getClassfication2() + "\"," +
-			" CLASSIFICATION_3=\"" +  word.getClassfication3() + "\"," +
-			" CLASSIFICATION_4=\"" +  word.getClassfication4() + "\"," +
-			" CLASSIFICATION_5=\"" +  word.getClassfication5() + "\"" +
+			" CLASSIFICATION_1=\"" +  word.getClassification1() + "\","  +
+			" CLASSIFICATION_2=\"" +  word.getClassification2() + "\"," +
+			" CLASSIFICATION_3=\"" +  word.getClassification3() + "\"," +
+			" CLASSIFICATION_4=\"" +  word.getClassification4() + "\"," +
+			" CLASSIFICATION_5=\"" +  word.getClassification5() + "\"" +
 			" WHERE ID=" + word.getId(); 
 		
 		

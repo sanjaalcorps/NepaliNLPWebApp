@@ -16,15 +16,16 @@ public class BatchService {
 		WordsUnreferencedService.processUnreferencedWords(1000000);
 		
 		//clean words in the database
-		WordsUnreferencedService.cleanWordsInDatabase(0, 1000000);
+		//WordsUnreferencedService.cleanWordsInDatabase(0, 1000000);
 		
-		//cleaning words can always leave duplicates, so remove duplicates. 
+		/*
+		cleaning words can always leave duplicates, so remove duplicates. 
 		try {
 			WordsUnreferencedService.removeDuplication();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		//Tag Compound Words
 		WordsUnreferencedService.tagCompoundWords(500000);
 		

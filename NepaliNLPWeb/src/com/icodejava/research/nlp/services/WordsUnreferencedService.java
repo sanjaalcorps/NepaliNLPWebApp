@@ -197,14 +197,32 @@ public class WordsUnreferencedService {
 	public static void romanizeAndSaveWords(List<Word> words) {
 		
 		for(Word word: words) {
-			if("***SHOULD_ROMANIZE".equalsIgnoreCase(word.getValueRomanizedISOStandard())){
-
-				word=WordsUnreferencedDB.selectWordByID(word.getId());
-				if(word != null && word.getWord() != null) {
-					word.setValueRomanizedISOStandard(DevanagariUnicodeToRomanEnglish.convertWord(word.getWord()));
-					
-					WordsUnreferencedDB.updateRomanizationISO(word.getId(), word.getValueRomanizedISOStandard());
+			
+			//see if it needs to be deleted
+			if(word.isMarkedForDeletion()) {
+				WordsUnreferencedDB.deleteRecordsByID(word.getId());
+			} else {
+			
+			
+				//save romanization
+				if("***SHOULD_ROMANIZE".equalsIgnoreCase(word.getValueRomanizedISOStandard())){
+	
+					word=WordsUnreferencedDB.selectWordByID(word.getId());
+					if(word != null && word.getWord() != null) {
+						word.setValueRomanizedISOStandard(DevanagariUnicodeToRomanEnglish.convertWord(word.getWord()));
+						
+						WordsUnreferencedDB.updateRomanizationISO(word.getId(), word.getValueRomanizedISOStandard());
+					}
 				}
+				
+				//save classification. TODO: Merge the methods so there is one update
+				
+				if(word.isClassified()) {
+					WordsUnreferencedDB.updateWordClassification(word);
+				}
+				
+				
+				
 			}
 		}
 		

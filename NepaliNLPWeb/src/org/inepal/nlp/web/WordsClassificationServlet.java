@@ -70,19 +70,19 @@ public class WordsClassificationServlet extends AbstractNLPServlet {
 				} else if (name.startsWith("word_derived_")) {
 					word.setIsCompoundWord("Y");
 				} else if (name.startsWith("word_person_")) {
-					word.setClassfication1("Person");
+					word.setClassification1("Person");
 				} else if (name.startsWith("word_firstname_")) {
-					word.setClassfication2("First Name");
+					word.setClassification2("First Name");
 				} else if (name.startsWith("word_surname_")) {
-					word.setClassfication3("Surname");
+					word.setClassification3("Surname");
 				} else if (name.startsWith("word_location_")) {
-					word.setClassfication1("Place");
+					word.setClassification1("Place");
 				} else if (name.startsWith("word_english_")) {
-					word.setClassfication5("Person");
+					word.setClassification5("English");
 				} else if (name.startsWith("word_sports_")) {
-					word.setClassfication1("Sports");
+					word.setClassification1("Sports");
 				} else if (name.startsWith("word_politics_")) {
-					word.setClassfication1("Politics");
+					word.setClassification1("Politics");
 				}
 
 				words.add(word);

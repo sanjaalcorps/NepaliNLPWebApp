@@ -18,14 +18,18 @@ public class Word {
 	private String isCompoundWord;
 	private String isRootWordExtracted;
 	private String needsCleaning;
-	private String classfication1;
-	private String classfication2;
-	private String classfication3;
-	private String classfication4;
-	private String classfication5;
+	private String classification1;
+	private String classification2;
+	private String classification3;
+	private String classification4;
+	private String classification5;
 	
 	private boolean modified;
+	private boolean isMarkedForDeletion;
 	
+	public Word() {
+	}
+
 	public Word(int id, String word, String verified) {
 		this.id = id;
 		this.word = word;
@@ -33,7 +37,24 @@ public class Word {
 		this.modified = false;
 	}
 
-	public Word() {
+	public String getClassification1() {
+		return classification1;
+	}
+
+	public String getClassification2() {
+		return classification2;
+	}
+
+	public String getClassification3() {
+		return classification3;
+	}
+
+	public String getClassification4() {
+		return classification4;
+	}
+
+	public String getClassification5() {
+		return classification5;
 	}
 
 	public int getId() {
@@ -42,6 +63,19 @@ public class Word {
 
 	public String getIsCompoundWord() {
 		return isCompoundWord;
+	}
+
+	public String getIsRootWordExtracted() {
+		return isRootWordExtracted;
+	}
+
+	public String getNeedsCleaning() {
+		return needsCleaning;
+	}
+	
+	public String getRootSplited() {
+		String root = NepaliStemmer.getNepaliRootWord(word);
+		return word + "-->" + root + " + " + word.replaceAll(root, "");
 	}
 
 	public String getRootWord() {
@@ -64,20 +98,78 @@ public class Word {
 		return word;
 	}
 
+	public boolean isClassified() {
+		
+		return getClassification1() != null || getClassification2() != null || getClassification3() != null
+				|| getClassification3() != null || getClassification4() != null || getClassification5() != null || getIsCompoundWord() != null;
+	}
+
+	public boolean isMarkedForDeletion() {
+		return isMarkedForDeletion;
+	}
+
 	public boolean isModified() {
 		return modified;
+	}
+
+	public void setClassification1(String classification1) {
+		this.classification1 = classification1;
+	}
+
+	public void setclassification2(String classification2) {
+		this.classification2 = classification2;
+	}
+
+	public void setClassification2(String classification2) {
+		this.classification2 = classification2;
+	}
+
+	public void setclassification3(String classification3) {
+		this.classification3 = classification3;
+	}
+
+	public void setClassification3(String classification3) {
+		this.classification3 = classification3;
+	}
+
+	public void setclassification4(String classification4) {
+		this.classification4 = classification4;
+	}
+
+	public void setClassification4(String classification4) {
+		this.classification4 = classification4;
+	}
+
+	public void setclassification5(String classification5) {
+		this.classification5 = classification5;
+	}
+	
+	public void setClassification5(String classification5) {
+		this.classification5 = classification5;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public void setIsCompoundWord(String isCompoundWord) {
 		this.isCompoundWord = isCompoundWord;
 	}
 
+	public void setIsRootWordExtracted(String isRootWordExtracted) {
+		this.isRootWordExtracted = isRootWordExtracted;
+	}
+
+	public void setMarkedForDeletion(boolean isMarkedForDeletion) {
+		this.isMarkedForDeletion = isMarkedForDeletion;
+	}
+
 	public void setModified(boolean modified) {
 		this.modified = modified;
+	}
+
+	public void setNeedsCleaning(String needsCleaning) {
+		this.needsCleaning = needsCleaning;
 	}
 
 	public void setRootWord(String rootWord) {
@@ -100,70 +192,10 @@ public class Word {
 		this.word = word;
 	}
 
-	public String getClassfication1() {
-		return classfication1;
-	}
-
-	public void setClassfication1(String classfication1) {
-		this.classfication1 = classfication1;
-	}
-
-	public String getClassfication2() {
-		return classfication2;
-	}
-
-	public void setClassfication2(String classfication2) {
-		this.classfication2 = classfication2;
-	}
-
-	public String getClassfication3() {
-		return classfication3;
-	}
-
-	public void setClassfication3(String classfication3) {
-		this.classfication3 = classfication3;
-	}
-
-	public String getClassfication4() {
-		return classfication4;
-	}
-
-	public void setClassfication4(String classfication4) {
-		this.classfication4 = classfication4;
-	}
-
-	public String getClassfication5() {
-		return classfication5;
-	}
-
-	public void setClassfication5(String classfication5) {
-		this.classfication5 = classfication5;
-	}
-	
-	public String getRootSplited() {
-		String root = NepaliStemmer.getNepaliRootWord(word);
-		return word + "-->" + root + " + " + word.replaceAll(root, "");
-	}
-
-	public String getNeedsCleaning() {
-		return needsCleaning;
-	}
-
-	public void setNeedsCleaning(String needsCleaning) {
-		this.needsCleaning = needsCleaning;
-	}
-
-	public String getIsRootWordExtracted() {
-		return isRootWordExtracted;
-	}
-
-	public void setIsRootWordExtracted(String isRootWordExtracted) {
-		this.isRootWordExtracted = isRootWordExtracted;
-	}
-
 	public String toString() {
 		return word;
 	}
+
 
 
 }
