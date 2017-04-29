@@ -794,6 +794,31 @@ public class WordsUnreferencedDB extends DBUtility {
 		}
 		
 	}
+	
+	public static void updatePartOfSpeech(Word word) {
+		
+		String sql = "UPDATE " +  Tables.WORDS_UNREFERENCED + " SET PART_OF_SPEECH = \"" + word.getIsCompoundWord() + "\"," + 
+			" WHERE ID=" + word.getId(); 
+		
+		
+		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			int result = pstmt.executeUpdate();
+
+
+				if (result > 0) {
+					//System.out.println("Successfully updated Article to mark it as processed for word extract (unrefereneced) + ID " + id);
+				} else {
+				System.out.println("Error updating word classification");
+				}
+		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	/**
 	 * This method updates the value of a ROOT_WORD AND sets value of ROOT_WORD_EXTRATED TO Y

@@ -333,6 +333,12 @@ public class WordsUnreferencedService {
 		}
 	}
 	
+	public static void updatePartsOfSpeech(List<Word> words) {
+		for(Word word: words) {
+			WordsUnreferencedDB.updatePartOfSpeech(word);
+		}
+	}
+	
 	public static void updateWordRoot(List<Word> words) {
 		for(Word word: words) {
 			WordsUnreferencedDB.updateWordRootWordAndTag(word);

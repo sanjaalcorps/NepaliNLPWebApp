@@ -202,23 +202,6 @@ public class NepaliTokenizer {
 
     };
 
-    private enum AdjacentWords {
-        ONE_WORD(1), TWO_WORDS(2), THREE_WORDS(3), FOUR_WORDS(4), FIVE_WORDS(5), SIX_WORDS(6), SEVEN_WORDS(
-                7), EIGHT_WORDS(8);
-
-        private int depth;
-
-        AdjacentWords(int depth) {
-
-            this.depth = depth;
-        }
-
-        private int getDepth() {
-
-            return depth;
-        }
-    }
-    
     public static void printChracters (String str) {
     	if(str == null) {
     		return;

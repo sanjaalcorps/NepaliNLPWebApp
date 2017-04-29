@@ -18,6 +18,7 @@ public class Word {
 	private String isCompoundWord;
 	private String isRootWordExtracted;
 	private String needsCleaning;
+	private String partOfSpeech;
 	private String classification1;
 	private String classification2;
 	private String classification3;
@@ -73,6 +74,10 @@ public class Word {
 		return needsCleaning;
 	}
 	
+	public String getPartOfSpeech() {
+		return partOfSpeech;
+	}
+
 	public String getRootSplited() {
 		String root = NepaliStemmer.getNepaliRootWord(word);
 		return word + "-->" + root + " + " + word.replaceAll(root, "");
@@ -139,11 +144,11 @@ public class Word {
 	public void setClassification4(String classification4) {
 		this.classification4 = classification4;
 	}
-
+	
 	public void setclassification5(String classification5) {
 		this.classification5 = classification5;
 	}
-	
+
 	public void setClassification5(String classification5) {
 		this.classification5 = classification5;
 	}
@@ -170,6 +175,10 @@ public class Word {
 
 	public void setNeedsCleaning(String needsCleaning) {
 		this.needsCleaning = needsCleaning;
+	}
+
+	public void setPartOfSpeech(String partOfSpeech) {
+		this.partOfSpeech = partOfSpeech;
 	}
 
 	public void setRootWord(String rootWord) {

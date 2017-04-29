@@ -1,7 +1,10 @@
+<%@page import="com.icodejava.research.nlp.domain.NepaliPartsOfSpeech"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="com.icodejava.research.nlp.services.WordsUnreferencedService"%>
 <%@ page import="com.icodejava.research.nlp.domain.Word"%>
+<%@ page import="com.icodejava.research.nlp.database.WordsUnreferencedDB"%>
 <!doctype html>
 <html>
 <head>
@@ -19,6 +22,7 @@ div.class1 {
     width:300px;
     margin: 10px;
     border: 3px solid #73AD21;
+    background: #add8e6 
 }
 div.right {
 	width:350x;
@@ -27,9 +31,7 @@ div.right {
 </style>
 </head>
 <body>
-Parts of Speech Tagger
-
-
+Parts of Speech Tagger <br/>
 <%
 if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 %>
@@ -42,24 +44,43 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	<br>
 <%}%>
 
+
+	<fieldset>
+		<legend>Tagging Guide</legend>
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;font-size:0.6em;">
+
+			<%
+				for (NepaliPartsOfSpeech npos : NepaliPartsOfSpeech.values()) {
+			%>
+			<label><%=npos.getTag()%>=<%=npos.name()%> </label>
+			<%
+				}
+			%>
+		</div>
+	</fieldset>
+
+
 	<form action="/NepaliNLPWeb/POSTaggerServlet" method="post">
-
-
 		<%
-			List<Word> words = WordsUnreferencedService.selectRecordsNotMarkedAsCompoundRandom(100);
+			List<Word> words = new ArrayList<Word>();
+			words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(25);
 			for (Word word : words) {
 		%>
 		
-		<fieldset>
-			<legend><%=word.getWord()%></legend>
-			<div id="controlgroup_<%=word.getId()%>" class="class1">
-			
-				
-			</div>
-	
+			<fieldset>
+				<legend><%=word.getWord()%></legend>
+				<div id="controlgroup_pos%>" class="class1">
+		
+		<%
+				for (NepaliPartsOfSpeech npos : NepaliPartsOfSpeech.values()) {
+		%>
+					<label for="word_pos_<%=npos.getTag()%>"><%=npos.getTag()%></label> 
+					<input type="radio" name="word_pos_<%=word.getId()%>" id="word_pos_<%=word.getId()%>" value="<%=npos.getTag()%>">
+			<%
+				}
+			%>
+		</div>
 		</fieldset>
-
-
 		<%
 			}
 		%>
