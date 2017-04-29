@@ -63,7 +63,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	<form action="/NepaliNLPWeb/POSTaggerServlet" method="post">
 		<%
 			List<Word> words = new ArrayList<Word>();
-			words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(25);
+			words = WordsUnreferencedService.selectRootWordPOSNotExtracted(25);
 			for (Word word : words) {
 		%>
 		

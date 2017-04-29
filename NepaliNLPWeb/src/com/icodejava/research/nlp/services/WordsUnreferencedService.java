@@ -51,6 +51,10 @@ public class WordsUnreferencedService {
 		return words;
 		
 	}
+	
+	public static List<Word>selectRootWordPOSNotExtracted(int limit) {
+		return WordsUnreferencedDB.selectRootWordPOSNotExtracted(limit);
+	}
 
 	public static int getRomanizedWordCount() {
 		int count = WordsUnreferencedDB.selectRomanizedWordsCount();

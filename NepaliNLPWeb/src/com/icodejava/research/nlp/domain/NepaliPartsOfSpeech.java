@@ -20,7 +20,7 @@ public enum NepaliPartsOfSpeech {
 	  NOUN( "NN" , "" , "" ),
 	  NOUN_PLURAL( "NNS" , "" , "" ),
 	  NOUN_PROPER_SINGULAR( "NNP" , "" , "" ),
-	  NOUN_PROPER_PLURAL( "NNPS" , "" , "" ),
+	  NOUN_PROPER_PLURAL( "" , "" , "" ),
 	  PREDETERMINER( "PDT" , "" , "" ),
 	  POSSESSIVE_ENDING( "POS" , "" , "" ),
 	  PRONOUN_PERSONAL( "PRP" , "" , "" ),
