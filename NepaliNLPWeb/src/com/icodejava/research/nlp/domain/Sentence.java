@@ -38,10 +38,14 @@ public class Sentence {
 	public String getValueRomanizedStandard() {
 		return valueRomanizedStandard;
 	}
+	public String getVerified() {
+		return verified;
+	}
+	
 	public int getWordCount() {
 		return wordCount;
 	}
-	
+
 	public List<Word> getWords() {
 		if (words == null) {
 			words = new ArrayList<Word>();
@@ -59,10 +63,6 @@ public class Sentence {
 
 	public boolean isModified() {
 		return modified;
-	}
-
-	public String getVerified() {
-		return verified;
 	}
 
 	public void setId(int id) {

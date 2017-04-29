@@ -46,7 +46,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 
 	<input type="submit" value="Submit">
 		<%
-			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(50);
+			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(150);
 			for (Word word : words) {
 		%>
 		

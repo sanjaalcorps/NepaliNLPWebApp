@@ -118,7 +118,10 @@ public enum CompoundWordEnding {
 	JHAIN("झैं"),
 	KA("का"),
 	KAARI("कारी"),//E.G. BINASKARI
-	KAHAN("कहाँ"),
+	KAHAN_1("कहाँ"),
+	KAHAN_2("कहां"),
+	KAHAN_3("काहाँ"),
+	KAHAN_4("काहां"),
 	KAI("कै"),
 	KEE("की"),
 	KHALKO("खालको"),

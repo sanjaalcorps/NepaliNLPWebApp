@@ -25,7 +25,11 @@ extract word ending in 'प्रसाद'
 extract word ending in 'बहादुर'
 extract word ending in 'कुमार'
 
+डेट र युजर एड गर्ने
+Fix Chandrabindu
 romanization - stem it before romanization
+
+replace instead of replaceAll
 
 
 =========The following tasks have been completed.
