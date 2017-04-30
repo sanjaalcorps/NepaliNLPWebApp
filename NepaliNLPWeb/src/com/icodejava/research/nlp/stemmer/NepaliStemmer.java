@@ -2,6 +2,7 @@ package com.icodejava.research.nlp.stemmer;
 
 import com.icodejava.research.nlp.domain.CompoundWordEnding;
 import com.icodejava.research.nlp.domain.Grammar;
+import com.icodejava.research.nlp.utils.TextUtils;
 
 /**
  * 
@@ -30,8 +31,9 @@ public class NepaliStemmer {
 		for (CompoundWordEnding dir : CompoundWordEnding.values()) {
 			String cwe = dir.getNepaliWordEnding();
 
-			if (compoundWord.endsWith(cwe) && isNotTheSameWord(compoundWord, cwe) && isAllowedLength(compoundWord, cwe)) {
-				compoundWord = compoundWord.replaceAll(cwe, "");
+			if (compoundWord.endsWith(cwe) && isNotTheSameWord(compoundWord, cwe)
+					&& isAllowedLength(compoundWord, cwe)) {
+				compoundWord = TextUtils.replaceLast(compoundWord, cwe, "");
 			}
 
 		}
@@ -52,7 +54,7 @@ public class NepaliStemmer {
 		String cweMatraReplaced = replaceMatras(cwe);
 		
 		if(cweMatraReplaced.length() == 1) {
-			String matraReplacedWord = replaceMatras(compoundWord.replaceAll(cwe, "")); //TODO: Document this
+			String matraReplacedWord = replaceMatras(TextUtils.replaceLast(compoundWord, cwe, "")); //TODO: Document this
 			allowed = matraReplacedWord.length() > 2; //to prvent words like थुम्का being split as थुम् + का
 			
 		}
