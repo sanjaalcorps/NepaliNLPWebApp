@@ -35,13 +35,15 @@ extract word ending in 'वास' //place
 टार
 मोड
 
-डेट र युजर एड गर्ने
+Add date and user on the table
 Fix Chandrabindu
 romanization - stem it before romanization
 
+Compound Word Ending Precedence
+
 replace instead of replaceAll
 
-
+stop words
 =========The following tasks have been completed.
 	{DONE}Create Stemmer Class
 	{DONE}Remove Duplicate Sentences
