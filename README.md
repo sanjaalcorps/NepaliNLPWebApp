@@ -31,12 +31,15 @@ A database of
 3. More than 2 millions of Nepali Sentences
 
 Can you help me?
+
 Of course, that's why I am leaving all my work at github, open source. Feel free to ask me how you can volunteer.
 
 Where am I located?
+
 I am currently living / working / breathing and raising a Kid in Des Moines Iowa.
 
-How to contact me?
+<b>How to contact me?</b>
+
 I am available at LinkedIn. You can contact me via there. 
 https://www.linkedin.com/in/kushalp/
 
