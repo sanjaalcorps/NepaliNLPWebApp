@@ -36,6 +36,10 @@ Of course, that's why I am leaving all my work at github, open source. Feel free
 Where am I located?
 I am currently living / working / breathing and raising a Kid in Des Moines Iowa.
 
+How to contact me?
+I am available at LinkedIn. You can contact me via there. 
+https://www.linkedin.com/in/kushalp/
+
 
 
 
