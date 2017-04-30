@@ -36,7 +36,7 @@ public class NGramGeneratorTest {
 	@Test
 	public void test_skipBigrams_forward() {
 		String expected = "[विगत आधारमा, अनुभवका एउटा, आधारमा सानो, एउटा मतदान, सानो केन्द्रमा, मतदान मतदान, केन्द्रमा अधिकृत,, मतदान सहायक, अधिकृत, मतदान, सहायक अधिकृत,, मतदान कर्मचारी, अधिकृत, र, कर्मचारी सुरक्षाकर्मी, र गरी, सुरक्षाकर्मी कम्तीमा, गरी ६, कम्तीमा जना, ६ खटाइन्थ्यो]";
-		String output = NGramGenerator.generateSkipBigramsForward(input).toString();
+		String output = NGramGenerator.generateSkipBigramsForwardNoStopWordRemoved(input).toString();
 		Assert.assertThat(output, is(expected));
 	}
 	

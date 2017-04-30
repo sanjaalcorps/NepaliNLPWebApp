@@ -489,4 +489,29 @@ public class SentencesUnreferencedDB extends DBUtility {
 		}
 	}
 
+    public static List<Sentence> getVerifiedSentencesNgramNotCreated(int sentenceLimit) {
+        String sql = "SELECT * FROM " +  Tables.SENTENCES_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.SENTENCES_UNREFERENCED +" WHERE (NGRAM_EXTRACTED IS NULL OR NGRAM_EXTRACTED=\'N\') AND VERIFIED=\'Y\' ORDER BY RANDOM()  LIMIT " + sentenceLimit + ") ORDER BY SENTENCE ASC";
+
+        //System.out.println(sql);
+        
+        List<Sentence> sentences = new ArrayList<Sentence>();
+        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                
+                Sentence sentence = new Sentence(rs.getInt("ID"), rs.getString("SENTENCE"));
+                sentences.add(sentence);
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        System.out.println("Found "  + sentences.size() + " Sentences");
+        return sentences;
+        
+    }
+
 }

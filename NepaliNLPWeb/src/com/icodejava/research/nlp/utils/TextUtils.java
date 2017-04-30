@@ -40,5 +40,15 @@ public class TextUtils {
         String tail = string.substring(lastIndex).replaceFirst(from, to);
         return string.substring(0, lastIndex) + tail;
    }
+    
+    /**
+     * Recursively reverses a sentence
+     * @param sentence
+     * @return
+     */
+    public static String reverse(String sentence) {
+           int k = sentence.indexOf(" ");
+           return k == -1 ? sentence : reverse(sentence.substring(k + 1)) + " " + sentence.substring(0, k);
+    }
 
 }

@@ -56,9 +56,21 @@ public class NepaliTokenizer {
         return sentences;
     }
 
+    /**
+     * This method takes a larger text and gives a list of words in it.
+     * 
+     * The words are cleaned and sanitized.
+     * @param text
+     * @return
+     */
     public static List<String> tokenizeWords(String text) {
 
         List<String> words = new ArrayList<String>();
+
+        if (text == null) {
+            return words;
+        }
+
         StringTokenizer tokenizer = new StringTokenizer(text);
 
         while (tokenizer.hasMoreElements()) {
@@ -67,7 +79,6 @@ public class NepaliTokenizer {
 
             if (token.length() > 0) {
                 words.add(token);
-                //System.out.println(token);
             }
         }
 

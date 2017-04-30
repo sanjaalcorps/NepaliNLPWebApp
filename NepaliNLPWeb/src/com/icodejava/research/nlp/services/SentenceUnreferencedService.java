@@ -166,6 +166,10 @@ public class SentenceUnreferencedService {
 		
 		
 	}
+
+    public static List<Sentence> getVerifiedSentencesNgramNotCreated(int sentenceLimit) {
+        return SentencesUnreferencedDB.getVerifiedSentencesNgramNotCreated(sentenceLimit);
+    }
 	
 
 }

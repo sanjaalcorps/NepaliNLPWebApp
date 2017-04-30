@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.icodejava.research.nlp.domain.NGram;
+import com.icodejava.research.nlp.domain.NGramType;
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
 
 public class NGramGenerator {
@@ -21,19 +23,19 @@ public class NGramGenerator {
 	public static final int LEVEL_TRIGRAM = 3;
 	
 	
-	public static List<String> generateForwardBigrams(String sentence) {
+	public static List<NGram> generateForwardBigrams(String sentence) {
 		return generateForwardNGrams(LEVEL_BIGRAM, sentence);
 	}
 	
-	public static List<String> generateForwardTrigrams(String sentence) {
+	public static List<NGram> generateForwardTrigrams(String sentence) {
 		return generateForwardNGrams(LEVEL_TRIGRAM, sentence);
 	}
 	
-	public static List<String> generateBackwardBigrams(String sentence) {
+	public static List<NGram> generateBackwardBigrams(String sentence) {
 		return generateBackwardNGrams(LEVEL_BIGRAM, sentence);
 	}
 	
-	public static List<String> generateBackwardTrigrams(String sentence) {
+	public static List<NGram> generateBackwardTrigrams(String sentence) {
 		return generateBackwardNGrams(LEVEL_TRIGRAM, sentence);
 	}
 	
@@ -45,25 +47,25 @@ public class NGramGenerator {
      * e.g. [This is my] -> [This is, is my] for level 2.
      */
 	
-	public static List<String> generateForwardNGrams(int level, String sentence) {
+	private static List<NGram> generateForwardNGrams(int level, String sentence) {
 
 		List<String> words = Arrays.asList(sentence.split("\\s+"));
 
-		List<String> ngrams = new ArrayList<String>();
+		List<NGram> ngrams = new ArrayList<NGram>();
 
 		int levelTemp = level;
 		for (int i = 0; i < words.size(); i++) {
 
-			String ngram = "";
+			String ngramStr = "";
 			while (level > 0 && (i + levelTemp - 1) < words.size()) {
-				ngram += NepaliTokenizer.cleanWordToken(words.get(i + levelTemp - level)) + " ";
+				ngramStr += NepaliTokenizer.cleanWordToken(words.get(i + levelTemp - level)) + " ";
 				level--;
 			}
 
-			ngram = ngram.trim();
+			ngramStr = ngramStr.trim();
 
-			if (ngram.length() > 0) {
-				ngrams.add(ngram);
+			if (ngramStr.length() > 0) {
+				ngrams.add(new NGram(ngramStr));
 			}
 
 			// restore
@@ -79,15 +81,15 @@ public class NGramGenerator {
      * e.g. [This is my book] -> [book my, my is, is this] for level 2.
      */
 	
-	public static List<String> generateBackwardNGrams(int level, String sentence) {
+	private static List<NGram> generateBackwardNGrams(int level, String sentence) {
 
 		//generate regular n-gram
-		List<String> ngrams = generateForwardNGrams(level, sentence);
+		List<NGram> ngrams = generateForwardNGrams(level, sentence);
 		
-		List<String> backwardsNgrams = new ArrayList<String>(); 
+		List<NGram> backwardsNgrams = new ArrayList<NGram>(); 
 		
 		//reverse words
-		for(String ngram: ngrams) {
+		for(NGram ngram: ngrams) {
 			
 			ngram = reverse(ngram);
 			
@@ -107,20 +109,38 @@ public class NGramGenerator {
 	public static String reverse(String sentence) {
 		   int k = sentence.indexOf(" ");
 		   return k == -1 ? sentence : reverse(sentence.substring(k + 1)) + " " + sentence.substring(0, k);
-		}
+	}
 	
-	public static List<String> generateSkipBigramsForward(String sentence) {
+	/**
+     * Recursively reverses a sentence
+     * @param sentence
+     * @return
+     */
+    public static NGram reverse(NGram ngram) {
+           String words = ngram.getWords();
+           int k = words.indexOf(" ");
+           String reversedWords =  k == -1 ? words : reverse(words.substring(k + 1)) + " " + words.substring(0, k);
+           
+           ngram.setWords(reversedWords);
+           
+           return ngram;
+           
+    }
+	
+	/**
+	 * Returns Forward Skip Bigrams with no stop words removed
+	 * @param sentence
+	 * @return
+	 */
+	public static List<NGram> generateSkipBigramsForwardNoStopWordRemoved(String sentence) {
 
-		List<String> words = Arrays.asList(sentence.split("\\s+")); // split
-																	// sentence
-																	// into
-																	// tokens
-
-		List<String> skipBigrams = new ArrayList<String>();
+		List<String> words = Arrays.asList(sentence.split("\\s+"));
+		List<NGram> skipBigrams = new ArrayList<NGram>();
 		for (int i = 0; i < words.size(); i++) {
 
 			if (words.size() > i + 2) {
-				skipBigrams.add(new String(words.get(i) + " " + words.get(i + 2)));
+			    String text = words.get(i) + " " + words.get(i + 2);
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_NO_STOPWPRD_REMOVED));
 			}
 
 		}
@@ -128,18 +148,16 @@ public class NGramGenerator {
 
 	}
 
-	public static List<String> generateSkipBigramsBackward(String sentence) {
+	public static List<NGram> generateSkipBigramsBackwardNoStopWordRemoved(String sentence) {
 
-		List<String> words = Arrays.asList(sentence.split("\\s+")); // split
-																	// sentence
-																	// into
-																	// tokens
-
-		List<String> skipBigrams = new ArrayList<String>();
+		List<String> words = Arrays.asList(sentence.split("\\s+"));
+		List<NGram> skipBigrams = new ArrayList<NGram>();
 		for (int i = words.size() - 1; i >= 0; i--) {
 
 			if (i - 2 >= 0) {
-				skipBigrams.add(new String(words.get(i) + " " + words.get(i - 2)));
+			    String text = new String(words.get(i) + " " + words.get(i - 2));
+			    
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_BACKWARD_NO_STOPWORD_REMOVED));
 			}
 		}
 

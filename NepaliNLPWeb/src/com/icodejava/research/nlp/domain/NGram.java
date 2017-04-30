@@ -14,6 +14,11 @@ public class NGram {
 		super();
 	}
 	
+    public NGram(String words) {
+        super();
+        this.words = words;
+    }
+	
 	public NGram(String words, NGramType type) {
 		super();
 		this.words = words;
@@ -37,6 +42,11 @@ public class NGram {
 
 	public void setType(NGramType type) {
 		this.type = type;
+	}
+	
+	@Override
+	public String toString() {
+	    return words;
 	}
 
 }
