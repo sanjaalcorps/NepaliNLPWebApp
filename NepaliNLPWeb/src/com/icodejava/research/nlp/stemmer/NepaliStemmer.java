@@ -8,7 +8,7 @@ import com.icodejava.research.nlp.utils.TextUtils;
  * 
  * @author Kushal Paudyal www.sanjaal.com | www.inepal.org | www.icodejava.com
  * 
- *         Stemmer Class for Nepali Word
+ *         Stemmer Class for Nepali Words
  * 
  *         Stemming is a process of finding the root word from a compound word.
  *         e.g. "स्थानलगायत" is stemmed to "स्थान"
@@ -43,9 +43,18 @@ public class NepaliStemmer {
 		return compoundWord;
 	}
 
-	private static boolean isNotTheSameWord(String compoundWord, String cwe) {
-		return compoundWord.length() > cwe.length();
-	}
+    /**
+     * Checks if two words are same. For example, we want to no more apply the
+     * stemming rule if the word is लगायत although लगायत is a compound word
+     * ending and would have been removed from other compound words
+     * 
+     * @param compoundWord
+     * @param cwe
+     * @return
+     */
+    private static boolean isNotTheSameWord(String compoundWord, String cwe) {
+        return compoundWord.length() > cwe.length();
+    }
 
 	private static boolean isAllowedLength(String compoundWord, String cwe) {
 		
