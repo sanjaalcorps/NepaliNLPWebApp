@@ -19,7 +19,7 @@ public class Grammar {
 	
 	//उदयपुरे, गाउँले
 	//कूकाम 
-
+	// Nepali Language Follows Subject+Object+Verb, the verbs comes at the end. Simple translation of maile syau khayen --> I apple ate
 	
 	/*
 	प० स० — परसर्ग  

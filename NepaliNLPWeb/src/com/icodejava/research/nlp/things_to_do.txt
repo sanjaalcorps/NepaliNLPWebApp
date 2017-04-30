@@ -43,6 +43,8 @@ Compound Word Ending Precedence
 stop words
 
 Add this to evernote: http://nepalibhashabyakaran.blogspot.com/
+Add this to evernote: http://mylanguages.org/nepali_pronouns.php
+Add this to evernote: https://nepalgo.tumblr.com/grammar
 
 =========The following tasks have been completed.
 	{DONE}replace instead of replaceAll

@@ -18,14 +18,27 @@ public class SentenceUnreferencedService {
 		//cleanSentences(2000000);
 		//updateWordCount(200000);
 		
-//		removeDuplication();
+		removeDuplication();
 //		
 //		updateSentenceVerification(null);
 //		getVerifiedSentenceCount();
 		
+		//getVerifiedNgramNotExtractedSentences(50);
+		
+		
 	}
 	
-	public static int getVerifiedSentenceCount() {
+	private static void updateNGramExtractedFlag(int id) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    private static void getVerifiedNgramNotExtractedSentences(int i) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public static int getVerifiedSentenceCount() {
 		return SentencesUnreferencedDB.getVerifiedSentenceCount();
 		
 	}
@@ -41,7 +54,7 @@ public class SentenceUnreferencedService {
 	}
 
 	private static void removeDuplication() throws InterruptedException {
-		SentencesUnreferencedDB.removeDuplicateWords();
+		SentencesUnreferencedDB.removeDuplicateSentences();
 		
 	}
 

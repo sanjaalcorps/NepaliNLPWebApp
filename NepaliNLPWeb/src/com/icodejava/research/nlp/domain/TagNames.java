@@ -2,11 +2,12 @@ package com.icodejava.research.nlp.domain;
 
 public interface TagNames {
 	//NAME
-	public static final String PERSON_TITLE = "PERSON_NAME_TITLE";
-	public static final String PERSON_FIRST = "PERSON_NAME_FIRST";
-	public static final String PERSON_LAST = "PERSON_NAME_LAST";
+	public static final String PERSON_TITLE = "PRT";
+	public static final String PERSON_FIRST_NAME = "PRF";
+	public static final String PERSON_MIDDLE_NAME = "PRM";
+	public static final String PERSON_LAST_NAME = "PRL";
 
-	public static final String PERSON_ROLE = "PERSON_ROLE";
+	public static final String PERSON_ROLE = "PRR";
 	
 	
 	public static final String LOCATION = "LOCATION";

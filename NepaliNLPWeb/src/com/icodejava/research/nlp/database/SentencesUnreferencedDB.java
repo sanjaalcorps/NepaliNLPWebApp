@@ -10,16 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.icodejava.research.nlp.domain.Sentence;
-import com.icodejava.research.nlp.domain.Word;
 
 public class SentencesUnreferencedDB extends DBUtility {
 
-	/**
-	 * ID
-	 * TEXT
-	 * VERIFIED
-	 * LINKED_WORD_EXTRACT_UNREF
-	 */
 	public static final String DATABASE_URL = "jdbc:sqlite:C:/Users/paudyals/Desktop/NLP/nlpdb/npl3.db";//SHADOWED FROM PARENT
 	
 	public static void main(String args []) {
@@ -28,8 +21,7 @@ public class SentencesUnreferencedDB extends DBUtility {
 		//selectSentencesWithLengthGreaterThan(50);
 		//selectRecordsBetweenIds(1,10);
 		//selectUnverifiedSentencesRandom(10,5,20);
-		
-		selectRandomRecords(20);
+		//selectRandomRecords(20);
 	}
 	
 	public static void createSentencesUnreferencedTable() {
@@ -42,11 +34,6 @@ public class SentencesUnreferencedDB extends DBUtility {
 	}
 	
 
-	public static List<Integer> selectSentencesUnProcessedForLinkedWords(int sentenceLimit) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public static List<Sentence> selectUnverifiedSentencesRandom(int limit, int minWordCount, int maxWordCount) {
 		List<Sentence> sentences = new ArrayList<Sentence>();
 		//(SELECT id FROM table ORDER BY RANDOM() LIMIT x)
@@ -222,6 +209,10 @@ public class SentencesUnreferencedDB extends DBUtility {
 			// Get Article ID back
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select seq from sqlite_sequence where name=\"" + Tables.SENTENCES_UNREFERENCED + "\"");
+			
+			if(rs.getInt(1) < 1) {
+			    System.out.println("There was some issue inserting the sentence " + sentence);
+			}
 
 			//System.out.println("Inserted Record ID: " + (rowID = rs.getInt(1)));
 
@@ -341,9 +332,12 @@ public class SentencesUnreferencedDB extends DBUtility {
 	}
 	
 	
-	
-	public static void removeDuplicateWords() throws InterruptedException {
-		//Query Database And get a list of duplicate words
+	/**
+	 * This method removes duplicate sentences from the database
+	 * @throws InterruptedException
+	 */
+	public static void removeDuplicateSentences() throws InterruptedException {
+		//Query Database And get a list of duplicate sentences
 		String sql = "select sentence, count(*) from " + Tables.SENTENCES_UNREFERENCED + " group by SENTENCE having count(*) > 1";
 		List<String> sentencesList = new ArrayList<String> ();
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
@@ -359,17 +353,16 @@ public class SentencesUnreferencedDB extends DBUtility {
 			
 			for(String sentence: sentencesList) {
 				
-				//Fetch the IDs of the word
+				//Fetch the IDs of the sentence
 				List<Sentence> sentences = selectSentenceBySentenceValue(sentence);
 				
 				if(sentences.size() > 1) { //duplicate
 					
 					for(int i=1; i< sentences.size(); i++) { //starting from 1 - don't delete the first record
 						
-						//Delete the word
+						//Delete the sentence
 						if(sentences.get(i).getId() > 0) {
 						 
-							//System.out.println("Record " +  words.get(i).getId() +" "  +  words.get(i).getWord() + " will be marked for deletion");
 							deleteRecordsByID(sentences.get(i).getId());
 						}
 					}
@@ -495,72 +488,5 @@ public class SentencesUnreferencedDB extends DBUtility {
 			System.out.println(e.getMessage());
 		}
 	}
-
-
-	
-	/*
-	 * 
-
-
-	
-	public static List<Word> selectWithQuery(String sql) {
-
-		List<Word> words = new ArrayList<Word>();
-		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql)) {
-
-			while (rs.next()) {
-				System.out.println(rs.getInt("ID") + "\t" + rs.getString("WORD"));
-				words.add(new Word(rs.getInt("ID"), rs.getString("WORD"), rs.getString("VERIFIED") ));
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		return words;
-	}
-	
-
-	
-
-	
-	public static void selectSentencesWithLengthLessThan(int length) {
-		String sql = "SELECT * FROM " +  Tables.SENTENCE_UNREFERENCED +" where LENGTH(SENTENCE) < " + length + " ORDER BY 1 DESC";
-
-		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql)) {
-
-			while (rs.next()) {
-				System.out.println(rs.getString(1)+" " + rs.getString(2));
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	
-	public static void selectWordWithLengthEqualTo(int length) {
-		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" where LENGTH(WORD) = " + length + " ORDER BY 1 DESC";
-
-		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql)) {
-
-			while (rs.next()) {
-				System.out.println(rs.getString(1)+" " + rs.getString(2));
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	
-
-	
-
-	
-
-	 */
-	
 
 }

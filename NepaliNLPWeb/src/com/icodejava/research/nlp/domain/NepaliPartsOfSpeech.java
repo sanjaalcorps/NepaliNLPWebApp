@@ -9,7 +9,7 @@ public enum NepaliPartsOfSpeech {
 	  ADVERB_COMPARATIVE( "RBR" , "" , "" ),
 	  ADVERB_SUPERLATIVE( "RBS" , "" , "" ),
 	  ADVERB_WH( "WRB" , "" , "" ),
-	  CONJUNCTION_COORDINATING( "CC" , "" , "" ),
+	  CONJUNCTION_COORDINATING( "CC" , "" , "" ), //ra, tara --> Samyojak
 	  CONJUNCTION_SUBORDINATING( "IN" , "" , "" ),
 	  CARDINAL_NUMBER( "CD" , "" , "" ),
 	  DETERMINER( "DT" , "" , "" ),
