@@ -1,7 +1,7 @@
 # NepaliNLPWebApp
 The web app used for Nepali Language Natural Language Processing - Work in Progress.
 
-What is in this app?
+<b>What is in this app?</b><br/>
 A lot, but here are few things worth mentioning:
 1. Tool to crawl websites and extract content from the website.
 2. Preeti to Unicode Java Tool
@@ -13,7 +13,7 @@ A lot, but here are few things worth mentioning:
 8. A web app that allows me to manually validate the words, word roots, sentences, romanization and classify both sentences as well as words
 
 
-What am I trying to do?
+<b>What am I trying to do?</b><br/>
 1. Apply Deep Learning, Machine Learning and Artificial Intelligence to Nepali Text
 2. Sentiment Analysis for Nepali Text
 3. Autosummarizer for Nepali Text
@@ -23,18 +23,25 @@ What am I trying to do?
 7. Word Cloud Generation for Nepali Text
 
 
-What do I have that is not on the github?
+<b>What do I have that is not on the github?</b><br/>
 
 A database of
 1. More than 200,000 webpages having Nepali Text (Text already extracted)
 2. More than 600,000 words Nepali Corpus
 3. More than 2 millions of Nepali Sentences
 
-Can you help me?
+<b>Can you help me?</b><br/>
+
+
 Of course, that's why I am leaving all my work at github, open source. Feel free to ask me how you can volunteer.
 
-Where am I located?
+<b>Where am I located?</b><br/>
 I am currently living / working / breathing and raising a Kid in Des Moines Iowa.
+
+<b>How to contact me?</b>
+
+I am available at LinkedIn. You can contact me via there. 
+https://www.linkedin.com/in/kushalp/
 
 
 
