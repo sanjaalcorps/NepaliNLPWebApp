@@ -1,22 +1,16 @@
 Write a class to tag words by data classifier file
 Generate name, Roman pair from a file
 Complete Unicodization of Shabdakosh
-Complete Word fixer - to fix broken nepali words
 Clean Sentences
 Article to Neo4j
-{WIP}Romanize and Save Words
-{WIP}Fix Romanization Logic
 Name Tokenizer - Takes a name and splits into salute, first name, middle name, last name and pen name
 Extract data from Nepali to English Dictionary PDF
 Word Similarity
 Sentence Similarity
 select root words that are already not under word column (potential issues and confirmation)
 Word Linkage Extraction
-
 >>Create ISO to General Romanization
-
 admin page
-stastistics page
 
 MPP POS TAG TO TAG CORPUS
 
@@ -37,14 +31,21 @@ extract word ending in 'वास' //place
 
 Add date and user on the table
 Fix Chandrabindu
-romanization - stem it before romanization
+>>romanization - stem it before romanization
 
 Compound Word Ending Precedence
 
-replace instead of replaceAll
+{WIP} stastistics page
+{WIP} Romanize and Save Words
+{wip} Complete Word fixer - to fix broken nepali words
+{WIP} Fix Romanization Logic
 
 stop words
+
+Add this to evernote: http://nepalibhashabyakaran.blogspot.com/
+
 =========The following tasks have been completed.
+	{DONE}replace instead of replaceAll
 	{DONE}Create Stemmer Class
 	{DONE}Remove Duplicate Sentences
 	{DONE}Calculate and store number of words in a sentence // updat this everytime a word clean batch is run.
