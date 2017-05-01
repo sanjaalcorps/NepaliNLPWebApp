@@ -1,10 +1,12 @@
 package com.icodejava.research.nlp.utils;
+import java.util.Arrays;
+import java.util.List;
 /**
  * @author Kushal Paudyal
  * General Text Utility Class providing various functionalities.
  * 
  * Created On: 4/11/2017
- * Last Modified On: 4/11/2017
+ * Last Modified On: 4/30/2017
  */
 import java.util.StringTokenizer;
 
@@ -49,6 +51,36 @@ public class TextUtils {
     public static String reverse(String sentence) {
            int k = sentence.indexOf(" ");
            return k == -1 ? sentence : reverse(sentence.substring(k + 1)) + " " + sentence.substring(0, k);
+    }
+    
+    /**
+     * This method removes a specific word (not words) from a given text.
+     * @param text
+     * @param wordToRemove
+     * @return
+     */
+    public static String removeWord(String text, String wordToRemove) {
+
+        if (text == null || wordToRemove == null) {
+            return text;
+        }
+
+        List<String> words = Arrays.asList(text.split("\\s+"));
+        String modifiedText = "";
+
+        for (String word: words) {
+            if (wordToRemove.equals(word)) {
+                continue;
+            } else {
+                modifiedText += word + " ";
+            }
+        }
+        
+        //Remove extra space at the end
+        modifiedText = modifiedText.trim();
+
+        return modifiedText;
+
     }
 
 }
