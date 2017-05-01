@@ -139,7 +139,7 @@ public class NGramGenerator {
 		for (int i = 0; i < words.size(); i++) {
 
 			if (words.size() > i + 2) {
-			    String text = words.get(i) + " " + words.get(i + 2);
+			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i + 2));
 				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_NO_STOPWPRD_REMOVED));
 			}
 
@@ -148,6 +148,11 @@ public class NGramGenerator {
 
 	}
 
+	/**
+	 * Returns Backward Skip Bigram with no stop words removed
+	 * @param sentence
+	 * @return
+	 */
 	public static List<NGram> generateSkipBigramsBackwardNoStopWordRemoved(String sentence) {
 
 		List<String> words = Arrays.asList(sentence.split("\\s+"));
@@ -155,7 +160,7 @@ public class NGramGenerator {
 		for (int i = words.size() - 1; i >= 0; i--) {
 
 			if (i - 2 >= 0) {
-			    String text = new String(words.get(i) + " " + words.get(i - 2));
+			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i - 2));
 			    
 				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_BACKWARD_NO_STOPWORD_REMOVED));
 			}

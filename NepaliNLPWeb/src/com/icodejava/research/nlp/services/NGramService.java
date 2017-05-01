@@ -54,15 +54,23 @@ public class NGramService {
         ngrams.addAll(createSkipBigramBackwardWithStopWord(sentences));
         
 
-        /*        ngrams.addAll(createBigramForwardNoStopWord(sentences));//TODO: complete
-        ngrams.addAll(createTrigramForwardNoStopWord(sentences));//TODO: complete
-        ngrams.addAll(createSkipBigramForwardNoStopWord(sentences));//TODO: complete
-        ngrams.addAll(createSkipBigramBackwardNoStopWord(sentences));//TODO: complete
-*/
+        /*        
+            ngrams.addAll(createBigramForwardNoStopWord(sentences));//TODO: complete
+            ngrams.addAll(createTrigramForwardNoStopWord(sentences));//TODO: complete
+            ngrams.addAll(createSkipBigramForwardNoStopWord(sentences));//TODO: complete
+            ngrams.addAll(createSkipBigramBackwardNoStopWord(sentences));//TODO: complete
+        */
         
         print(ngrams);
+        
+        //Store to database
+        //NGramsDB
     }
 
+    /**
+     * This method prints the NGrams List to the console
+     * @param ngrams
+     */
     private static void print(List<NGram> ngrams) {
         for(NGram ngram:ngrams) {
             System.out.println(ngram.getWords() + " [" +ngram.getType().getTag() + "]");
@@ -70,6 +78,11 @@ public class NGramService {
         
     }
 
+    /**
+     * Creates a SkipBigramBackward and contains stop words
+     * @param sentences
+     * @return
+     */
     public static List<NGram> createSkipBigramBackwardWithStopWord(List<Sentence> sentences) {
         List<NGram> ngrams = new ArrayList<NGram>();
         for (Sentence sentence : sentences) {

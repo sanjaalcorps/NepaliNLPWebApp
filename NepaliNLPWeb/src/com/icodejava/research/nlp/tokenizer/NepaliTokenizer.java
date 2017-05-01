@@ -93,11 +93,9 @@ public class NepaliTokenizer {
         word = word.replace("\u00A0",""); //remove non breaking spaces
         word = word.trim().replaceAll("( )+", " ");//remove multiple spaces
         word = word.replaceAll("[\t००–-—-�•�…_a-zA-Z0-9@#&\\$%:,;=->~“”‘’!। ||/\\+\\^\\*\\'\"\\.`\\(\\)\\[\\]\\{\\}\\.\\?\\\\]*", "");
-        word = word.replaceAll("[०-९]", ""); //remove nepali numbers
         word = word.replaceAll("¥", "र्");
         word = word.replaceAll("©", "");
         word = word.replaceAll(">>", "");
-        //word = word.replaceAll("", replacement)
         
 		if ("÷".equalsIgnoreCase(word)) {
 			word = "";
@@ -132,11 +130,9 @@ public class NepaliTokenizer {
         sentence = sentence.replaceAll("\'", "");
         sentence = sentence.replaceAll("©", "");
         sentence = sentence.replaceAll(">>", "");
-        //sentence = sentence.replaceAll("[ a-zA-Z0-9]{1,}[\\(\\)\\+\\–\\*’,-\\.%;:=]{0,}", " ");//TEST
         sentence = sentence.trim().replaceAll("( )+", " ");//remove multiple spaces
         sentence = sentence.trim();
         
-        //sentence = sentence.replaceAll("\n", "");
         return sentence;
     }
     

@@ -38,6 +38,8 @@ public class WordsClassificationServlet extends AbstractNLPServlet {
 		List<Word> words = getWords(request);
 		
 		WordsUnreferencedService.updateWordsClassification(words);
+		
+		request.getSession().removeAttribute("wordSearchResult");
 
 		
 		String nextJSP = "jsp/word_classify.jsp?result=successful";

@@ -98,7 +98,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 		<input type="submit" value="Submit">
 	</form>
 	
-	Go to <a href = "jsp/word_search.jsp">Word Search</a>
+	Go to <a href = "word_search.jsp">Word Search</a>
 
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
