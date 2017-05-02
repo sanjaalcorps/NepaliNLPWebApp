@@ -28,6 +28,16 @@ extract word ending in 'वास' //place
 चौर
 टार
 मोड
+मार्ग
+मारा
+थान
+गन्ज
+कुण्ड
+चौर
+चउर
+खोला
+पुर्
+गाउँ
 
 Add date and user on the table
 Fix Chandrabindu
@@ -45,7 +55,7 @@ stop words
 Add this to evernote: http://nepalibhashabyakaran.blogspot.com/
 Add this to evernote: http://mylanguages.org/nepali_pronouns.php
 Add this to evernote: https://nepalgo.tumblr.com/grammar
-
+Complete Verb Variation Login in NepaliStemmer for खानु, चल्नु, रमाउनु, तर्सिनु
 =========The following tasks have been completed.
 	{DONE}replace instead of replaceAll
 	{DONE}Create Stemmer Class
