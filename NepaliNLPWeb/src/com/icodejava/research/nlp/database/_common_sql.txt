@@ -22,3 +22,6 @@ select count(*) from sentence_unreferenced where words_count is null
 
 //WORD COUNT IN SENTENCE NOT NULL
 select count(*) from sentence_unreferenced where words_count is not null
+
+//REMOVING मै  FROM "सालमै" - > 	"साल"
+update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2) where ID=6012

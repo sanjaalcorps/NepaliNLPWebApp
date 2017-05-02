@@ -29,7 +29,7 @@ public class WordsUnreferencedService {
 		//extractAndTagRootWords(); // Multiple
 
 		 //tagCompoundWords(HOW_MANY_WORDS);
-		processUnreferencedWords(10000);
+		//processUnreferencedWords(10000);
 		// processWordsFromFile("src/com/icodejava/research/nlp/sources/other/misc_words.txt");
 		// getRomanizedWordCount();
 		 //removeDuplication();
@@ -37,6 +37,7 @@ public class WordsUnreferencedService {
 		// getRandomCompoundWords(1000);
 		 
 		 //updateWordRootFromKnownRoots();
+		 updateCompoundWordRootsFromKnownRoots();
 
 	}
 
@@ -395,6 +396,47 @@ public class WordsUnreferencedService {
 		
 		WordsUnreferencedDB.updateWordTagRootWords(wordsRootExtraction);
 	}
+	
+	/**
+	 * This method pulls all the root words from dataase and then appends the compound word endings, then queries the databse to see if that word exists.
+	 * If that compound word exits, then it marks it's root word.
+	 * 
+	 * The idea is if you already know नेपाल is a root word, then the  नेपालमा, नेपालभित्र, नेपालसम्म etc should also have नेपाल as root word.
+	 * 
+	 */
+	   public static void updateCompoundWordRootsFromKnownRoots() {
+	        //find all the distinct root words
+	        List<String> words = WordsUnreferencedDB.getDistinctRootWords();
+	        System.out.println("Found: " + words.size() + "Distinct Words");
+	        //
+	        List<Word> wordsRootExtraction = new ArrayList<Word>();
+	        for(String wordStr: words) {
+	            System.out.println("Processing: " + wordStr);
+	            
+	            int foundCount = 0;
+	            for(CompoundWordEnding cwe: CompoundWordEnding.values()) {
+	            
+	                
+    	            Word word = WordsUnreferencedDB.selectWordByWordValue(wordStr+cwe.getNepaliWordEnding());
+    	            
+    	            if( word != null && !word.getWord().equalsIgnoreCase(word.getRootWord())) {
+    	                word.setRootWord(word.getWord());
+    	                word.setIsRootWordExtracted("Y");
+    	                wordsRootExtraction.add(word);
+    	                
+    	                foundCount++;
+    	            }
+	            }
+	            
+	            System.out.println("Found " + foundCount++ + " Similar Words for " + wordStr);
+	            
+	        }
+	        
+	        System.out.println(wordsRootExtraction.size() + " words will be marked to have roots");
+	        
+	        
+	        WordsUnreferencedDB.updateWordTagRootWords(wordsRootExtraction);
+	    }
 	
 	
 }

@@ -858,7 +858,7 @@ public class WordsUnreferencedDB extends DBUtility {
 				Tables.WORDS_UNREFERENCED + 
 				" SET ROOT_WORD=\"" + word.getRootWord() + 
 				"\", ROOT_WORD_EXTRACTED= \"" + word.getIsRootWordExtracted() + 
-				"\", VERIFIED = \"Y" + 
+				"\", VERIFIED = \"Y-SYS" + 
 				"\" WHERE ID=" +word.getId();
 		System.out.println(sql);
 
