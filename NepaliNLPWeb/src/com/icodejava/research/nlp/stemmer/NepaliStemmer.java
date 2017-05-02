@@ -1,5 +1,8 @@
 package com.icodejava.research.nlp.stemmer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.icodejava.research.nlp.domain.CompoundWordEnding;
 import com.icodejava.research.nlp.domain.Grammar;
 import com.icodejava.research.nlp.utils.TextUtils;
@@ -86,5 +89,77 @@ public class NepaliStemmer {
 
 		return word;
 	}
+	
+	/**
+	 * 
+	 * @param word
+	 * @return
+	 */
+	public static List<String> getVerbVariations(String wordEndingInNU) {
+	    List<String> verbVariations = new ArrayList<String>();
+	    
+	    if(wordEndingInNU == null) {
+	        return verbVariations;
+	    }
+	    
+	    String root = getVerbRoot(wordEndingInNU); //NU 
+	    
+	    //[, रमानोस, रमानुस, रमानुहोस, रमानेछु, रमानुहुनेछ, रमानेछन, रमान्छन, रमान्छिन, रमानुभयो, , , रमानेछौ, , , रमानेछिन, रमानेछ, रमानुहुनेछ, रमान्छु, रमान्छे, रमान्छ]
+	    
+	    verbVariations.add(root); //खा, रमा
+	    verbVariations.add(wordEndingInNU); //खानु,रमाउनु
+	    verbVariations.add(root + "एँ"); //खाएँ, रमाएँ
+	    verbVariations.add(root + "यो"); //खायो, रमायो
+	    verbVariations.add(root + "एको");  //खाएको, रमाएको
+	    verbVariations.add(root + "एछ"); //खाएछ, रमाएछ
+	    verbVariations.add(root + "ए");//खाए, रमाए
+	    verbVariations.add(root + "ईन");//खाईन, रमाईन
+	    verbVariations.add(root + "ईस"); //खाईस, रमाईस
+	    verbVariations.add(wordEndingInNU + "भयो"); //खानुभयो, रमाउनुभयो
+	    verbVariations.add(root + "ई"); // खाई, रमाई
+	    verbVariations.add(root + "ऊ");//खाऊ, रमाऊ
+	    verbVariations.add(root + "यौ"); //खायौ, रमायौ
+	    verbVariations.add(root + "इछे"); //खाइछे, रमाइछे
+	    verbVariations.add(root + "एछ"); //खाएछ, रमाएछ
+	    
+	    verbVariations.add(root + "नोस"); //खानोस
+	    verbVariations.add(root + "नुस"); //खानुस
+	    verbVariations.add(root + "नुहोस"); //खानुहोस
+	    verbVariations.add(root + "नेछु"); //खानेछु
+	    verbVariations.add(root + "नुहुनेछ");//खानुहुनेछ
+	    verbVariations.add(root + "नेछन");//खानेछन
+	    verbVariations.add(root + "न्छन");//खान्छन
+	    verbVariations.add(root + "न्छिन");//खान्छिन
+	    verbVariations.add(root + "नुभयो");//खानुभयो
+	    verbVariations.add(root + "नेछौ"); //खानेछौ
+	    verbVariations.add(root + "नेछिन"); //खानेछिन
+	    verbVariations.add(root + "नेछ"); //खानेछ
+	    verbVariations.add(root + "नुहुनेछ"); //खानुहुनेछ
+	    verbVariations.add(root + "न्छु"); //खान्छु
+	    verbVariations.add(root + "न्छे"); //खान्छे
+	    verbVariations.add(root + "न्छ"); //खान्छ
+	    
+	    System.out.println(verbVariations);
+	    return verbVariations;
+	    
+	}
+
+    public static String getVerbRoot(String wordEndingInNU) {
+        if(wordEndingInNU == null || !wordEndingInNU.endsWith("नु") || wordEndingInNU.indexOf(" ") >0) {
+            System.out.println("Invalid Word or Word Ending " + wordEndingInNU + " Verb must end in: नु");
+            return wordEndingInNU;
+        }
+        
+        String wordWithoutNU ="";
+        if(wordEndingInNU.endsWith("उनु")) {
+            wordWithoutNU = TextUtils.replaceLast(wordEndingInNU, "उनु", "");
+        } else if (wordEndingInNU.endsWith("नु")) {
+            wordWithoutNU = TextUtils.replaceLast(wordEndingInNU, "नु", "");
+        }
+        
+        System.out.println(wordWithoutNU);
+        
+        return wordWithoutNU;
+    }
 
 }

@@ -3,6 +3,7 @@ package com.icodejava.research.nlp.test;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
@@ -144,6 +145,42 @@ public class NepaliStemmerTest {
 		
 		Assert.assertThat(output, is("टरनसफर"));
 	}
+	
+    @Test
+    public void test_get_verb_root() {
+        String input = "खानु";
+        String output = NepaliStemmer.getVerbRoot(input);
+        String expected = "खा";
+        Assert.assertThat(output, is(expected));
+        
+    }
+    @Test
+    public void test_get_verb_variations() {
+        String input = "खानु";
+        List<String> output = NepaliStemmer.getVerbVariations(input);
+        //String expected = "खा";
+        //Assert.assertThat(output, is(expected));
+        
+    }
+    
+    
+    @Test
+    public void test_get_verb_variations_002() {
+        String input = "रमाउनु";
+        List<String> output = NepaliStemmer.getVerbVariations(input);
+        //String expected = "खा";
+        //Assert.assertThat(output, is(expected));
+        
+    }
+    
+    @Test
+    public void test_get_verb_variations_003() {
+        String input = "चल्नु";
+        List<String> output = NepaliStemmer.getVerbVariations(input);
+        //String expected = "खा";
+        //Assert.assertThat(output, is(expected));
+        
+    }
 														
 
 	 

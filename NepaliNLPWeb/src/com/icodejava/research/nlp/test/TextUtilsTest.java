@@ -44,5 +44,5 @@ public class TextUtilsTest {
         
         Assert.assertThat(output, is(expected));
     }
-
+    
 }
