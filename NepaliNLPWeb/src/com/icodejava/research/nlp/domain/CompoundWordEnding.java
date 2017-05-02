@@ -66,8 +66,6 @@ public enum CompoundWordEnding {
     HARU_JHAIN_2("हरूझैं"),
     HARU_KAI_1("हरुकै"),
     HARU_KAI_2("हरूकै"),
-    HARU_LAAI_1("हरुलाई"),
-    HARU_LAAI_2("हरूलाई"),
     HARU_MADHYA_1("हरुमध्ये"),
     HARU_MADHYA_2("हरूमध्ये"),
     HARU_MADHYA_3("हरुमध्य"),
