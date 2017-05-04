@@ -155,30 +155,31 @@ public class NepaliStemmerTest {
         
     }
     @Test
-    public void test_get_verb_variations() {
+    public void test_get_verb_variations_001_ending_in_nu() {
         String input = "खानु";
-        List<String> output = NepaliStemmer.getVerbVariations(input);
-        //String expected = "खा";
-        //Assert.assertThat(output, is(expected));
+        String output = NepaliStemmer.getVerbVariations(input).toString();
+        String expected = "[खा, खानु, खाएँ, खायो, खाएको, खाएछ, खाए, खाईन, खाईस, खानुभयो, खाई, खाऊ, खायौ, खाइछे, खाएछ, खानोस, खानुस, खानुहोस, खानेछु, खानुहुनेछ, खानेछन, खान्छन, खान्छिन, खान्छु, खान्छे, खान्छ, खानेछौ, खानेछिन, खानेछ, खानुहुनेछ]";
+        Assert.assertThat(output, is(expected));
         
     }
     
     
     @Test
-    public void test_get_verb_variations_002() {
+    public void test_get_verb_variations_002_ending_in_unu() {
         String input = "रमाउनु";
-        List<String> output = NepaliStemmer.getVerbVariations(input);
-        //String expected = "खा";
-        //Assert.assertThat(output, is(expected));
+        String output = NepaliStemmer.getVerbVariations(input).toString();
+        String expected = "[रमा, रमाउनु, रमाएँ, रमायो, रमाएको, रमाएछ, रमाए, रमाईन, रमाईस, रमाउनुभयो, रमाई, रमाऊ, रमायौ, रमाइछे, रमाएछ, रमाउनोस, रमाउनुस, रमाउनुहोस, रमाउनेछु, रमाउनुहुनेछ, रमाउनेछन, रमाउँछन, रमाउँछिन, रमाउँछु, रमाउँछे, रमाउँछ, रमाउनेछौ, रमाउनेछिन, रमाउनेछ, रमाउनुहुनेछ]";
+        Assert.assertThat(output, is(expected));
         
     }
     
     @Test
-    public void test_get_verb_variations_003() {
+    public void test_get_verb_variations_003_ending_in_half_letter_plus_nu() {
         String input = "चल्नु";
-        List<String> output = NepaliStemmer.getVerbVariations(input);
-        //String expected = "खा";
-        //Assert.assertThat(output, is(expected));
+        String output = NepaliStemmer.getVerbVariations(input).toString();
+        String expected = "[चल्, चल्नु, चल्एँ, चल्यो, चल्एको, चल्एछ, चल्ए, चल्ईन, चल्ईस, चल्नुभयो, चल्ई, चल्ऊ, चल्यौ, चल्इछे, चल्एछ, चल्नोस, चल्नुस, चल्नुहोस, चल्नेछु, चल्नुहुनेछ, चल्नेछन, चल्न्छन, चल्न्छिन, चल्न्छु, चल्न्छे, चल्न्छ, चल्नेछौ, चल्नेछिन, चल्नेछ, चल्नुहुनेछ]";
+
+        Assert.assertThat(output, is(expected));
         
     }
 														
