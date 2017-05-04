@@ -283,18 +283,7 @@ public enum CompoundWordEnding {
 	 * चोटिमा Patak करण (e.g. Adhunikikaran, bargikaran घारणात्मक चौरको वाणी
 	 * बस्न्परेको बिघटनपछिको अनुरुप तन्नाकोलागी भइसकेकाले हत्यापछाडिको
 	 * verbs हुन्छ गाउछौं / उभिन्छौं जोडीएर पछुताउँथे नछुट्टाएर होइनन
-	 * बिर्सिदिन्छु देवकोटाजीकै साबिकै अधिनायकत्व
-	 * 
-	 *  Names can end in Prasad, Kumari, kumar, nath, devi, raj, maya
-	 *  
-	 *  
-	 *  //Rules:
-	 *  Names will be treated as not compound words
-	 *  
-	 *  
-	 *  
-	 *  गिराउन
-	 *  भक्कानिए
+	 * बिर्सिदिन्छु देवकोटाजीकै साबिकै अधिनायकत्व 
 	 */
 
 	private String nepaliWordEnding;
