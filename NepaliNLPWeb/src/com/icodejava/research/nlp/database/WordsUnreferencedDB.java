@@ -569,7 +569,7 @@ public class WordsUnreferencedDB extends DBUtility {
 
 	public static int selectRomanizedWordsCount() {
 		int count = 0;
-		String sql = "SELECT count(*) FROM " +  Tables.WORDS_UNREFERENCED +" WHERE WORD_ROMANIZED IS NOT NULL";
+		String sql = "SELECT count(*) FROM " +  Tables.WORDS_UNREFERENCED +" WHERE WORD_ROMANIZED IS NOT NULL AND WORD_ROMANIZED !=\'NOT_ROMANIZED\'";
 		
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
 				Statement stmt = conn.createStatement();
@@ -672,7 +672,7 @@ public class WordsUnreferencedDB extends DBUtility {
 	
 	public static List<Word> selectWordsNotRomanized(int limit) {
 		//String sql = "SELECT ID, WORD, VERIFIED FROM " +  Tables.WORDS_UNREFERENCED +" WHERE WORD_ROMANIZED IS NULL ORDER BY WORD ASC LIMIT " + limit +";" ;
-		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE WORD_ROMANIZED IS NULL ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
+		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE WORD_ROMANIZED IS NULL OR  AND WORD_ROMANIZED !=\'NOT_ROMANIZED\' ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
 		System.out.println(sql);
 
 		List<Word> words = new ArrayList<Word>();
@@ -760,6 +760,28 @@ public class WordsUnreferencedDB extends DBUtility {
 		}
 		
 	}
+	
+	   public static void updateRomanizationISO(String rootWord, String valueRomanizedISOStandard) {
+	        String sql = "UPDATE " + Tables.WORDS_UNREFERENCED + " SET WORD_ROMANIZED=? WHERE ROOT_WORD=? AND WORD=ROOT_WORD";
+
+	        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+	                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+	            pstmt.setString(1, valueRomanizedISOStandard);
+	            pstmt.setString(2, rootWord);
+	            int result = pstmt.executeUpdate();
+
+	            if(result > 0) {
+	                System.out.println("Successfully updated Romanization " + valueRomanizedISOStandard );
+	            } else {
+	                System.out.println("Could not update the word. Make sure the ID exists or there are no other issues");
+	            }
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        
+	    }
 
 	public static void updateWord(int id, String wordNewValue) {
 

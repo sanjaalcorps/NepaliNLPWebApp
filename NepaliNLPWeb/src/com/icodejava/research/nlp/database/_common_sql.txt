@@ -25,3 +25,11 @@ select count(*) from sentence_unreferenced where words_count is not null
 
 //REMOVING मै  FROM "सालमै" - > 	"साल"
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2) where ID=6012
+update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-5), VERIFIED = 'Y-VER', IS_COMPOUND_WORD='Y' where word like '%पछिको'
+
+
+update words_unreferenced set ROOT_WORD=NULL WHERE VERIFIED = 'Y-VER2'
+
+update words_unreferenced set VERIFIED='Y' WHERE PART_OF_SPEECH='V'
+
+UPDATE WORDS_UNREFERENCED SET ROOT_WORD = WORD, ROOT_WORD_EXTRACTED = 'Y' WHERE IS_COMPOUND_WORD = 'N' AND ROOT_WORD IS NULL

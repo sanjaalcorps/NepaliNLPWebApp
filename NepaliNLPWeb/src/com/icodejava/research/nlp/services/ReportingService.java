@@ -34,7 +34,7 @@ public class ReportingService {
 		stringBuffer = printRowCountStatus(stringBuffer);
 		stringBuffer = printCrawlStatus(stringBuffer);
 		stringBuffer = printUnreferencedWordReport(stringBuffer);
-//		stringBuffer = printUnreferencedSentenceReport(stringBuffer);
+		stringBuffer = printUnreferencedSentenceReport(stringBuffer);
 //		stringBuffer = printArticleTitleInfo(stringBuffer);
 //		stringBuffer = printCompoundWords(stringBuffer);
 		
@@ -95,11 +95,13 @@ public class ReportingService {
 		
 	}
 	
-	public static void printUnreferencedSentenceReport() {
-		System.out.println("\n========================================");
+	public static StringBuffer printUnreferencedSentenceReport(StringBuffer stringBuffer) {
 		ArticlesDB.getArticlesCount();
 		ArticlesDB.selectArticlesCountProcessedForUnreferenceSentence();
-		WordsUnreferencedDB.getRowCount(WordsUnreferencedDB.DATABASE_URL,Tables.WORDS_UNREFERENCED);
+		int rowCount = WordsUnreferencedDB.getRowCount(WordsUnreferencedDB.DATABASE_URL,Tables.SENTENCES_UNREFERENCED);
+		stringBuffer.append("\n============Total Row Count in "+Tables.SENTENCES_UNREFERENCED+" table: " + rowCount +"\n\n");
+        
+        return stringBuffer;
 		
 	}
 	

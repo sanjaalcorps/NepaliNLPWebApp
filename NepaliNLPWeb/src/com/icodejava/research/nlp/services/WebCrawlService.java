@@ -14,10 +14,10 @@ public class WebCrawlService {
 	public static final int LIMIT_FROM_EACH_DOMAIN=5000;
 	public static void main (String args []) {
 		//fetchURLs(1);
-		//crawlSites(LIMIT_FROM_EACH_DOMAIN);
+		crawlSites(LIMIT_FROM_EACH_DOMAIN);
 		//crawlSitesForDomain("https://ne.wikipedia.org");
 		//crawl("http://www.samakalinsahitya.com/index.php?show=detail&art_id=100");
-		WordsUnreferencedService.processUnreferencedWords(10000);
+		//WordsUnreferencedService.processUnreferencedWords(1000);
 	}
 
 	private static void crawlSitesForDomain(String domain) {

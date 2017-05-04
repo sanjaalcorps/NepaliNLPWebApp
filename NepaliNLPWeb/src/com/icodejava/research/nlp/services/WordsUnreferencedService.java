@@ -437,6 +437,14 @@ public class WordsUnreferencedService {
 	        
 	        WordsUnreferencedDB.updateWordTagRootWords(wordsRootExtraction);
 	    }
+	   
+	   
+	   public static void updateRomanizationISO(String rootWord, String valueRomanizedISOStandard) {
+	       
+	       System.out.println(rootWord + " " + valueRomanizedISOStandard);
+	       
+	       WordsUnreferencedDB.updateRomanizationISO(rootWord, valueRomanizedISOStandard);
+	   }
 	
 	
 }
