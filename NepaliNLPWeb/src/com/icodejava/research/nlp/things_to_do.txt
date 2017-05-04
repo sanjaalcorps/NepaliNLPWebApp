@@ -42,7 +42,7 @@ extract word ending in 'वास' //place
 Add date and user on the table
 Fix Chandrabindu
 >>romanization - stem it before romanization
-
+Stemmer - Add Negation such as khandaina
 Compound Word Ending Precedence
 
 {WIP} stastistics page

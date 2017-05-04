@@ -7,9 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.icodejava.research.nlp.domain.Sentence;
+import com.icodejava.research.nlp.utils.DateUtils;
 
 public class SentencesUnreferencedDB extends DBUtility {
 
@@ -512,6 +514,29 @@ public class SentencesUnreferencedDB extends DBUtility {
         System.out.println("Found "  + sentences.size() + " Sentences");
         return sentences;
         
+    }
+
+    public static void markNGramExtracted(Sentence sentence) {
+        String sql = "UPDATE " + Tables.SENTENCES_UNREFERENCED + " SET NGRAM_EXTRACTED=?, UPDATED_DATE=? WHERE ID=?";
+
+        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, "Y");
+            pstmt.setDate(2, new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
+            pstmt.setInt(3, sentence.getId());
+            int result = pstmt.executeUpdate();
+
+            if(result > 0) {
+                //System.out.println("Successfully updated sentence " + sentence.getId());
+            } else {
+                System.out.println("Could not update the sentence. Make sure the ID exists or there are no other issues");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

@@ -1,14 +1,16 @@
 package com.icodejava.research.nlp.database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.List;
 
 import com.icodejava.research.nlp.domain.NGram;
-import com.icodejava.research.nlp.domain.Word;
 
 /**
  * Database Utility to do CRUD operations on NGram object
@@ -19,6 +21,8 @@ import com.icodejava.research.nlp.domain.Word;
  */
 public class NGramsDB extends DBUtility {
     
+    public static final String DATABASE_URL = "jdbc:sqlite:C:/Users/paudyals/Desktop/NLP/nlpdb/npl3.db";//SHADOWED FROM PARENT
+    
     public static void insertOrUpdateNGrams(List<NGram> ngrams) {
         
         if(ngrams == null || ngrams.size() ==0) {
@@ -28,44 +32,80 @@ public class NGramsDB extends DBUtility {
         
         for(NGram ngram: ngrams) {
             
-            //try to fetch from the databse to see if it already exists
-            boolean alreadyExists = alreadyExists(ngram.getWords());
+            //try to fetch from the database to see if it already exists
+            boolean alreadyExists = alreadyExists(ngram);
             
             if(alreadyExists) {
                 //update frequency
                 updateFrequency(ngram);
             } else {
+                ngram.setFrequency(1);//First occurrence
                 insertNGram(ngram);
             }
             
         }
-        
-        
-        
-        
-        
         
     }
 	
     
     
     private static void updateFrequency(NGram ngram) {
-        // TODO Auto-generated method stub
+        if (ngram == null || ngram.getWords() == null) {
+            return;
+        }
+
+        String sql = "UPDATE " + Tables.NGRAM + " SET FREQUENCY=FREQUENCY+1 WHERE WORDS=\"" + ngram + "\" AND NGRAM_TYPE=\"" + ngram.getType().getTag() + "\"";
         
+        //System.out.println(sql);
+
+        try (Connection conn = DriverManager.getConnection(DATABASE_URL); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            int result = pstmt.executeUpdate();
+
+            if (result > 0) {
+                //System.out.println("Successfully updated frequency for NGRAM " + ngram.getWords());
+            } else {
+                System.out.println("Could not update the NGRAM. Make sure the ID exists or there are no other issues" + ngram.getWords());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-
-
 
     private static void insertNGram(NGram ngram) {
-        // TODO Auto-generated method stub
-        
+
+        String sql = "INSERT INTO "+ Tables.NGRAM + " (WORDS, FREQUENCY, NGRAM_TYPE, CREATED_DATE, UPDATED_DATE) VALUES(?, ?,?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, ngram.getWords());
+            pstmt.setInt(2, ngram.getFrequency());
+            pstmt.setString(3, ngram.getType().getTag());
+            
+            Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
+            pstmt.setDate(4, currentDate);
+            pstmt.setDate(5, currentDate);
+            
+            int result = pstmt.executeUpdate();
+            
+            if(result < 0) {
+                System.out.println("There was some error inserting NGRAM " + ngram.getWords());
+            }
+
+        } catch (Exception e) {
+            //GRACEFUL
+            e.printStackTrace();
+        }
     }
 
 
 
-    public static boolean alreadyExists(String ngram) {
+    public static boolean alreadyExists(NGram ngram) {
         boolean alreadyExists = false;
-        String sql = "SELECT ID FROM " +  Tables.NGRAM +" WHERE WORDS=\"" + ngram + "\"";
+        String sql = "SELECT ID FROM " +  Tables.NGRAM +" WHERE WORDS=\"" + ngram + "\" AND NGRAM_TYPE=\"" + ngram.getType().getTag() + "\"";
 
         try (Connection conn = DriverManager.getConnection(DATABASE_URL);
                 Statement stmt = conn.createStatement();

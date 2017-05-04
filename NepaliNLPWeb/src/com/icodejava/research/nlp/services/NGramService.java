@@ -3,6 +3,7 @@ package com.icodejava.research.nlp.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.icodejava.research.nlp.database.NGramsDB;
 import com.icodejava.research.nlp.domain.NGram;
 import com.icodejava.research.nlp.domain.NGramType;
 import com.icodejava.research.nlp.domain.Sentence;
@@ -27,7 +28,7 @@ public class NGramService {
      */
 
     public static void main(String args[]) {
-        int sentenceLimit = 1;
+        int sentenceLimit = 50;
 
         createCompleteNGrams(sentenceLimit);
 
@@ -35,36 +36,51 @@ public class NGramService {
 
     public static void createCompleteNGrams(int sentenceLimit) {
 
-        List<Sentence> sentences = SentenceUnreferencedService.getVerifiedSentencesNgramNotCreated(sentenceLimit);
-        System.out.println(sentences);
-        List<NGram> ngrams = new ArrayList<NGram>();
-        
-        //monograms
-        ngrams.addAll(createMonograms(sentences));
-        
-        //bigrams forward and bigrams backward
-        ngrams.addAll(createBigramForwardWithStopWord(sentences));
-        ngrams.addAll(createBigramBackwardWithStopWord(sentences));
-        
-        //trigrams forward and trigrams backgward
-        ngrams.addAll(createTrigramForwardWithStopWord(sentences));
-        ngrams.addAll(createTrigramBackwardWithStopWord(sentences));
-        
-        ngrams.addAll(createSkipBigramForwardWithStopWord(sentences));
-        ngrams.addAll(createSkipBigramBackwardWithStopWord(sentences));
-        
+        // OPERATE 500 SETENCES AT A TIME
+        int perBatch = 500;
+        int batch = sentenceLimit / perBatch + 1;
 
-        /*        
-            ngrams.addAll(createBigramForwardNoStopWord(sentences));//TODO: complete
-            ngrams.addAll(createTrigramForwardNoStopWord(sentences));//TODO: complete
-            ngrams.addAll(createSkipBigramForwardNoStopWord(sentences));//TODO: complete
-            ngrams.addAll(createSkipBigramBackwardNoStopWord(sentences));//TODO: complete
-        */
-        
-        print(ngrams);
-        
-        //Store to database
-        //NGramsDB
+        for (int i = 0; i < batch; i++) {
+            System.out.println("Processing Batch: " + i + " out of " + batch);
+
+            List<Sentence> sentences = SentenceUnreferencedService.getVerifiedSentencesNgramNotCreated((sentenceLimit > perBatch) ? perBatch:sentenceLimit);
+
+            //System.out.println(sentences);
+
+            List<NGram> ngrams = new ArrayList<NGram>();
+            // monograms
+            ngrams.addAll(createMonograms(sentences)); // TODO: might be good idea to do this in batch.
+
+            // bigrams forward and bigrams backward
+            ngrams.addAll(createBigramForwardWithStopWord(sentences));
+            ngrams.addAll(createBigramBackwardWithStopWord(sentences));
+
+            // trigrams forward and trigrams backgward
+            ngrams.addAll(createTrigramForwardWithStopWord(sentences));
+            ngrams.addAll(createTrigramBackwardWithStopWord(sentences));
+
+            ngrams.addAll(createSkipBigramForwardWithStopWord(sentences));
+            ngrams.addAll(createSkipBigramBackwardWithStopWord(sentences));
+
+            /*
+             * ngrams.addAll(createBigramForwardNoStopWord(sentences));//TODO: complete
+             * ngrams.addAll(createTrigramForwardNoStopWord(sentences));//TODO: complete
+             * ngrams.addAll(createSkipBigramForwardNoStopWord(sentences));//TODO: complete
+             * ngrams.addAll(createSkipBigramBackwardNoStopWord(sentences));//TODO: complete
+             */
+
+            // print(ngrams);
+
+            // Store to database
+            NGramsDB.insertOrUpdateNGrams(ngrams);
+            
+            // mark the sentence as NGRAM extracted.
+            SentenceUnreferencedService.markNGramExtracted(sentences);
+
+        }
+
+       
+
     }
 
     /**

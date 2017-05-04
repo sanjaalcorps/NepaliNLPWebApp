@@ -170,6 +170,17 @@ public class SentenceUnreferencedService {
     public static List<Sentence> getVerifiedSentencesNgramNotCreated(int sentenceLimit) {
         return SentencesUnreferencedDB.getVerifiedSentencesNgramNotCreated(sentenceLimit);
     }
+
+    public static void markNGramExtracted(List<Sentence> sentences) {
+        for(Sentence sentence : sentences) {
+           
+            SentencesUnreferencedDB.markNGramExtracted(sentence);
+           
+        }
+        
+    }
+    
+  
 	
 
 }

@@ -19,26 +19,30 @@ public class NGram {
     private String verified;
     private String romanISO;
     private String romanCommon;
+    private int frequency;
     private Date ceatedDate;
     private Date updatedDate;
-    
-	public NGram() {
+
+    public NGram() {
 		super();
 	}
-	
     public NGram(String words) {
         super();
         this.words = words;
     }
-	
+    
 	public NGram(String words, NGramType type) {
 		super();
 		this.words = words;
 		this.type = type;
 	}
-
-	public Date getCeatedDate() {
+	
+    public Date getCeatedDate() {
         return ceatedDate;
+    }
+	
+	public int getFrequency() {
+        return frequency;
     }
 
 	public int getId() {
@@ -52,12 +56,12 @@ public class NGram {
 	public String getRomanISO() {
         return romanISO;
     }
-	
+
 	public NGramType getType() {
 		return type;
 	}
-
-    public Date getUpdatedDate() {
+	
+	public Date getUpdatedDate() {
         return updatedDate;
     }
 
@@ -71,6 +75,10 @@ public class NGram {
 
     public void setCeatedDate(Date ceatedDate) {
         this.ceatedDate = ceatedDate;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
     public void setId(int id) {
