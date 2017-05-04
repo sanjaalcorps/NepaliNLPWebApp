@@ -165,6 +165,7 @@ public class NepaliStemmer {
 	    //KHAUNJEL, RAMAUNJEL, CHALUNJEN, THAGUNJEL
 	    //khainu, ramainu, chalinu, thaginu
 	    //khayera, ramayera, chalera, thagiyera
+	    //Khandaina, ramaundaina,, --> other negations
 	    
 	    
 	    System.out.println(verbVariations);
