@@ -21,6 +21,7 @@ A lot, but here are few things worth mentioning:
 5. Nepali Parts of Speech Tagging (POS)
 6. Nepali Shabdakosh in Unicode
 7. Word Cloud Generation for Nepali Text
+8. 1 Billion Nepali high quality Nepali Sentences {HIGH AMBITION / ACHIEVABLE}
 
 
 <b>What do I have that is not on the github?</b><br/>
