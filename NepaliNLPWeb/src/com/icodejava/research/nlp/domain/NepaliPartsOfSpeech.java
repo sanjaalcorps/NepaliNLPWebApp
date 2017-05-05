@@ -3,8 +3,8 @@ package com.icodejava.research.nlp.domain;
 public enum NepaliPartsOfSpeech {
 	
 	  ADJECTIVE( "JJ" , "क्रिबि" , "क्रिया विशेषण" ),
-	  ADJECTIVE_COMPARATIVE( "JJR" , "" , "" ),
-	  ADJECTIVE_SUPERLATIVE( "JJS" , "" , "" ),
+	  ADJECTIVE_COMPARATIVE( "JJR" , "" , "" ), //bhanda
+	  ADJECTIVE_SUPERLATIVE( "JJS" , "" , "" ), // sab bhanda
 	  ADVERB( "RB" , "" , "" ),
 	  ADVERB_COMPARATIVE( "RBR" , "" , "" ),
 	  ADVERB_SUPERLATIVE( "RBS" , "" , "" ),
