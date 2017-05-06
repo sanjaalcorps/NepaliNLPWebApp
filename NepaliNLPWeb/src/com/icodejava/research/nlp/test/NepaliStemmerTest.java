@@ -155,9 +155,9 @@ public class NepaliStemmerTest {
         
     }
     @Test
-    public void test_get_verb_variations_001_ending_in_nu() {
+    public void test_get_verb_variations_affirmative_ending_in_nu() {
         String input = "खानु";
-        String output = NepaliStemmer.getVerbVariations(input).toString();
+        String output = NepaliStemmer.getAffirmativeVerbVariations(input).toString();
         String expected = "[खा, खानु, खायो, खायौ, खाएँ, खाएं, खायें, खाएको, खायेको, खाएछ, खायेछ, खाए, खाये, खाईन, खाईस, खाई, खाइन, खाइस, खाइ, खाइछे, खाऊ, खानोस, खानुस, खानुहोस, खानेछु, खानुहुनेछ, खानेछन, खान्छन, खान्छिन, खान्छु, खान्छे, खान्छ, खानेछौ, खानेछिन, खानेछ, खानुभयो]";
         Assert.assertThat(output, is(expected));
         
@@ -165,18 +165,47 @@ public class NepaliStemmerTest {
     
     
     @Test
-    public void test_get_verb_variations_002_ending_in_unu() {
+    public void test_get_verb_variations_affirmative_ending_in_unu() {
         String input = "रमाउनु";
-        String output = NepaliStemmer.getVerbVariations(input).toString();
+        String output = NepaliStemmer.getAffirmativeVerbVariations(input).toString();
         String expected = "[रमा, रमाउनु, रमायो, रमायौ, रमाएँ, रमाएं, रमायें, रमाएको, रमायेको, रमाएछ, रमायेछ, रमाए, रमाये, रमाईन, रमाईस, रमाई, रमाइन, रमाइस, रमाइ, रमाइछे, रमाऊ, रमाउनोस, रमाउनुस, रमाउनुहोस, रमाउनेछु, रमाउनुहुनेछ, रमाउनेछन, रमाउँछन, रमाउँछिन, रमाउँछु, रमाउँछे, रमाउँछ, रमाउनेछौ, रमाउनेछिन, रमाउनेछ, रमाउनुभयो]";
         Assert.assertThat(output, is(expected));
         
     }
     
     @Test
-    public void test_get_verb_variations_003_ending_in_half_letter_plus_nu() {
+    public void test_get_verb_variations_affirmative_ending_in_half_letter_plus_nu() {
         String input = "चल्नु";
-        String output = NepaliStemmer.getVerbVariations(input).toString();
+        String output = NepaliStemmer.getAffirmativeVerbVariations(input).toString();
+        String expected = "[चल, चल्नु, चल्यो, चल्यौ, चलेँ, चलेको, चलेछ, चले, चलिन, चलिस, चली, चलि, चलिछे, चल्नोस, चल्नुस, चल्नुहोस, चल्नेछु, चल्नुहुनेछ, चल्नेछन, चल्न्छन, चल्न्छिन, चल्न्छु, चल्न्छे, चल्न्छ, चल्नेछौ, चल्नेछिन, चल्नेछ, चल्नुभयो]";
+
+        Assert.assertThat(output, is(expected));
+        
+    }
+    
+    @Test
+    public void test_get_verb_variations_negative_ending_in_nu() {
+        String input = "खानु";
+        String output = NepaliStemmer.getNegativeVerbVariations(input).toString();
+        String expected = "[खा, खानु, खायो, खायौ, खाएँ, खाएं, खायें, खाएको, खायेको, खाएछ, खायेछ, खाए, खाये, खाईन, खाईस, खाई, खाइन, खाइस, खाइ, खाइछे, खाऊ, खानोस, खानुस, खानुहोस, खानेछु, खानुहुनेछ, खानेछन, खान्छन, खान्छिन, खान्छु, खान्छे, खान्छ, खानेछौ, खानेछिन, खानेछ, खानुभयो]";
+        Assert.assertThat(output, is(expected));
+        
+    }
+    
+    
+    @Test
+    public void test_get_verb_variations_negative_ending_in_unu() {
+        String input = "रमाउनु";
+        String output = NepaliStemmer.getNegativeVerbVariations(input).toString();
+        String expected = "[रमा, रमाउनु, रमायो, रमायौ, रमाएँ, रमाएं, रमायें, रमाएको, रमायेको, रमाएछ, रमायेछ, रमाए, रमाये, रमाईन, रमाईस, रमाई, रमाइन, रमाइस, रमाइ, रमाइछे, रमाऊ, रमाउनोस, रमाउनुस, रमाउनुहोस, रमाउनेछु, रमाउनुहुनेछ, रमाउनेछन, रमाउँछन, रमाउँछिन, रमाउँछु, रमाउँछे, रमाउँछ, रमाउनेछौ, रमाउनेछिन, रमाउनेछ, रमाउनुभयो]";
+        Assert.assertThat(output, is(expected));
+        
+    }
+    
+    @Test
+    public void test_get_verb_variations_negative_ending_in_half_letter_plus_nu() {
+        String input = "चल्नु";
+        String output = NepaliStemmer.getNegativeVerbVariations(input).toString();
         String expected = "[चल, चल्नु, चल्यो, चल्यौ, चलेँ, चलेको, चलेछ, चले, चलिन, चलिस, चली, चलि, चलिछे, चल्नोस, चल्नुस, चल्नुहोस, चल्नेछु, चल्नुहुनेछ, चल्नेछन, चल्न्छन, चल्न्छिन, चल्न्छु, चल्न्छे, चल्न्छ, चल्नेछौ, चल्नेछिन, चल्नेछ, चल्नुभयो]";
 
         Assert.assertThat(output, is(expected));
