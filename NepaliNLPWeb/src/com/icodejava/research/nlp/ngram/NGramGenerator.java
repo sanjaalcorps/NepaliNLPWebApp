@@ -169,5 +169,48 @@ public class NGramGenerator {
 		return skipBigrams;
 
 	}
+	
+	/**
+	 * Returns Forward Skip Bigrams with stop words removed
+	 * @param sentence
+	 * @return
+	 */
+	public static List<NGram> generateSkipBigramsForwardWithStopWordRemoved(String sentence) {
+
+		List<String> words = Arrays.asList(sentence.split("\\s+"));
+		List<NGram> skipBigrams = new ArrayList<NGram>();
+		for (int i = 0; i < words.size(); i++) {
+
+			if (words.size() > i + 2) {
+			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i + 2));
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_WITH_STOPWPRD_REMOVED));
+			}
+
+		}
+		return skipBigrams;
+
+	}
+
+	/**
+	 * Returns Backward Skip Bigram with stop words removed
+	 * @param sentence
+	 * @return
+	 */
+	public static List<NGram> generateSkipBigramsBackwardWithStopWordRemoved(String sentence) {
+
+		List<String> words = Arrays.asList(sentence.split("\\s+"));
+		List<NGram> skipBigrams = new ArrayList<NGram>();
+		for (int i = words.size() - 1; i >= 0; i--) {
+
+			if (i - 2 >= 0) {
+			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i - 2));
+			    
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_BACKWARD_WITH_STOPWORD_REMOVED));
+			}
+		}
+
+		return skipBigrams;
+
+	}
 
 }
