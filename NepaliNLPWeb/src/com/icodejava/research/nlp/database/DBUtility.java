@@ -22,7 +22,7 @@ public class DBUtility {
 		}
 	}
 
-    public static final String DATABASE_URL = "jdbc:sqlite:C:/Users/paudyals/Desktop/NLP/nlpdb/npl2.db";
+    public static final String DATABASE_URL = "jdbc:sqlite:E:/NLP_DB/npl2.db";
 
     /**
      * Connect to a sample database
