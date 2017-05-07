@@ -44,9 +44,11 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 <form action="/NepaliNLPWeb/SentencesServlet" method="post">
 
 	<input type="submit" value="Submit">
+	<button id="markAllValid">Mark All Valid</button> 
+	
 		<%
-		    int count = 50;
-			int minWords = 5;
+		    int count = 100;
+			int minWords = 15;
 			int maxWords = 20;
 			List<Sentence> sentences = SentencesUnreferencedDB.selectUnverifiedSentencesRandom(count, minWords, maxWords);
 			for (Sentence sentence : sentences) {
@@ -79,6 +81,9 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	<script src="../js/bootstrap.js"></script>
 		<script>
 		$("[id*=controlgroup]").controlgroup();
+		
+
+		
 	</script>
 </body>
 </html>

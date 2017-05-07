@@ -15,10 +15,7 @@ import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
 
 public class WordsUnreferencedDB extends DBUtility {
 	
-	
-	
-	public static final String DATABASE_URL = "jdbc:sqlite:C:/Users/paudyals/Desktop/NLP/nlpdb/npl3.db";//shadowed from parent
-	
+    public static final String DATABASE_URL = "jdbc:sqlite:E:/NLP_DB/npl3.db";//SHADOWED FROM PARENT
 	
 	public static void main (String args []) throws ClassNotFoundException {
 		//createNewDatabase(DATABASE_URL);

@@ -28,7 +28,7 @@ public class NGramService {
      */
 
     public static void main(String args[]) {
-        int sentenceLimit = 50;
+        int sentenceLimit = 500;
 
         createCompleteNGrams(sentenceLimit);
 
@@ -37,7 +37,7 @@ public class NGramService {
     public static void createCompleteNGrams(int sentenceLimit) {
 
         // OPERATE 500 SETENCES AT A TIME
-        int perBatch = 500;
+        int perBatch = 50;
         int batch = sentenceLimit / perBatch + 1;
 
         for (int i = 0; i < batch; i++) {
@@ -76,6 +76,8 @@ public class NGramService {
             
             // mark the sentence as NGRAM extracted.
             SentenceUnreferencedService.markNGramExtracted(sentences);
+            
+            System.out.println("Completed Batch " + i);
 
         }
 

@@ -136,6 +136,37 @@ public class FileUtilities {
         }
         return content;
     }
+    
+    /**
+     * Reads a file line by line and returns an arraylist of lines, and also does not contain duplicates
+     * @param fileName
+     * @return
+     */
+    public static List<String> readUTF8FileAsUniqueList(String fileName) {
+    	 
+        List<String> content = new ArrayList<String>();
+ 
+        try {
+ 
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF8"));
+ 
+            String line;
+            while ((line = in.readLine()) != null) {
+ 
+                //System.out.println(line);
+            	if(!content.contains(line)) {
+            		content.add(line); 
+            	}
+ 
+            }
+ 
+            in.close();
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
  
     /**
      * This method show how to write UTF8 content to the file system.
