@@ -41,7 +41,7 @@ public class SentencesUnreferencedDB extends DBUtility {
 		//(SELECT id FROM table ORDER BY RANDOM() LIMIT x)
 		
 		String sql = "SELECT * FROM " +  Tables.SENTENCES_UNREFERENCED +" WHERE ID IN "
-				+ "(SELECT ID FROM " + Tables.SENTENCES_UNREFERENCED + " WHERE VERIFIED IS NULL AND WORDS_COUNT BETWEEN " + minWordCount + 
+				+ "(SELECT ID FROM " + Tables.SENTENCES_UNREFERENCED + " WHERE VERIFIED IS NOT 'Y' AND WORDS_COUNT BETWEEN " + minWordCount + 
 				" AND " + maxWordCount +" ORDER BY RANDOM() LIMIT " + limit +");";
 		
 		System.out.println(sql);
@@ -93,7 +93,7 @@ public class SentencesUnreferencedDB extends DBUtility {
 			while (rs.next()) {
 				Sentence sentence = new Sentence(rs.getInt("ID"), rs.getString("SENTENCE"));
 				sentence.setVerified(rs.getString("VERIFIED"));
-				sentence.setLinkedWordExtracted("Y".equalsIgnoreCase(rs.getString("LINKED_WORD_EXTRACT_UNREF")));
+				sentence.setNGramsExtracted("Y".equalsIgnoreCase(rs.getString("LINKED_WORD_EXTRACT_UNREF")));
 				//System.out.println(rs.getInt("ID") + "\t" + rs.getString("SENTENCE") + "\t" + rs.getString("VERIFIED") + "\t" + rs.getString("LINKED_WORD_EXTRACT_UNREF"));
 				
 				sentences.add(sentence);
@@ -119,7 +119,7 @@ public class SentencesUnreferencedDB extends DBUtility {
 			while (rs.next()) {
 				Sentence sentence = new Sentence(rs.getInt("ID"), rs.getString("SENTENCE"));
 				sentence.setVerified(rs.getString("VERIFIED"));
-				sentence.setLinkedWordExtracted("Y".equalsIgnoreCase(rs.getString("LINKED_WORD_EXTRACT_UNREF")));
+				sentence.setNGramsExtracted("Y".equalsIgnoreCase(rs.getString("LINKED_WORD_EXTRACT_UNREF")));
 				System.out.println(rs.getInt("ID") + "\t" + rs.getString("SENTENCE") + "\t" + rs.getString("VERIFIED") + "\t" + rs.getString("LINKED_WORD_EXTRACT_UNREF"));
 				
 				sentences.add(sentence);
