@@ -57,14 +57,17 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 					<legend><%=sentence.getValue()%></legend>
 					<div id="controlgroup_<%=sentence.getId()%>" class="class1">
 					
-						<label for="sentence_valid_<%=sentence.getId()%>">Valid</label>
-						<input type="checkbox" name="sentence_valid_<%=sentence.getId()%>" id="sentence_valid_<%=sentence.getId()%>">
+						<label for="sentence_valid_<%=sentence.getId()%>">Good</label>
+						<input type="checkbox" name="sentence_valid_<%=sentence.getId()%>" id="sentence_valid_<%=sentence.getId()%>" checked>
 						
-						<label for="sentence_invalid_<%=sentence.getId()%>">Invalid</label>
+						<label for="sentence_invalid_<%=sentence.getId()%>">Bad</label>
 						<input type="checkbox" name="sentence_invalid_<%=sentence.getId()%>" id="sentence_invalid_<%=sentence.getId()%>">
 						
-						<label for="sentence_delete_<%=sentence.getId()%>">Delete</label>
+						<label for="sentence_delete_<%=sentence.getId()%>">DEL</label>
 						<input type="checkbox" name="sentence_delete_<%=sentence.getId()%>" id="sentence_delete_<%=sentence.getId()%>">
+						
+						<label for="sentence_interesting_<%=sentence.getId()%>">Int</label>
+						<input type="checkbox" name="sentence_interesting_<%=sentence.getId()%>" id="sentence_interesting_<%=sentence.getId()%>">
 						
 					</div>
 			
