@@ -15,6 +15,7 @@ import java.util.List;
 
 import com.icodejava.research.nlp.domain.NGram;
 import com.icodejava.research.nlp.domain.NGramType;
+import com.icodejava.research.nlp.services.StopWordsService;
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
 
 public class NGramGenerator {
@@ -23,21 +24,96 @@ public class NGramGenerator {
 	public static final int LEVEL_TRIGRAM = 3;
 	
 	
-	public static List<NGram> generateForwardBigrams(String sentence) {
-		return generateForwardNGrams(LEVEL_BIGRAM, sentence);
+	public static List<NGram> generateForwardBigramsWithStopWords(String sentence) {
+		List<NGram> ngrams = generateForwardNGrams(LEVEL_BIGRAM, sentence);
+		
+		for(NGram ngram: ngrams) {
+		    ngram.setType(NGramType.BIGRAM_FORWARD_NO_STOPWORD_REMOVED);
+		}
+		
+		return ngrams;
 	}
 	
-	public static List<NGram> generateForwardTrigrams(String sentence) {
-		return generateForwardNGrams(LEVEL_TRIGRAM, sentence);
+    public static List<NGram> generateForwardTrigramsWithStopWords(String sentence) {
+
+        List<NGram> ngrams = generateForwardNGrams(LEVEL_TRIGRAM, sentence);
+
+        for (NGram ngram : ngrams) {
+            ngram.setType(NGramType.TRIGRAM_FORWARD_NO_STOPWORD_REMOVED);
+        }
+
+        return ngrams;
+    }
+	
+	public static List<NGram> generateBackwardBigramsWithStopWords(String sentence) {
+		
+        List<NGram> ngrams = generateBackwardNGrams(LEVEL_BIGRAM, sentence);
+
+        for (NGram ngram : ngrams) {
+            ngram.setType(NGramType.BIGRAM_BACKWARD_NO_STOPWORD_REMOVED);
+        }
+
+        return ngrams;
+		
 	}
 	
-	public static List<NGram> generateBackwardBigrams(String sentence) {
-		return generateBackwardNGrams(LEVEL_BIGRAM, sentence);
+	public static List<NGram> generateBackwardTrigramsWithStopWords(String sentence) {
+	    List<NGram> ngrams = generateBackwardNGrams(LEVEL_TRIGRAM, sentence);
+
+        for (NGram ngram : ngrams) {
+            ngram.setType(NGramType.TRIGRAM_BACKWARD_NO_STOPWORD_REMOVED);
+        }
+
+        return ngrams;
 	}
 	
-	public static List<NGram> generateBackwardTrigrams(String sentence) {
-		return generateBackwardNGrams(LEVEL_TRIGRAM, sentence);
-	}
+	public static List<NGram> generateForwardBigramsWithNoStopWords(String sentence) {
+	    
+	    sentence = StopWordsService.removeStopWords(sentence);
+        List<NGram> ngrams = generateForwardNGrams(LEVEL_BIGRAM, sentence);
+        
+        for(NGram ngram: ngrams) {
+            ngram.setType(NGramType.BIGRAM_FORWARD_WITH_STOPWORD_REMOVED);
+        }
+        
+        return ngrams;
+    }
+    
+    public static List<NGram> generateForwardTrigramsWithNoStopWords(String sentence) {
+
+        sentence = StopWordsService.removeStopWords(sentence);
+        List<NGram> ngrams = generateForwardNGrams(LEVEL_TRIGRAM, sentence);
+
+        for (NGram ngram : ngrams) {
+            ngram.setType(NGramType.TRIGRAM_FORWARD_WITH_STOPWORD_REMOVED);
+        }
+
+        return ngrams;
+    }
+    
+    public static List<NGram> generateBackwardBigramsWithNoStopWords(String sentence) {
+        
+        sentence = StopWordsService.removeStopWords(sentence);
+        List<NGram> ngrams = generateBackwardNGrams(LEVEL_BIGRAM, sentence);
+
+        for (NGram ngram : ngrams) {
+            ngram.setType(NGramType.BIGRAM_BACKWARD_WITH_STOPWORD_REMOVED);
+        }
+
+        return ngrams;
+        
+    }
+    
+    public static List<NGram> generateBackwardTrigramsWithNoStopWords(String sentence) {
+        sentence = StopWordsService.removeStopWords(sentence);
+        List<NGram> ngrams = generateBackwardNGrams(LEVEL_TRIGRAM, sentence);
+
+        for (NGram ngram : ngrams) {
+            ngram.setType(NGramType.TRIGRAM_BACKWARD_WITH_STOPWORD_REMOVED);
+        }
+
+        return ngrams;
+    }
 	
 	
 	
@@ -47,33 +123,33 @@ public class NGramGenerator {
      * e.g. [This is my] -> [This is, is my] for level 2.
      */
 	
-	private static List<NGram> generateForwardNGrams(int level, String sentence) {
+    private static List<NGram> generateForwardNGrams(int level, String sentence) {
 
-		List<String> words = Arrays.asList(sentence.split("\\s+"));
+        List<String> words = Arrays.asList(sentence.split("\\s+"));
 
-		List<NGram> ngrams = new ArrayList<NGram>();
+        List<NGram> ngrams = new ArrayList<NGram>();
 
-		int levelTemp = level;
-		for (int i = 0; i < words.size(); i++) {
+        int levelTemp = level;
+        for (int i = 0; i < words.size(); i++) {
 
-			String ngramStr = "";
-			while (level > 0 && (i + levelTemp - 1) < words.size()) {
-				ngramStr += NepaliTokenizer.cleanWordToken(words.get(i + levelTemp - level)) + " ";
-				level--;
-			}
+            String ngramStr = "";
+            while (level > 0 && (i + levelTemp - 1) < words.size()) {
+                ngramStr += NepaliTokenizer.cleanWordToken(words.get(i + levelTemp - level)) + " ";
+                level--;
+            }
 
-			ngramStr = ngramStr.trim();
+            ngramStr = ngramStr.trim();
 
-			if (ngramStr.length() > 0) {
-				ngrams.add(new NGram(ngramStr));
-			}
+            if (ngramStr.length() > 0) {
+                ngrams.add(new NGram(ngramStr));
+            }
 
-			// restore
-			level = levelTemp;
-		}
-		return ngrams;
+            // restore
+            level = levelTemp;
+        }
+        return ngrams;
 
-	}
+    }
 	
 	/**
      * Given a sentence, this method will return a collection of n (i.e. level) adjacent words but in backward order
@@ -132,7 +208,7 @@ public class NGramGenerator {
 	 * @param sentence
 	 * @return
 	 */
-	public static List<NGram> generateSkipBigramsForwardNoStopWordRemoved(String sentence) {
+	public static List<NGram> generateSkipBigramsForwardWithStopWords(String sentence) {
 
 		List<String> words = Arrays.asList(sentence.split("\\s+"));
 		List<NGram> skipBigrams = new ArrayList<NGram>();
@@ -140,12 +216,13 @@ public class NGramGenerator {
 
 			if (words.size() > i + 2) {
 			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i + 2));
+			    
+			    //System.out.println(text +" <--" + words.get(i) +" " + words.get(i+2));
 				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_NO_STOPWPRD_REMOVED));
 			}
 
 		}
 		return skipBigrams;
-
 	}
 
 	/**
@@ -153,7 +230,7 @@ public class NGramGenerator {
 	 * @param sentence
 	 * @return
 	 */
-	public static List<NGram> generateSkipBigramsBackwardNoStopWordRemoved(String sentence) {
+	public static List<NGram> generateSkipBigramsBackwardWithStopWords(String sentence) {
 
 		List<String> words = Arrays.asList(sentence.split("\\s+"));
 		List<NGram> skipBigrams = new ArrayList<NGram>();
@@ -175,7 +252,7 @@ public class NGramGenerator {
 	 * @param sentence
 	 * @return
 	 */
-	public static List<NGram> generateSkipBigramsForwardWithStopWordRemoved(String sentence) {
+	public static List<NGram> generateSkipBigramsForwardWithNoStopWords(String sentence) {
 
 		List<String> words = Arrays.asList(sentence.split("\\s+"));
 		List<NGram> skipBigrams = new ArrayList<NGram>();
@@ -183,7 +260,7 @@ public class NGramGenerator {
 
 			if (words.size() > i + 2) {
 			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i + 2));
-				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_WITH_STOPWPRD_REMOVED));
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_WITH_STOPWORD_REMOVED));
 			}
 
 		}
@@ -196,7 +273,7 @@ public class NGramGenerator {
 	 * @param sentence
 	 * @return
 	 */
-	public static List<NGram> generateSkipBigramsBackwardWithStopWordRemoved(String sentence) {
+	public static List<NGram> generateSkipBigramsBackwardWithNoStopWords(String sentence) {
 
 		List<String> words = Arrays.asList(sentence.split("\\s+"));
 		List<NGram> skipBigrams = new ArrayList<NGram>();
@@ -212,5 +289,25 @@ public class NGramGenerator {
 		return skipBigrams;
 
 	}
+
+	/**
+	 * Creates a list of words (MONOGRAMS) from sentence. Does not remove any stop words.
+	 * @param sentence
+	 * @return
+	 */
+    public static List<NGram> generateMonograms(String sentence) {
+        List<NGram> ngrams = new ArrayList<NGram>();
+
+        List<String> words = NepaliTokenizer.tokenizeWords(sentence);
+
+        for (String wordStr : words) {
+            NGram ngram = new NGram(wordStr);
+            ngram.setType(NGramType.MONOGRAM);
+
+            ngrams.add(ngram);
+        }
+
+        return ngrams;
+    }
 
 }

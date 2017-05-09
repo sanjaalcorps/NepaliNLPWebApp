@@ -28,22 +28,7 @@ public class FileUtilities {
     }
  
     public static void main(String args[]) throws FileNotFoundException, IOException {
- 
-        /**
-         * Non UTF8 format file read/write example
-         * Reads content from a file and writes to another file.
-         */
-         
-        byte[] fileContent = loadFile("/Users/kushal/Desktop/someFile.txt");
-        writeFile("/Users/kushal/Desktop/someOutputFile", fileContent);
-         
-        /**
-         * UTF8 format file read/write example
-         * Reads content from a file and writes to another file.
-         */
-        String content = readUTF8File("/Users/paudyak/Desktop/np_name.txt");
-        writeUTF8File("/Users/paudyak/Desktop/np_name_out.txt", content);
- 
+        trimLineSpacesInFile("src/com/icodejava/research/nlp/nepali_stop_words.txt");
     }
  
     /**
