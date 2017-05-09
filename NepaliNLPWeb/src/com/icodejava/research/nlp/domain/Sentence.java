@@ -1,13 +1,5 @@
 package com.icodejava.research.nlp.domain;
 
-/**
- * @author Kushal Paudyal
- * www.sanjaal.com | www.inepal.org | www.icodejava.com
- * 
- * This class represents a sentence structure, with some additional attributes,
- * 
- * @Modified: 05/06/2017
- */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +9,7 @@ public class Sentence {
 	/**
 	 * Flag representing if NGrams have been extracted.
 	 */
-	boolean linkedWordExtracted;
+	boolean isNGramsExtracted;
 	
 	/**
 	 * Flag tracking if the sentence is modified.
@@ -48,14 +40,11 @@ public class Sentence {
 	String verified;
 
 	int wordCount;
+	
+	List<NGram> nGrams;
 
-	List<Word> words;
 
 	public Sentence() {
-	}
-
-	public Sentence(String value) {
-		this.value = value;
 	}
 
 	public Sentence(int id, String value) {
@@ -63,9 +52,20 @@ public class Sentence {
 		this.value = value;
 	}
 
+	public Sentence(String value) {
+		this.value = value;
+	}
+
 	public int getId() {
 		return id;
 	}
+
+	public List<NGram> getnGrams() {
+	    if(nGrams == null) {
+	        nGrams = new ArrayList<NGram>();
+	    }
+        return nGrams;
+    }
 
 	public String getValue() {
 		return value;
@@ -87,17 +87,6 @@ public class Sentence {
 		return wordCount;
 	}
 
-	public List<Word> getWords() {
-		if (words == null) {
-			words = new ArrayList<Word>();
-		}
-		return words;
-	}
-
-	public boolean isLinkedWordExtracted() {
-		return linkedWordExtracted;
-	}
-
 	public boolean isMarkedForDeletion() {
 		return isMarkedForDeletion;
 	}
@@ -106,12 +95,12 @@ public class Sentence {
 		return modified;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public boolean isNGramsExtracted() {
+		return isNGramsExtracted;
 	}
 
-	public void setLinkedWordExtracted(boolean linkedWordExtracted) {
-		this.linkedWordExtracted = linkedWordExtracted;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setMarkedForDeletion(boolean isMarkedForDeletion) {
@@ -120,6 +109,19 @@ public class Sentence {
 
 	public void setModified(boolean modified) {
 		this.modified = modified;
+	}
+
+	private void setNGrams(List<NGram> nGrams) {
+        this.nGrams = nGrams;
+    }
+	
+	public void addNGrams(List<NGram> nGrams) {
+	    getnGrams().addAll(nGrams);
+	    
+	}
+
+	public void setNGramsExtracted(boolean isNGramsExtracted) {
+		this.isNGramsExtracted = isNGramsExtracted;
 	}
 
 	public void setValue(String value) {
@@ -139,15 +141,11 @@ public class Sentence {
 		this.verified = verified;
 	}
 
-	public void setWordCount(int wordCount) {
+    public void setWordCount(int wordCount) {
 		this.wordCount = wordCount;
 	}
 
-	public void setWords(List<Word> words) {
-		this.words = words;
-	}
-
-	@Override
+    @Override
 	public String toString() {
 		return id + " \t" + value;
 	}
