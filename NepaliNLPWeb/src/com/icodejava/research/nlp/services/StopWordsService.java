@@ -52,4 +52,10 @@ public class StopWordsService {
 		
 		return sentences;
 	}
+
+    public static Sentence removeStopWords(Sentence sentence) {
+        sentence.setValue(removeStopWords(sentence.getValue()));
+        return sentence;
+        
+    }
 }
