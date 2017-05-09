@@ -64,5 +64,10 @@ public interface Tables {
 	*/
 	String NGRAM="NGRAM";
 	
+	/*
+	 CREATE TABLE "STOP_WORDS" ( `ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `WORD` TEXT NOT NULL )
+	 */
+	String STOP_WORDS="STOP_WORDS";
+	
 	String TAGS="TAGS";
 }
