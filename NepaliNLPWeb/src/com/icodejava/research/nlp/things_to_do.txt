@@ -1,3 +1,5 @@
+implement sqlite tranctions to insert ngrams so the insert is fast
+
 Write a class to tag words by data classifier file
 Generate name, Roman pair from a file
 Complete Unicodization of Shabdakosh

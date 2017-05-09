@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class NGramsDB extends DBUtility {
     public static final String DATABASE_URL = "jdbc:sqlite:E:/NLP_DB/npl3.db";//SHADOWED FROM PARENT
     
     public static void insertOrUpdateNGrams(List<NGram> ngrams) {
-        
+        Instant start = Instant.now();
         if(ngrams == null || ngrams.size() ==0) {
             return;
         }
@@ -44,6 +46,10 @@ public class NGramsDB extends DBUtility {
             }
             
         }
+        
+        Instant end = Instant.now();
+        System.out.println("Time taken to insert or update: " + Duration.between(start, end) + "("+ngrams.size()+")");
+        
         
     }
 	

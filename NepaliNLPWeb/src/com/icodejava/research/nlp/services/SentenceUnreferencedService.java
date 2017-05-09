@@ -3,9 +3,8 @@ package com.icodejava.research.nlp.services;
 import java.util.List;
 
 import com.icodejava.research.nlp.database.ArticlesDB;
+import com.icodejava.research.nlp.database.NGramsDB;
 import com.icodejava.research.nlp.database.SentencesUnreferencedDB;
-import com.icodejava.research.nlp.database.WordsUnreferencedDB;
-import com.icodejava.research.nlp.domain.Article;
 import com.icodejava.research.nlp.domain.Sentence;
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
 import com.icodejava.research.nlp.utils.TextUtils;
@@ -171,6 +170,8 @@ public class SentenceUnreferencedService {
         return SentencesUnreferencedDB.getVerifiedSentencesNgramNotCreated(sentenceLimit);
     }
 
+
+    
     public static void markNGramExtracted(List<Sentence> sentences) {
         for(Sentence sentence : sentences) {
            
@@ -178,6 +179,11 @@ public class SentenceUnreferencedService {
            
         }
         
+    }
+
+    public static void storeNGrams(List<Sentence> sentences) {
+        
+        SentencesUnreferencedDB.storeNGrams(sentences);
     }
     
   

@@ -28,7 +28,7 @@ public class NGramGenerator {
 		List<NGram> ngrams = generateForwardNGrams(LEVEL_BIGRAM, sentence);
 		
 		for(NGram ngram: ngrams) {
-		    ngram.setType(NGramType.BIGRAM_FORWARD_NO_STOPWORD_REMOVED);
+		    ngram.setType(NGramType.BIGRAM_FORWARD_WITH_STOPWORDS);
 		}
 		
 		return ngrams;
@@ -39,7 +39,7 @@ public class NGramGenerator {
         List<NGram> ngrams = generateForwardNGrams(LEVEL_TRIGRAM, sentence);
 
         for (NGram ngram : ngrams) {
-            ngram.setType(NGramType.TRIGRAM_FORWARD_NO_STOPWORD_REMOVED);
+            ngram.setType(NGramType.TRIGRAM_FORWARD_WITH_STOPWORDS);
         }
 
         return ngrams;
@@ -50,7 +50,7 @@ public class NGramGenerator {
         List<NGram> ngrams = generateBackwardNGrams(LEVEL_BIGRAM, sentence);
 
         for (NGram ngram : ngrams) {
-            ngram.setType(NGramType.BIGRAM_BACKWARD_NO_STOPWORD_REMOVED);
+            ngram.setType(NGramType.BIGRAM_BACKWARD_WITH_STOPWORDS);
         }
 
         return ngrams;
@@ -61,7 +61,7 @@ public class NGramGenerator {
 	    List<NGram> ngrams = generateBackwardNGrams(LEVEL_TRIGRAM, sentence);
 
         for (NGram ngram : ngrams) {
-            ngram.setType(NGramType.TRIGRAM_BACKWARD_NO_STOPWORD_REMOVED);
+            ngram.setType(NGramType.TRIGRAM_BACKWARD_WITH_STOPWORDS);
         }
 
         return ngrams;
@@ -73,7 +73,7 @@ public class NGramGenerator {
         List<NGram> ngrams = generateForwardNGrams(LEVEL_BIGRAM, sentence);
         
         for(NGram ngram: ngrams) {
-            ngram.setType(NGramType.BIGRAM_FORWARD_WITH_STOPWORD_REMOVED);
+            ngram.setType(NGramType.BIGRAM_FORWARD_NO_STOPWORDS);
         }
         
         return ngrams;
@@ -85,7 +85,7 @@ public class NGramGenerator {
         List<NGram> ngrams = generateForwardNGrams(LEVEL_TRIGRAM, sentence);
 
         for (NGram ngram : ngrams) {
-            ngram.setType(NGramType.TRIGRAM_FORWARD_WITH_STOPWORD_REMOVED);
+            ngram.setType(NGramType.TRIGRAM_FORWARD_NO_STOPWORDS);
         }
 
         return ngrams;
@@ -97,7 +97,7 @@ public class NGramGenerator {
         List<NGram> ngrams = generateBackwardNGrams(LEVEL_BIGRAM, sentence);
 
         for (NGram ngram : ngrams) {
-            ngram.setType(NGramType.BIGRAM_BACKWARD_WITH_STOPWORD_REMOVED);
+            ngram.setType(NGramType.BIGRAM_BACKWARD_NO_STOPWORDS);
         }
 
         return ngrams;
@@ -109,7 +109,7 @@ public class NGramGenerator {
         List<NGram> ngrams = generateBackwardNGrams(LEVEL_TRIGRAM, sentence);
 
         for (NGram ngram : ngrams) {
-            ngram.setType(NGramType.TRIGRAM_BACKWARD_WITH_STOPWORD_REMOVED);
+            ngram.setType(NGramType.TRIGRAM_BACKWARD_NO_STOPWORDS);
         }
 
         return ngrams;
@@ -218,7 +218,7 @@ public class NGramGenerator {
 			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i + 2));
 			    
 			    //System.out.println(text +" <--" + words.get(i) +" " + words.get(i+2));
-				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_NO_STOPWPRD_REMOVED));
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_WITH_STOPWORDS));
 			}
 
 		}
@@ -239,7 +239,7 @@ public class NGramGenerator {
 			if (i - 2 >= 0) {
 			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i - 2));
 			    
-				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_BACKWARD_NO_STOPWORD_REMOVED));
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_BACKWARD_WITH_STOPWORDS));
 			}
 		}
 
@@ -260,7 +260,7 @@ public class NGramGenerator {
 
 			if (words.size() > i + 2) {
 			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i + 2));
-				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_WITH_STOPWORD_REMOVED));
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_FORWARD_NO_STOPWORDS));
 			}
 
 		}
@@ -282,7 +282,7 @@ public class NGramGenerator {
 			if (i - 2 >= 0) {
 			    String text = NepaliTokenizer.cleanWordToken(words.get(i)) + " " + NepaliTokenizer.cleanWordToken(words.get(i - 2));
 			    
-				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_BACKWARD_WITH_STOPWORD_REMOVED));
+				skipBigrams.add(new NGram(text, NGramType.SKIP_BIGRAM_BACKWARD_NO_STOPWORDS));
 			}
 		}
 

@@ -11,7 +11,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.icodejava.research.nlp.domain.Sentence;
-import com.icodejava.research.nlp.utils.DateUtils;
 
 public class SentencesUnreferencedDB extends DBUtility {
 
@@ -537,6 +536,15 @@ public class SentencesUnreferencedDB extends DBUtility {
             e.printStackTrace();
         }
 
+    }
+
+    public static void storeNGrams(List<Sentence> sentences) {
+     
+        for(Sentence sentence: sentences) {
+            NGramsDB.insertOrUpdateNGrams(sentence.getnGrams());
+            SentencesUnreferencedDB.markNGramExtracted(sentence);
+        }
+        
     }
 
 }
