@@ -1,6 +1,7 @@
 package org.inepal.nlp.web;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.icodejava.research.nlp.HtmlTextExtractor;
+import com.icodejava.research.nlp.domain.WebProcessingResult;
+import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
+import com.icodejava.research.nlp.tokenizer.NepaliTokenizer.Terminator;
 
 /**
  * Servlet implementation class WebTokenizerServlet
@@ -30,9 +34,21 @@ public class WebTokenizerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String urlToExtractTextFrom = request.getParameter("website");
-		//HtmlTextExtractor.extractTextFromWeb(url);
+		String text = HtmlTextExtractor.extractTextFromWeb(urlToExtractTextFrom);
 		
-		response.getWriter().append("Served at: " + urlToExtractTextFrom).append(request.getContextPath());
+		WebProcessingResult result = new WebProcessingResult();
+		result.setText(text);
+		
+		result.setSentences(NepaliTokenizer.tokenizeSentence(text, Terminator.NP));
+		
+		result.setWords(NepaliTokenizer.tokenizeWords(text));
+		result.setWordFrequencies(NepaliTokenizer.getWordFrequencyMap(text));
+		
+		request.getSession().setAttribute("WebProcessingResult", result);
+		
+		String nextJSP = "jsp/web_tokenizer.jsp";
+		response.sendRedirect(nextJSP);
+		
 	}
 
 	/**

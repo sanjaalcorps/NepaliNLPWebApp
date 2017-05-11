@@ -1,5 +1,9 @@
 package com.icodejava.research.nlp;
-
+/**
+ * @author Kushal Paudyal
+ * This class can read web page, and return the TEXT from the page.
+ * It uses Jsoup Library
+ */
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
