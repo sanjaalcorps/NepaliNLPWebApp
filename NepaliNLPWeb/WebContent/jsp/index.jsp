@@ -18,16 +18,12 @@ div.class1 {
     margin: 10px;
     border: 3px solid #73AD21;
 }
-div.right {
-	width:350x;
-	align:right;
-}
 </style>
 </head>
 <body>
 
 	Welcome to iNepal.ORG's natural language processing portal. You can do the following in this page.
-	<br><a href="pos_tagger.jsp">POS Tagger</a>
+	<br><a href="pos_tagger.jsp">--POS Tagger</a>
 
 	<br><a target="_blank" href="sentence_classify.jsp">Sentence Classification</a>
 	<br><a target="_blank" href="sentence_roman_validate.jsp">Classify Romanization</a>
@@ -37,14 +33,15 @@ div.right {
 	<br><a target="_blank" href="word_classify_root.jsp">--Words Classification (Root)</a>
 	<br><a target="_blank" href="word_classify.jsp">--Words Classification</a>
 	<br><a target="_blank" href="word_roman_validate.jsp">--Word Romanization</a>
-	<br><a target="_blank" href="word_root_validate.jsp">Word Root Validation</a>
-	<br><a target="_blank" href="word_search.jsp">Word Search</a>
+	<br><a target="_blank" href="word_root_validate.jsp">--Word Root Validation</a>
+	<br><a target="_blank" href="word_search.jsp">--Word Search</a>
 	<br><a target="_blank" href="word_verify.jsp">Word Verification</a>
 	<br/>
-	<br><a href="statistics.jsp">Admin - Statistics</a>
-	
-	
-	
+	<br><a target="_blank" href="web_tokenizer.jsp">--Web Tokenizer</a>
+	<br><a target="_blank" href="verb_variations.jsp">--Verb Variations</a>
+	<br/>
+	<br><a target="_blank" href="statistics.jsp">Admin - Statistics</a>
+	<br><a target="_blank" href="admin_tools.jsp">Admin - Tools</a>
 	
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
