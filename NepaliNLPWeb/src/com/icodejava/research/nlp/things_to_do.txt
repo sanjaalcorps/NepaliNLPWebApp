@@ -19,7 +19,7 @@ extract word ending in 'ता'
 extract word ending in 'प्रसाद'
 extract word ending in 'बहादुर'
 extract word ending in 'कुमार' 
-extract word ending in 'कुमार' 
+extract word ending in 'कुमारी' 
 extract word ending in 'वारी' //place 
 extract word ending in 'कोट' //place दुवाकोट
 extract word ending in 'वास' //place
@@ -39,6 +39,7 @@ extract word ending in 'वास' //place
 खोला
 पुर्
 गाउँ
+शहर
 
 Fix Chandrabindu
 >>romanization - stem it before romanization
@@ -51,6 +52,14 @@ Compound Word Ending Precedence
 {wip} Complete Word fixer - to fix broken nepali words
 {WIP} Fix Romanization Logic
 
+http://loksewasahayoginepal.blogspot.com/
+http://pscclass.blogspot.com/
+http://www.sangamkhabar.com/
+http://setoparewa.com/
+http://www.madheshpradesh.com/
+http://www.netpatrika.com/
+http://www.radionamobuddha.org/
+http://yatradaily.com/
 
 Add this to evernote: http://nepalibhashabyakaran.blogspot.com/
 Add this to evernote: http://mylanguages.org/nepali_pronouns.php
