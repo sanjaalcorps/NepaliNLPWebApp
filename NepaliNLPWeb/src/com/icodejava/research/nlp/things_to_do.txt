@@ -1,5 +1,5 @@
 Use Tag Library
-implement sqlite tranctions to insert ngrams so the insert is fast
+implement sqlite transactions to insert ngrams so the insert is fast
 Store com.icodejava.research.nlp.data.classifer._nepali_people_email_phone_district.txt to database
 Write a class to tag words by data classifier file
 Generate name, Roman pair from a file
@@ -14,14 +14,12 @@ select root words that are already not under word column (potential issues and c
 Word Linkage Extraction
 >>Create ISO to General Romanization
 admin page
-
 MPP POS TAG TO TAG CORPUS
-
 extract word ending in 'ता'
 extract word ending in 'प्रसाद'
 extract word ending in 'बहादुर'
 extract word ending in 'कुमार' 
-extract word ending in 'कुमार' 
+extract word ending in 'कुमारी' 
 extract word ending in 'वारी' //place 
 extract word ending in 'कोट' //place दुवाकोट
 extract word ending in 'वास' //place
@@ -41,25 +39,35 @@ extract word ending in 'वास' //place
 खोला
 पुर्
 गाउँ
+शहर
 
-Add date and user on the table
 Fix Chandrabindu
 >>romanization - stem it before romanization
-Stemmer - Add Negation such as khandaina
 Compound Word Ending Precedence
 
+{WIP}Add date and user on the table
+{WIP}Stemmer - Add Negation such as khandaina
 {WIP} stastistics page
 {WIP} Romanize and Save Words
 {wip} Complete Word fixer - to fix broken nepali words
 {WIP} Fix Romanization Logic
 
-stop words
+http://loksewasahayoginepal.blogspot.com/
+http://pscclass.blogspot.com/
+http://www.sangamkhabar.com/
+http://setoparewa.com/
+http://www.madheshpradesh.com/
+http://www.netpatrika.com/
+http://www.radionamobuddha.org/
+http://yatradaily.com/
 
 Add this to evernote: http://nepalibhashabyakaran.blogspot.com/
 Add this to evernote: http://mylanguages.org/nepali_pronouns.php
 Add this to evernote: https://nepalgo.tumblr.com/grammar
 Complete Verb Variation Login in NepaliStemmer for खानु, चल्नु, रमाउनु, तर्सिनु
 =========The following tasks have been completed.
+	{DONE}stop words
+	{DONE}Create Verb Variation (Affirmative / Negative) page. 5/11/2017
 	{DONE}replace instead of replaceAll
 	{DONE}Create Stemmer Class
 	{DONE}Remove Duplicate Sentences

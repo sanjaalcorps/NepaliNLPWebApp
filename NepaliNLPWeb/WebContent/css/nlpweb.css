@@ -1,3 +1,43 @@
 .ui-state-highlight-custom {
 	background: #ff5508;
 }
+div.class1 {
+    width:9500px;
+    margin:40px;
+}
+div.parent{
+	padding:5px;
+	width:950px;
+	margin:25px;
+	background:#009922
+}
+div.affirmative_verb_variations {
+	padding: 10px;
+	width:900px;
+	margin:25px;
+	background:#ee9966
+}
+div.negative_verb_variations {
+	padding: 10px;
+	width:900px;
+	margin:25px;
+	background:#ee9966
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 7px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button2 {background-color: #008CBA;margin:5px} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+.button6 {background-color: #FFAA33} /*Yellow*/
+.button7 {background-color: #00cc33} /*Green*/

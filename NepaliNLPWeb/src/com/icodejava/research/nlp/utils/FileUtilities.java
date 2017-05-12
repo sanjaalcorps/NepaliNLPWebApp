@@ -28,7 +28,7 @@ public class FileUtilities {
     }
  
     public static void main(String args[]) throws FileNotFoundException, IOException {
-        trimLineSpacesInFile("src/com/icodejava/research/nlp/nepali_stop_words.txt");
+        trimLineSpacesInFile("src/com/icodejava/research/nlp/data/classifier/food.txt");
     }
  
     /**

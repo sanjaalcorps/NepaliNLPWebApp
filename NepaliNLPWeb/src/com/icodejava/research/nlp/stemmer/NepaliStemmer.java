@@ -20,7 +20,8 @@ import com.icodejava.research.nlp.utils.TextUtils;
 public class NepaliStemmer {
 	
 	public static void main(String [] args) {
-		getNepaliRootWord("समयभन्दा");
+		//System.out.println(getNepaliRootWord("निधारमा"));
+		getAffirmativeVerbVariations("ल्याउनु");
 	}
 
 	/**
@@ -155,7 +156,7 @@ public class NepaliStemmer {
 
 	    
 	    if(wordEndingInNU.endsWith("उनु")) {
-	    	System.out.println("Here");
+	    	//System.out.println("Here");
 	    	verbVariations.add(root + "उनोस");//ramaunos
 	    	verbVariations.add(root + "उनुस"); //Ramaunus
 	    	verbVariations.add(root + "उनुहोस"); //ramaunuhos
