@@ -11,6 +11,13 @@ div.parent{
 	margin:25px;
 	background:#009922
 }
+
+div.parent_002{
+	padding:5px;
+	width:950px;
+	margin:10px;
+	background:#00FF00
+}
 div.affirmative_verb_variations {
 	padding: 10px;
 	width:900px;
