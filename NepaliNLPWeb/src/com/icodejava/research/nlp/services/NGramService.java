@@ -2,7 +2,7 @@ package com.icodejava.research.nlp.services;
 
 /**
  * @author Kushal Paudyal
- * www.icodejava.com | www.inepal.org| www.sanjaal.com
+ * @WEB: www.icodejava.com | www.inepal.org| www.sanjaal.com
  * Service class to generate NGrams for Sentences.
  * The following NGRAMS are supported. 
  * - Monograms (Also known as Bag of Words)
@@ -23,7 +23,7 @@ import com.icodejava.research.nlp.ngram.NGramGenerator;
 public class NGramService {
     
     public static void main(String args[]) {
-        int sentenceLimit = 30;
+        int sentenceLimit = 2;
         createAndStoreCompleteNGrams(sentenceLimit);
 
     }

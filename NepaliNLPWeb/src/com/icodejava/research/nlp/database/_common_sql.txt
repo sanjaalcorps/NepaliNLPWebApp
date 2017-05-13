@@ -25,6 +25,7 @@ select count(*) from sentence_unreferenced where words_count is not null
 
 //REMOVING मै  FROM "सालमै" - > 	"साल"
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2) where ID=6012
+update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2), VERIFIED='YVER222' where word like '%ले'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-5), VERIFIED = 'Y-VER', IS_COMPOUND_WORD='Y' where word like '%पछिको'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-3), VERIFIED = 'Y-VER22', IS_COMPOUND_WORD='Y' where word like '%लाई'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-6), VERIFIED = 'Y-VER22', IS_COMPOUND_WORD='Y' where word like '%हरूलाई'
@@ -38,3 +39,6 @@ UPDATE WORDS_UNREFERENCED SET ROOT_WORD = WORD, ROOT_WORD_EXTRACTED = 'Y' WHERE 
 
 //finding new ngrams to be added
 SELECT A.WORDS, B.WORD FROM NGRAM A LEFT OUTER JOIN STOP_WORDS B ON A.WORDS = B.WORD WHERE A.NGRAM_TYPE='M' AND A.FREQUENCY > 5 ORDER BY 2 DESC
+
+//verified sentences whose ngrams have not been extracted.
+select * from sentence_unreferenced where ngram_extracted is null and verified = 'Y'

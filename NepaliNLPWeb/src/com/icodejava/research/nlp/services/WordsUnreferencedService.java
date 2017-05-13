@@ -36,8 +36,8 @@ public class WordsUnreferencedService {
 		 
 		// getRandomCompoundWords(1000);
 		 
-		 //updateWordRootFromKnownRoots();
-		 updateCompoundWordRootsFromKnownRoots();
+		 updateWordRootFromKnownRoots();
+		 //updateCompoundWordRootsFromKnownRoots(); //TODO: NEEDS OPTIMIZATION
 
 	}
 

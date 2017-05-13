@@ -515,10 +515,10 @@ public class SentencesUnreferencedDB extends DBUtility {
         
     }
 
-    public static void markNGramExtracted(Sentence sentence) {
+    public static void markNGramExtracted(Connection conn,Sentence sentence) {
         String sql = "UPDATE " + Tables.SENTENCES_UNREFERENCED + " SET NGRAM_EXTRACTED=?, UPDATED_DATE=? WHERE ID=?";
 
-        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+        try (//Connection conn = (conn1!=null)?conn1:DriverManager.getConnection(DATABASE_URL);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, "Y");
@@ -539,12 +539,17 @@ public class SentencesUnreferencedDB extends DBUtility {
     }
 
     public static void storeNGrams(List<Sentence> sentences) {
-     
-        for(Sentence sentence: sentences) {
-            NGramsDB.insertOrUpdateNGrams(sentence.getnGrams());
-            SentencesUnreferencedDB.markNGramExtracted(sentence);
+        try (Connection conn = NGramsDB.getConnection();) {
+            for (Sentence sentence : sentences) {
+                NGramsDB.insertOrUpdateNGrams(conn, sentence.getnGrams());
+                SentencesUnreferencedDB.markNGramExtracted(conn, sentence);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
-        
+
     }
 
 }

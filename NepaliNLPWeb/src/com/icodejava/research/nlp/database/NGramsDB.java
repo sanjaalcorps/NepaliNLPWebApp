@@ -25,32 +25,32 @@ public class NGramsDB extends DBUtility {
     
     public static final String DATABASE_URL = "jdbc:sqlite:E:/NLP_DB/npl3.db";//SHADOWED FROM PARENT
     
-    public static void insertOrUpdateNGrams(List<NGram> ngrams) {
+    public static void insertOrUpdateNGrams(Connection conn, List<NGram> ngrams) {
         Instant start = Instant.now();
-        if(ngrams == null || ngrams.size() ==0) {
+        if (ngrams == null || ngrams.size() == 0) {
             return;
         }
+
         
-        
-        for(NGram ngram: ngrams) {
-            
-            //try to fetch from the database to see if it already exists
-            boolean alreadyExists = alreadyExists(ngram);
-            
-            if(alreadyExists) {
-                //update frequency
-                updateFrequency(ngram);
-            } else {
-                ngram.setFrequency(1);//First occurrence
-                insertNGram(ngram);
+
+            for (NGram ngram : ngrams) {
+
+                // try to fetch from the database to see if it already exists
+                boolean alreadyExists = alreadyExists(conn, ngram);
+
+                if (alreadyExists) {
+                    // update frequency
+                    updateFrequency(ngram);
+                } else {
+                    ngram.setFrequency(1);// First occurrence
+                    insertNGram(ngram);
+                }
             }
-            
-        }
-        
+      
+
         Instant end = Instant.now();
-        System.out.println("Time taken to insert or update: " + Duration.between(start, end) + "("+ngrams.size()+")");
-        
-        
+        System.out.println("Time taken to insert or update: " + Duration.between(start, end) + "(" + ngrams.size() + ")");
+
     }
 	
     
@@ -64,7 +64,7 @@ public class NGramsDB extends DBUtility {
         
         //System.out.println(sql);
 
-        try (Connection conn = DriverManager.getConnection(DATABASE_URL); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             int result = pstmt.executeUpdate();
 
@@ -84,7 +84,7 @@ public class NGramsDB extends DBUtility {
 
         String sql = "INSERT INTO "+ Tables.NGRAM + " (WORDS, FREQUENCY, NGRAM_TYPE, CREATED_DATE, UPDATED_DATE) VALUES(?, ?,?, ?, ?)";
 
-        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+        try (Connection conn = getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, ngram.getWords());
@@ -109,11 +109,17 @@ public class NGramsDB extends DBUtility {
 
 
 
-    public static boolean alreadyExists(NGram ngram) {
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(DATABASE_URL);
+    }
+
+
+
+    public static boolean alreadyExists(Connection conn, NGram ngram) {
         boolean alreadyExists = false;
         String sql = "SELECT ID FROM " +  Tables.NGRAM +" WHERE WORDS=\"" + ngram + "\" AND NGRAM_TYPE=\"" + ngram.getType().getTag() + "\"";
 
-        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+        try (//Connection conn = (conn1 !=null)?conn1: getConnection();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
 
@@ -128,8 +134,7 @@ public class NGramsDB extends DBUtility {
         return alreadyExists;
     }
     
-    
-    
+
     public static NGram selectNGramByWords(String words) {
         String sql = "SELECT * FROM " + Tables.NGRAM + " WHERE WORDS=" + words + " ORDER BY WORD ASC";
 

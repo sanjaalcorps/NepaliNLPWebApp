@@ -13,6 +13,7 @@ import com.icodejava.research.nlp.domain.Article;
 
 public class ArticlesDB extends DBUtility {
 	
+    public static final String DATABASE_URL = "jdbc:sqlite:E:/NLP_DB/ARTICLES_UNPROCESSED.db";//SHADOWED FROM PARENT
 	
     /**
     CREATE TABLE ARTICLES (

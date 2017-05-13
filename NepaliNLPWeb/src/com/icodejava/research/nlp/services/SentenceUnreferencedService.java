@@ -171,15 +171,15 @@ public class SentenceUnreferencedService {
     }
 
 
-    
+/*    
     public static void markNGramExtracted(List<Sentence> sentences) {
         for(Sentence sentence : sentences) {
            
-            SentencesUnreferencedDB.markNGramExtracted(sentence);
+            SentencesUnreferencedDB.markNGramExtracted(null,sentence);
            
         }
         
-    }
+    }*/
 
     public static void storeNGrams(List<Sentence> sentences) {
         

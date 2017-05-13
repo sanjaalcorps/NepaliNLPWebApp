@@ -18,11 +18,13 @@ public class LinksExtractor {
     	
     	
 //    	String url ="http://www.nagariknews.com/category/81?page=";//1-55
-    	String url ="http://www.nagariknews.com/category/26?page="; //1-71
-    	
-    	for(int i=1;i<=71;i++) {
-        	extractLinks(url+i);
-        	//extractLinks(url+i+"/");
+//    	String url ="http://www.nagariknews.com/category/26?page="; //1-71 DONE
+//    	String url ="http://www.dainiknepal.com/section/market/page/"; //1-412
+    	String url ="http://www.nagariknews.com/category/27?page="; //1-46
+        
+    	for(int i=1;i<=46;i++) {
+        	//extractLinks(url+i);
+        	extractLinks(url+i+"/");
         	Thread.sleep(2000);
         }
     	
@@ -30,17 +32,18 @@ public class LinksExtractor {
     	/*
     	 * TODO:Extract Following
     	 *
+    	String url ="http://samudrapari.com/category/news/page/";//1-2802 //failed
 	    	 
 	    	 http://www.dainiknepal.com/section/kala/page/265 
 	    	 http://www.dainiknepal.com/section/diaspora/page/143
-	    	 http://www.dainiknepal.com/section/market/page/412
+	    	 
 	    	 http://www.dainiknepal.com/section/sports/page/161
 	    	 http://www.dainiknepal.com/section/rochak/page/88
 	    	 http://www.dainiknepal.com/section/health/page/49
 
 			http://www.nagariknews.com/category/25?page=31
 			
-			http://www.nagariknews.com/category/27?page=46
+			
 			http://www.nagariknews.com/category/28?page=13
 			http://www.nagariknews.com/category/33?page=8
 			
@@ -48,7 +51,7 @@ public class LinksExtractor {
 			http://www.nagariknews.com/category/37?page=3
 			
 			
-			http://samudrapari.com/category/news/page/2802/
+			
 			http://samudrapari.com/category/diaspora/page/129/
 			http://samudrapari.com/category/opinion/page/33/
 			http://samudrapari.com/category/interview/page/13/
@@ -161,7 +164,7 @@ public class LinksExtractor {
 
     private static synchronized void print(String msg, Object... args) {
     	try{
-        FileUtilities.writeUTF8FileAppend("C:/Users/paudyals/Desktop/NLP/URLs_dainiknepal.txt", String.format(msg, args));
+        FileUtilities.writeUTF8FileAppend("C:/Users/paudyals/Desktop/NLP/URLs_dainik.txt", String.format(msg, args));
     	//System.out.println(String.format(msg, args));
     	} catch(Exception e) {
     		System.err.println("Some Link Extraction Failed");

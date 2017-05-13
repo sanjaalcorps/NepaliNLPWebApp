@@ -40,6 +40,7 @@ extract word ending in 'वास' //place
 पुर्
 गाउँ
 शहर
+राज
 
 Fix Chandrabindu
 >>romanization - stem it before romanization
