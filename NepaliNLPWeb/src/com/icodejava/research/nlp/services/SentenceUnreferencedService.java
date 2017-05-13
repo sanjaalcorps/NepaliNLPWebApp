@@ -13,11 +13,11 @@ public class SentenceUnreferencedService {
 	
 	public static void main (String args []) throws InterruptedException {
 		
-		extractUnreferencedSentencesFromArticles(20000);
+		//extractUnreferencedSentencesFromArticles(20000);
 		//cleanSentences(2000000);
-		//updateWordCount(200000);
+		calculateAndStoreWordCount(200000);
 		
-		removeDuplication();
+//		removeDuplication();
 //		
 //		updateSentenceVerification(null);
 //		getVerifiedSentenceCount();
