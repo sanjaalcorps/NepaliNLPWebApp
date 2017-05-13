@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -7,21 +7,18 @@
 <title>NLP - Word Classify</title>
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/nlpweb.css" rel="stylesheet">
 <style>
 body {
 	width:350px;
 	font-family: "Trebuchet MS", sans-serif;
 	margin: 50px;
 }
-div.class1 {
-    width:300px;
-    margin: 10px;
-    border: 3px solid #73AD21;
-}
 </style>
 </head>
 <body>
 
+<div class="parent_002" style="padding:10x;">
 	Welcome to iNepal.ORG's natural language processing portal. You can do the following in this page.
 	<br><a href="pos_tagger.jsp">--POS Tagger</a>
 
@@ -46,5 +43,9 @@ div.class1 {
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
 	<script src="../js/bootstrap.js"></script>
+	
+	</div>
+	
 </body>
+
 </html>
