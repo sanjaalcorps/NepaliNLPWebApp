@@ -185,6 +185,11 @@ public class SentenceUnreferencedService {
         
         SentencesUnreferencedDB.storeNGrams(sentences);
     }
+
+	public static List<Sentence> searchSentences(String searchQuery, String searchType, String searchLimit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
   
 	
