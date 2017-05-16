@@ -3,7 +3,6 @@ package com.icodejava.research.nlp.services;
 import java.util.List;
 
 import com.icodejava.research.nlp.database.ArticlesDB;
-import com.icodejava.research.nlp.database.NGramsDB;
 import com.icodejava.research.nlp.database.SentencesUnreferencedDB;
 import com.icodejava.research.nlp.domain.Sentence;
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;

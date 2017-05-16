@@ -1,4 +1,3 @@
-Use Tag Library
 implement sqlite transactions to insert ngrams so the insert is fast
 Store com.icodejava.research.nlp.data.classifer._nepali_people_email_phone_district.txt to database
 Write a class to tag words by data classifier file
@@ -52,6 +51,8 @@ Compound Word Ending Precedence
 {WIP} Romanize and Save Words
 {wip} Complete Word fixer - to fix broken nepali words
 {WIP} Fix Romanization Logic
+{WIP} Use Tag Library
+
 
 http://loksewasahayoginepal.blogspot.com/
 http://pscclass.blogspot.com/
