@@ -23,7 +23,7 @@ body {
 	<br><a href="pos_tagger.jsp">--POS Tagger</a>
 
 	<br><a target="_blank" href="sentence_classify.jsp">Sentence Classification</a>
-	<br><a target="_blank" href="sentence_roman_validate.jsp">Classify Romanization</a>
+	<br><a target="_blank" href="sentence_roman_validate.jsp">Sentence Romanization</a>
 	<br><a target="_blank" href="sentence_search.jsp">Sentence Search</a>
 	<br><a target="_blank" href="sentence_valid.jsp">--Sentence Validation</a>
 
@@ -31,7 +31,8 @@ body {
 	<br><a target="_blank" href="word_classify.jsp">--Words Classification</a>
 	<br><a target="_blank" href="word_roman_validate.jsp">--Word Romanization</a>
 	<br><a target="_blank" href="word_root_validate.jsp">--Word Root Validation</a>
-	<br><a target="_blank" href="word_search.jsp">--Word Search</a>
+	<br><a target="_blank" href="word_search.jsp">--Words Search</a>
+	<br><a target="_blank" href="ngrams_search.jsp">--NGrams Search</a>
 	<br><a target="_blank" href="word_verify.jsp">Word Verification</a>
 	<br/>
 	<br><a target="_blank" href="web_tokenizer.jsp">--Web Tokenizer</a>

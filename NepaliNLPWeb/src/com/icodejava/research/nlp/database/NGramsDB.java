@@ -111,11 +111,6 @@ public class NGramsDB extends DBUtility {
 
 
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DATABASE_URL);
-    }
-
-
 
     public static boolean alreadyExists(Connection conn, NGram ngram) {
         boolean alreadyExists = false;

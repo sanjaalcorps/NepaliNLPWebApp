@@ -63,7 +63,7 @@ div.class1 {
 				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_limit" value="200"> 200<br/>
 				<br/>
 				
-				<input type="submit" value="Search Words">
+				<input type="submit" value="Search NGrams">
 			</form>
 		</div>
 		

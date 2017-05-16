@@ -136,7 +136,9 @@ public class DBUtility {
         
         return rowCount;
     }
-
-
+    
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(DATABASE_URL);
+    }
 
 }

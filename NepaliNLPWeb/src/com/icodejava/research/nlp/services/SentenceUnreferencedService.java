@@ -3,6 +3,7 @@ package com.icodejava.research.nlp.services;
 import java.util.List;
 
 import com.icodejava.research.nlp.database.ArticlesDB;
+import com.icodejava.research.nlp.database.SentencesDB;
 import com.icodejava.research.nlp.database.SentencesUnreferencedDB;
 import com.icodejava.research.nlp.domain.Sentence;
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
@@ -185,10 +186,17 @@ public class SentenceUnreferencedService {
         SentencesUnreferencedDB.storeNGrams(sentences);
     }
 
-	public static List<Sentence> searchSentences(String searchQuery, String searchType, String searchLimit) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+    /**
+     * Searches database for Sentences and returns results
+     * @Param searchLimit 
+     * @param searchType 
+     * @param searchTerm 
+     * @return
+     */
+    public static List<Sentence> searchSentences(String searchTerm, String searchType, int searchLimit) {
+        return SentencesUnreferencedDB.searchForSentences(searchTerm, searchType, searchLimit);
+    }
     
   
 	

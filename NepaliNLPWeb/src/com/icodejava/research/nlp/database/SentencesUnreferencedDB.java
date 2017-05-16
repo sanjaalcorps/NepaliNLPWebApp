@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.icodejava.research.nlp.domain.NGram;
+import com.icodejava.research.nlp.domain.NGramType;
 import com.icodejava.research.nlp.domain.Sentence;
 
 public class SentencesUnreferencedDB extends DBUtility {
@@ -550,6 +552,48 @@ public class SentencesUnreferencedDB extends DBUtility {
 
         }
 
+    }
+
+    public static List<Sentence> searchForSentences(String searchTerm, String searchType, int searchLimit) {
+        List<Sentence> searchResult = new ArrayList<Sentence>();
+        String sql = "SELECT * FROM " + Tables.SENTENCES_UNREFERENCED + " WHERE SENTENCE LIKE ? LIMIT ?";
+
+        try (Connection conn = getConnection(); 
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            String wordsLike = "%" + searchTerm + "%"; // anywhere
+
+            if ("start".equalsIgnoreCase(searchType)) {
+                wordsLike = searchTerm + "%";
+            } else if ("end".equalsIgnoreCase(searchType)) {
+                wordsLike = "%" + searchTerm;
+            }
+
+            pstmt.setString(1, wordsLike);
+            pstmt.setInt(2, searchLimit);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+
+                Sentence sentence = new Sentence();
+                sentence.setId(rs.getInt("ID"));
+                sentence.setValue(rs.getString("SENTENCE"));
+
+                sentence.setVerified(rs.getString("VERIFIED"));
+
+                searchResult.add(sentence);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return searchResult;
+    }
+    
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(DATABASE_URL);
     }
 
 }

@@ -47,14 +47,21 @@ div.class1 {
 				&nbsp;&nbsp;&nbsp;<input type="radio" name="sentences_search_type" value="start"> Start<br/>
 				&nbsp;&nbsp;&nbsp;<input type="radio" name="sentences_search_type" value="end" checked="checked"> End<br/>
 				<br/>
-				<input type="submit" value="Search Words">
+				
+				Limit Search Results To (Select One):<br/>
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_limit" value="50" checked ="checked"> 50
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_limit" value="100"> 100
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_limit" value="200"> 200<br/>
+				<br/>
+				
+				<input type="submit" value="Search Sentences">
 			</form>
 		</div>
 		
 		<div id="searchResults" style="margin-top: 20px; padding: 0 .7em;">
 			Search Results Will Appear Here <br/>
 			<%
-				if (request.getSession().getAttribute("SentencesearchResult") != null) {
+				if (request.getSession().getAttribute("SentencesSearchResult") != null) {
 					System.out.println("Found");
 
 					int count = 0;
