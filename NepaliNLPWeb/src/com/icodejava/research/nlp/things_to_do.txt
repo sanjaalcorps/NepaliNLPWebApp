@@ -72,5 +72,5 @@ Complete Verb Variation Login in NepaliStemmer for खानु, चल्नु
 	{DONE}replace instead of replaceAll
 	{DONE}Create Stemmer Class
 	{DONE}Remove Duplicate Sentences
-	{DONE}Calculate and store number of words in a sentence // updat this everytime a word clean batch is run.
+	{DONE}Calculate and store number of words in a sentence // update this everytime a word clean batch is run.
 	{DONE}Remove Duplicate Words From Database
