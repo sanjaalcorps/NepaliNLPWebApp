@@ -276,6 +276,8 @@ public enum CompoundWordEnding {
     WAASI_2("वासि"),
     YOS_1("योस"),
     YOS_2("योस्"),
+    HUNUKA("हुनुका"),
+    HUNUKO("हुनकोु"),
     YUKTA("युक्त");
     
 	/*
