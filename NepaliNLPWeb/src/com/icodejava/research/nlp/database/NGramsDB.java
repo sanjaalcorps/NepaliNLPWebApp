@@ -9,10 +9,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import com.icodejava.research.nlp.domain.NGram;
+import com.icodejava.research.nlp.domain.NGramType;
 
 /**
  * Database Utility to do CRUD operations on NGram object
@@ -133,22 +135,55 @@ public class NGramsDB extends DBUtility {
 
         return alreadyExists;
     }
-    
 
-    public static NGram selectNGramByWords(String words) {
-        String sql = "SELECT * FROM " + Tables.NGRAM + " WHERE WORDS=" + words + " ORDER BY WORD ASC";
+    public static List<NGram> searchForNGrams(String searchTerm, String searchType, String ngramType, int searchLimit) {
+        List<NGram> searchResult =  new ArrayList<NGram>();
+        String sql = "SELECT * FROM " +  Tables.NGRAM +" WHERE WORDS LIKE ? AND NGRAM_TYPE = ? LIMIT ? ORDER BY FREQUENCY DESC";
+        
+        boolean isAnyNGramTypeSearch = false;
+        if("{ANY}".equalsIgnoreCase(ngramType)) {
+            isAnyNGramTypeSearch = true;
+            sql = "SELECT * FROM " +  Tables.NGRAM +" WHERE WORDS LIKE ? LIMIT ?";
+        }
+        
+        try (Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            String wordsLike = "%" + searchTerm + "%"; //anywhere
+            
+            if("start".equalsIgnoreCase(searchType)) {
+                wordsLike = searchTerm + "%";
+            } else if ("end".equalsIgnoreCase(searchType)) {
+                wordsLike = "%" + searchTerm;
+            }
 
-        NGram ngram = new NGram();
-//        try (Connection conn = DriverManager.getConnection(DATABASE_URL); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
-//
-//            if (rs.next()) {
-//                ngram.set
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-
-        return ngram;
+            pstmt.setString(1, wordsLike);
+            
+            if(!isAnyNGramTypeSearch) {
+                pstmt.setString(2, NGramType.valueOf(ngramType).getTag());
+                pstmt.setInt(3, searchLimit);
+            } else {
+                pstmt.setInt(2, searchLimit);
+            }
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                NGram ngram = new NGram();
+                ngram.setId(rs.getInt("ID"));
+                ngram.setWords(rs.getString("WORDS"));
+                ngram.setVerified(rs.getString("VERIFIED"));
+                ngram.setFrequency(rs.getInt("Frequency"));
+                
+                searchResult.add(ngram);
+            }
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return searchResult;
     }
 
 }

@@ -29,6 +29,7 @@ update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2), VERIFIE
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-5), VERIFIED = 'Y-VER', IS_COMPOUND_WORD='Y' where word like '%पछिको'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-3), VERIFIED = 'Y-VER22', IS_COMPOUND_WORD='Y' where word like '%लाई'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-6), VERIFIED = 'Y-VER22', IS_COMPOUND_WORD='Y' where word like '%हरूलाई'
+update words_unreferenced set ROOT_WORD = SUBSTR(ROOT_WORD,1,LENGTH(ROOT_WORD)-2), VERIFIED = 'YVER22m', IS_COMPOUND_WORD='Y' where VERIFIED = 'YVER222' and ROOT_WORD like '%हरु'
 
 
 update words_unreferenced set ROOT_WORD=NULL WHERE VERIFIED = 'Y-VER2'
@@ -42,3 +43,9 @@ SELECT A.WORDS, B.WORD FROM NGRAM A LEFT OUTER JOIN STOP_WORDS B ON A.WORDS = B.
 
 //verified sentences whose ngrams have not been extracted.
 select * from sentence_unreferenced where ngram_extracted is null and verified = 'Y'
+
+//Verified compound words
+SELECT COUNT(*) FROM WORDS_UNREFERENCED WHERE VERIFIED='Y' AND IS_COMPOUND_WORD = 'N'
+
+//distinct count by verified status
+SELECT VERIFIED, COUNT(*) FROM WORDS_UNREFERENCED GROUP BY VERIFIED HAVING VERIFIED NOT NULL

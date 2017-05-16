@@ -11,7 +11,7 @@ import com.icodejava.research.nlp.database.ArticlesDB;
 import com.icodejava.research.nlp.database.WebsitesDB;
 
 public class WebCrawlService {
-	public static final int LIMIT_FROM_EACH_DOMAIN=5000;
+	public static final int LIMIT_FROM_EACH_DOMAIN=1;
 	public static void main (String args []) {
 		//fetchURLs(1);
 		crawlSites(LIMIT_FROM_EACH_DOMAIN);

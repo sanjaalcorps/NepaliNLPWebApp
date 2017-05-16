@@ -44,7 +44,7 @@ div.class1 {
 				Search Term: <input type="text" name="ngrams_search_query" value="नदी" style="width:300px"><br/>
 				NGramType:&nbsp; <c:set var="ngramTypes" value="<%=NGramType.values()%>"/>
 		
-				<select name="ngrams_search_type" style="width:300px">
+				<select name="ngrams_type" id="ngrams_type"style="width:300px">
 					<option value="{Any}">{Any}</option>
 					<c:forEach items="${ngramTypes}" var="ngramType">
 						<option value="${ngramType}">${ngramType}</option>
@@ -52,10 +52,17 @@ div.class1 {
 				</select> <br/>
 				
 				The Search Term appears in the word at (Select One):<br/>
-				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_type" value="anywhere"> Anywhere<br/>
-				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_type" value="start"> Start<br/>
-				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_type" value="end" checked="checked"> End<br/>
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_location_type" id="ngrams_search_location_type" value="anywhere"> Anywhere
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_location_type" id="ngrams_search_location_type" value="start"> Start
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_location_type" id="ngrams_search_location_type" value="end" checked="checked"> End<br/>
 				<br/>
+				
+				Limit Search Results To (Select One):<br/>
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_limit" value="50" checked ="checked"> 50
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_limit" value="100"> 100
+				&nbsp;&nbsp;&nbsp;<input type="radio" name="ngrams_search_limit" value="200"> 200<br/>
+				<br/>
+				
 				<input type="submit" value="Search Words">
 			</form>
 		</div>

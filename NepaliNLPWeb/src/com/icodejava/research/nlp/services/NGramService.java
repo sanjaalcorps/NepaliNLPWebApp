@@ -14,8 +14,10 @@ package com.icodejava.research.nlp.services;
  */
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.icodejava.research.nlp.database.NGramsDB;
 import com.icodejava.research.nlp.domain.NGram;
 import com.icodejava.research.nlp.domain.Sentence;
 import com.icodejava.research.nlp.ngram.NGramGenerator;
@@ -23,7 +25,7 @@ import com.icodejava.research.nlp.ngram.NGramGenerator;
 public class NGramService {
     
     public static void main(String args[]) {
-        int sentenceLimit = 2;
+        int sentenceLimit = 600;
         createAndStoreCompleteNGrams(sentenceLimit);
 
     }
@@ -188,6 +190,18 @@ public class NGramService {
         sentence.addNGrams(NGramGenerator.generateForwardTrigramsWithStopWords(sentence.getValue()));
 
         return sentence;
+    }
+    
+    /**
+     * Searches database for NGrams and returns results
+     * @Param searchLimit 
+     * @param ngramType
+     * @param searchType 
+     * @param searchQuery 
+     * @return
+     */
+    public static List<NGram> searchForNGrams(String searchTerm, String searchType, String ngramType, int searchLimit) {
+        return NGramsDB.searchForNGrams(searchTerm, searchType, ngramType, searchLimit);
     }
     
 
