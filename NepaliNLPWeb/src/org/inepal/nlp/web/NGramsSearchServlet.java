@@ -42,6 +42,10 @@ public class NGramsSearchServlet extends AbstractNLPServlet {
 		String ngramType =  request.getParameter("ngrams_type");
 		String searchLimit = request.getParameter("ngrams_search_limit");
 		
+		if(searchLimit == null) {
+		    searchLimit = "50";
+		}
+		
 		//TODO: get limit parameter as a drop down value
 		List<NGram> ngrams = new ArrayList<NGram>();
 		
@@ -49,27 +53,6 @@ public class NGramsSearchServlet extends AbstractNLPServlet {
 		    int searchLimitInt = Integer.parseInt(searchLimit);
 		    ngrams = NGramService.searchForNGrams(searchQuery, searchType, ngramType, searchLimitInt);
 		}
-		
-//	    if (searchQuery != null) {
-//	    	
-//	    	//MOCKED: TEMPORARY
-//	    	NGram ngram = new NGram();
-//	    	ngram.setWords("अायातित औषधि");
-//	    	ngram.setType(NGramType.BIGRAM_FORWARD_NO_STOPWORDS);
-//	    	ngram.setFrequency(23);
-//	    	
-//	    	NGram ngram2 = new NGram();
-//	    	ngram2.setWords("अायातित");
-//	    	ngram2.setType(NGramType.BIGRAM_FORWARD_NO_STOPWORDS);
-//	    	ngram2.setFrequency(23);
-//	    	
-//	    	ngrams.add(ngram);
-//	    	ngrams.add(ngram2);
-//	    	//END OF MOCK: TEMOORARY. TODO: REMOVE THE BLOCK
-//	    	
-//	    	//words = WordsUnreferencedService.searchWords(searchQuery, searchType, 50); //TODO: remove hardcoding
-//	    }
-
 		
 		/**
 		 * Need to set the resposne character encoding to UTF-8 to server Unicode Devanagari in the response.

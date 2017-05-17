@@ -301,6 +301,7 @@ public class NepaliStemmer {
 	    //Khandaina, ramaundaina,, --> other negations
 	    //khandai, gardai
 	    //nakhannus, nagarnos, nathaga --> etc.
+	    //सुनिरहे
 	    
 	    
 	    System.out.println(verbVariations);

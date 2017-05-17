@@ -46,7 +46,7 @@ public class WordsUnreferencedDB extends DBUtility {
 		//selectRecordsNotMarkedAsCompoundRandom(10);
 		//selectRandomCompoundWords(10);
 		
-		selectRootWordsNotClassified(100);
+		//selectRootWordsNotClassified(100);
 		
 	}
 	

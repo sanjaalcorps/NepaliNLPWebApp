@@ -32,11 +32,11 @@ public class WordsUnreferencedService {
 		//processUnreferencedWords(10000);
 		// processWordsFromFile("src/com/icodejava/research/nlp/sources/other/misc_words.txt");
 		// getRomanizedWordCount();
-		 //removeDuplication();
+		 removeDuplication();
 		 
 		// getRandomCompoundWords(1000);
 		 
-		 updateWordRootFromKnownRoots();
+		 //updateWordRootFromKnownRoots();
 		 //updateCompoundWordRootsFromKnownRoots(); //TODO: NEEDS OPTIMIZATION
 
 	}
@@ -350,7 +350,7 @@ public class WordsUnreferencedService {
 		}
 	}
 
-	public static List<Word> searchWords(String searchQuery, String searchType, int limit) {
+	public static List<Word> searchWords(String searchQuery, String searchType, int limit, String verificationType) {
 		System.out.println("SearchType: " + searchType);
 		String sqlBase = "SELECT * FROM " + Tables.WORDS_UNREFERENCED + " where word like ";
 		String sql = "";
@@ -362,7 +362,15 @@ public class WordsUnreferencedService {
 			sql = sqlBase + "\'%" + searchQuery + "\'";
 		}
 		
-		sql = sql + " LIMIT " +  limit;
+		String andClause = "AND VERIFIED =\"Y\" ";
+		
+		if("not_verified".equalsIgnoreCase(verificationType)) {
+		    andClause = "AND VERIFIED != \"Y\" ";
+		} else if ("any".equalsIgnoreCase(verificationType)) {
+		    andClause = "";
+		}
+		
+		sql = sql + andClause + " LIMIT " +  limit;
 
 		System.out.println(sql);
 

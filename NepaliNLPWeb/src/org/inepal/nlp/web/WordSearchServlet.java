@@ -37,14 +37,21 @@ public class WordSearchServlet extends AbstractNLPServlet {
 		/**
 		 * Need to set the request characeter encoding to UTF-8 to accept Unicode Devanagari search terms.
 		 */
-		request.setCharacterEncoding("UTF-8");
-		String searchQuery = new String (request.getParameter("word_search_query"));
-		String searchType = new String (request.getParameter("word_search_type"));
+        request.setCharacterEncoding("UTF-8");
+        String searchQuery = request.getParameter("words_search_query");
+        String searchType = request.getParameter("words_search_type");
+        String verificationType = request.getParameter("words_verification_type");
+        String searchLimit = request.getParameter("words_search_limit");
+
+        if (searchLimit == null) {
+            searchLimit = "50";
+        }
+		
 		//TODO: get limit parameter as a drop down value
 		List<Word> words = new ArrayList<Word>();
 		
-	    if (searchQuery != null) {
-	    	words = WordsUnreferencedService.searchWords(searchQuery, searchType, 50); //TODO: remove hardcoding
+	    if (searchQuery != null && searchType !=null && verificationType!=null) {
+	    	words = WordsUnreferencedService.searchWords(searchQuery, searchType, Integer.parseInt(searchLimit), verificationType);
 	    }
 
 		
@@ -57,12 +64,8 @@ public class WordSearchServlet extends AbstractNLPServlet {
 		System.out.println("Search Result contains: "  + words.size() + " results");
 		request.getSession().setAttribute("wordSearchResult",words);
 		
-		String nextJSP = "/jsp/word_classify.jsp";
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(nextJSP);
-        rd.forward(request, response);
-		
-		response.getWriter().append("Served at: " ).append(request.getContextPath());
-		
+		String nextJSP = "jsp/word_classify.jsp";
+	    response.sendRedirect(nextJSP);
 		
 	}
 
