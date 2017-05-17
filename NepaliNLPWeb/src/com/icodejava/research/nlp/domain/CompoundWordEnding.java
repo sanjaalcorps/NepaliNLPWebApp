@@ -308,6 +308,10 @@ public enum CompoundWordEnding {
 Haruki
 Rupma
 
+name ending बहादुर
+
+कुमारी
+
 	 */
 
 	private String nepaliWordEnding;

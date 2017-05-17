@@ -372,7 +372,7 @@ public class WordsUnreferencedService {
 		
 		sql = sql + andClause + " LIMIT " +  limit;
 
-		System.out.println(sql);
+		//System.out.println(sql);
 
 		return WordsUnreferencedDB.selectWithQuery(sql);
 	}

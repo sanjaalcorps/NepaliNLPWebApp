@@ -39,7 +39,6 @@ public class SentencesUnreferencedDB extends DBUtility {
 
 	public static List<Sentence> selectUnverifiedSentencesRandom(int limit, int minWordCount, int maxWordCount) {
 		List<Sentence> sentences = new ArrayList<Sentence>();
-		//(SELECT id FROM table ORDER BY RANDOM() LIMIT x)
 		
 		String sql = "SELECT * FROM " +  Tables.SENTENCES_UNREFERENCED +" WHERE ID IN "
 				+ "(SELECT ID FROM " + Tables.SENTENCES_UNREFERENCED + " WHERE VERIFIED IS NOT 'Y' AND WORDS_COUNT BETWEEN " + minWordCount + 
@@ -49,14 +48,32 @@ public class SentencesUnreferencedDB extends DBUtility {
 
 		try (Connection conn = DriverManager.getConnection(DATABASE_URL);
 				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql)) {
+                ResultSet rs = stmt.executeQuery(sql)) {
 
-			while (rs.next()) {
-				Sentence sentence = new Sentence(rs.getInt("ID"), rs.getString("SENTENCE"));
-				sentences.add(sentence);
-				System.out.println(sentence);
-			}
-		} catch (SQLException e) {
+            while (rs.next()) {
+                String sentenceString = rs.getString("SENTENCE");
+
+                if (!sentenceString.contains("'") 
+                        && !sentenceString.contains("\"") 
+                        && !sentenceString.contains("‘") 
+                        && !sentenceString.contains("’") 
+                        && !sentenceString.contains("|") 
+                        && !sentenceString.contains(".") 
+                        && !sentenceString.contains("…") 
+                        && !sentenceString.contains("“") 
+                        && !sentenceString.contains("”") 
+                        && !sentenceString.contains("धेरैले मन पराएको कमेन्ट") 
+                        && !sentenceString.contains("”")) { // exclude
+                                                                                                                                                                                          // sentencs
+                                                                                                                                                                                          // containing
+                    // single quote and double
+                    // quotes.
+                    Sentence sentence = new Sentence(rs.getInt("ID"), rs.getString("SENTENCE"));
+                    sentences.add(sentence);
+                    // System.out.println(sentence);
+                }
+            }
+        } catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 		
@@ -576,13 +593,14 @@ public class SentencesUnreferencedDB extends DBUtility {
 
             while (rs.next()) {
 
-                Sentence sentence = new Sentence();
-                sentence.setId(rs.getInt("ID"));
-                sentence.setValue(rs.getString("SENTENCE"));
-
-                sentence.setVerified(rs.getString("VERIFIED"));
-
-                searchResult.add(sentence);
+             
+                    Sentence sentence = new Sentence();
+                    sentence.setId(rs.getInt("ID"));
+                    sentence.setValue(rs.getString("SENTENCE"));
+    
+                    sentence.setVerified(rs.getString("VERIFIED"));
+    
+                    searchResult.add(sentence);
             }
 
         } catch (Exception e) {

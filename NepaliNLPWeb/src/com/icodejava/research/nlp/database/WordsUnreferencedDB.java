@@ -590,7 +590,7 @@ public class WordsUnreferencedDB extends DBUtility {
 				ResultSet rs = stmt.executeQuery(sql)) {
 
 			while (rs.next()) {
-				System.out.println(rs.getInt("ID") + "\t" + rs.getString("WORD"));
+				//System.out.println(rs.getInt("ID") + "\t" + rs.getString("WORD"));
 				words.add(new Word(rs.getInt("ID"), rs.getString("WORD"), rs.getString("VERIFIED") ));
 			}
 		} catch (SQLException e) {
