@@ -5,19 +5,30 @@ div.class1 {
     width:9500px;
     margin:40px;
 }
+div.class_400 {
+    width:400px;
+    margin: 10px;
+    border: 3px solid #73AD21;
+}
 div.parent{
 	padding:5px;
 	width:950px;
 	margin:25px;
 	background:#009922
 }
-
 div.parent_002{
 	padding:5px;
 	width:950px;
 	margin:10px;
 	background:#00FF00
 }
+div.parent_400{
+	padding:5px;
+	width:400px;
+	margin:5px;
+	background:#009922
+}
+
 div.affirmative_verb_variations {
 	padding: 10px;
 	width:900px;

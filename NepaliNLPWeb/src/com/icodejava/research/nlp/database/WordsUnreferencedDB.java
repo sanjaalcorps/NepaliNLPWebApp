@@ -522,7 +522,7 @@ public class WordsUnreferencedDB extends DBUtility {
 	
 	public static List<Word> selectRecordsNotMarkedAsCompoundRandom(int limit) {
 
-		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE IS_COMPOUND_WORD IS NULL OR IS_COMPOUND_WORD='N' ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
+		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE IS_COMPOUND_WORD !='Y' ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
 
 		List<Word> words = new ArrayList<Word>();
 		

@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import com.icodejava.research.nlp.stemmer.NepaliStemmer;
+
 public class DevanagariUnicodeToRomanEnglish {
 	
 	
@@ -167,11 +169,30 @@ public class DevanagariUnicodeToRomanEnglish {
 		if(word!=null) {
 			word = word.trim();
 		}
-		String transformed = "";
+		
+		/**
+		 * See if it a compound word
+		 */
+		String root = NepaliStemmer.getNepaliRootWord(word);
+		
+		if(root.length() != word.length()) {
+		    System.out.println("Found Compound Word " + word);
+		    return doRomanization(root) + doRomanization(word.substring(root.length(), word.length()));
+		}
+		
+		return doRomanization(word);
+		
+	
+		
+	}
+
+
+
+    private static String doRomanization(String word) {
+        String transformed = "";
 		
 		String convert = "";
 		boolean waitToDoTranslation = false;
-		boolean potentialProblem = false;
 		for (int i=0; i<word.length(); i++) {
 			char upcoming = 0;
 			convert +=  word.charAt(i);
@@ -211,7 +232,6 @@ public class DevanagariUnicodeToRomanEnglish {
 
 				} else {
 					transformed += convert;
-					potentialProblem = true;
 				}
 			}
 			
@@ -261,10 +281,7 @@ s, h ẏ					n			n
 
 https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration
 		 */
-		
-	
-		
-	}
+    }
 
 
 
@@ -274,34 +291,37 @@ https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration
 			return transformed;
 		}
 		
-		if(	transformed.endsWith("ka")
-				|| transformed.endsWith("kha")
-				|| transformed.endsWith("ga")
+		if(	(transformed.endsWith("ka") && ! transformed.endsWith("ṁka") && !transformed.endsWith("m̐ka")) //e.g. Exceptions to words such as आतंक आतँक
+				|| (transformed.endsWith("kha") && ! transformed.endsWith("ṁkha") && !transformed.endsWith("m̐kha"))
+				|| (transformed.endsWith("ga") && ! transformed.endsWith("ṁga") && !transformed.endsWith("m̐ga"))
 				|| transformed.endsWith("gha")
 				|| transformed.endsWith("ṅa")
-				|| transformed.endsWith("cha") //TODO: Exception kharcha
+				|| (transformed.endsWith("cha") && !transformed.endsWith("rcha")) //kharcha, pracha
 				|| transformed.endsWith("ja")
+				|| transformed.endsWith("jha")
 				|| transformed.endsWith("ṭa")
 				|| transformed.endsWith("ṭha")
+				|| transformed.endsWith("ḍa")
+				|| transformed.endsWith("ḍha")
+				|| transformed.endsWith("ṇa")
+				|| (transformed.endsWith("ta") && !transformed.endsWith("sita"))
+				|| transformed.endsWith("tha")
+				|| transformed.endsWith("da") 
+				|| transformed.endsWith("dha") 
+				|| (transformed.endsWith("na") && ! transformed.endsWith("nna"))  //TODO: Garin or garina both valid
 				|| transformed.endsWith("pa")
+				|| transformed.endsWith("pha")
+				|| transformed.endsWith("ba")
 				|| transformed.endsWith("bha")
 				|| transformed.endsWith("ma")
 				|| transformed.endsWith("ra") //TODO: EXCEPTION KHERA, NIRA, TIRA, JAMERA, KSHETRA
+				|| transformed.endsWith("la") 
+				|| transformed.endsWith("va")
 				|| transformed.endsWith("sa")
 				|| transformed.endsWith("sha")
-				|| transformed.endsWith("ba")
-				|| transformed.endsWith("va")
-				|| (transformed.endsWith("ta") && !transformed.endsWith("sita"))
-				|| transformed.endsWith("tha")
-				|| transformed.endsWith("la") 
-				|| transformed.endsWith("da") 
-				|| transformed.endsWith("dha") 
-				
-			
-				
 				
 				) {
-			transformed = transformed.substring(0, transformed.length() -1);
+		        transformed = transformed.substring(0, transformed.length() -1);
 		}
 		return transformed;
 	}

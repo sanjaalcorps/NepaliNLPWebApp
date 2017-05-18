@@ -11,25 +11,19 @@
 <title>Word Romanization - Nepali NLP</title>
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/nlpweb.css" rel="stylesheet">
 <style>
 body {
 	width:450px;
 	font-family: "Trebuchet MS", sans-serif;
 	margin: 50px;
 }
-div.class1 {
-    width:400px;
-    margin: 10px;
-    border: 3px solid #73AD21;
-}
-div.right {
-	width:400x;
-	align:right;
-}
+
 </style>
 </head>
 <body>
 
+<div class="parent_400">
 <%
 if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 %>
@@ -81,6 +75,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 		<input type="submit" value="Submit">
 		
 	</form>
+	</div>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery-ui.js"></script>
 	<script src="../js/bootstrap.js"></script>
@@ -89,39 +84,3 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	</script>
 </body>
 </html>
-
-<!-- 
-<select id="myselect">
-    <option value="1">Mr</option>
-    <option value="2">Mrs</option>
-    <option value="3">Ms</option>
-    <option value="4">Dr</option>
-    <option value="5">Prof</option>
-</select>
-
-$("button").click(function(){
-    $.ajax({url: "demo_test.txt", success: function(result){
-        $("#div1").html(result);
-    }});
-});
-
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#div1").load("demo_test.txt");
-    });
-});
-</script>
-</head>
-<body>
-
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
-
-<button>Get External Content</button>
-
-</body>
-</html> -->

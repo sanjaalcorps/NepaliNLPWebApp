@@ -54,7 +54,7 @@ public class DevanagariUnicodeToRomanEnglishTest {
 		
 		String input = "कुखुरासँग कृष्ण हिँडेकी अर्गनाइजेसनकै आलुलाई ह्यांगरलाई छिँटा नभाँचिने";
 		String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
-		String expected = "kukhurāsam̐g krishṇa him̐ḍēkī arganāijēsankai ālulāī hyāṁgarlāī chhim̐ṭā nabhām̐chinē";
+		String expected = "kukhurāsam̐ga krishṇa him̐ḍēkī arganāijēsankai ālulāī hyāṁgarlāī chhim̐ṭā nabhām̐chinē";
 		
 		Assert.assertThat(output, is(expected));		
 	}
@@ -64,7 +64,7 @@ public class DevanagariUnicodeToRomanEnglishTest {
 		
 		String input = "घृ नृ ट्र वृत बृत मृत् लृत जृत झृत झ्रित य्र ठ्रित थृत पृ फ्री भृत वृत्त ब्रित्ता पिठ्यूँ सिद्दिचरण माइसंसार निदाउँदा अँगुलो";
 		String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
-		String expected = "ghri nri ṭra vrit brit mrit lrit jrit jhrit jhrit yra ṭhrit thrit pri phrī bhrit vritta brittā piṭhyūm̐ siddicharaṇa māisaṁsār nidāum̐dā am̐gulo";
+		String expected = "ghri nri ṭra vrit brit mrit lrit jrit jhrit jhrit yra ṭhrit thrit pri phrī bhrit vritta brittā piṭhyūm̐ siddicharaṇ māisaṁsār nidāum̐dā am̐gulo";
 		
 		Assert.assertThat(output, is(expected));		
 	}
@@ -74,7 +74,7 @@ public class DevanagariUnicodeToRomanEnglishTest {
 		
 		String input = "मुखकृति गृष्म हृदय तृप्ति दृश्य संग सँग सङ्ग सृजना श्रीजना";
 		String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
-		String expected = "mukhakriti grishma hridaya tripti drishya saṁg sam̐g saṅga srijanā shrījanā";
+		String expected = "mukhakriti grishma hridaya tripti drishya saṁga sam̐ga saṅga srijanā shrījanā";
 		
 		Assert.assertThat(output, is(expected));		
 	}
@@ -90,15 +90,69 @@ public class DevanagariUnicodeToRomanEnglishTest {
 		Assert.assertThat(output, is(expected));		
 	}
 	
-	@Test
-	public void test_009() {
-		
-		String input = "गर्छुः";
-		String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
-		String expected = "garchhu:";
-		
-		Assert.assertThat(output, is(expected));		
-	}
+
+	
+    @Test
+    public void test_009() {
+
+        String input = "गर्छुः";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "garchhu:";
+
+        Assert.assertThat(output, is(expected));
+    }
+
+    @Test
+    public void test_010() {
+
+        String input = "आतंक";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "ātaṁka";
+
+        Assert.assertThat(output, is(expected));
+    }
+    
+    @Test
+    public void test_011() {
+        
+        String input = "आतँक";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "ātam̐ka";
+        
+        Assert.assertThat(output, is(expected));
+    }
+    
+    @Test
+    public void test_012() {
+        
+        String input = "चिनाउँछिन";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "chināum̐chhin";
+        
+        Assert.assertThat(output, is(expected));
+    }
+    
+    @Test
+    public void test_013() {
+        
+        String input = "चिरनहरुसङ्ग";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "chiranharusaṅga";
+        
+        Assert.assertThat(output, is(expected));
+    }
+
+    @Test
+    public void test_014() {
+        
+        String input = "चिरनहरु";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "chiranharu";
+        
+        Assert.assertThat(output, is(expected));
+    }
+    
+    
 
 	//पालुङकी - Romanized: + pāluṅakī 
 	//खलकले - Romanized: + khalakalē 

@@ -81,10 +81,11 @@ public class NepaliTokenizerTest {
 	@Test
 	public void test_0002_temp() {
 	    String input = "गरेँ";
-	    NepaliTokenizer.printChracters(input);
+//	    NepaliTokenizer.printChracters(input);
+//	    
+//	    NepaliTokenizer.printChracters("चलेॕ");
 	    
-	    NepaliTokenizer.printChracters("चलेॕ");
-	    
+	    NepaliTokenizer.printChracters("आतंक");
 	}
 	
 	
