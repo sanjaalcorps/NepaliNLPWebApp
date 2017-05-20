@@ -22,6 +22,7 @@ A lot, but here are few things worth mentioning:
 6. Nepali Shabdakosh in Unicode
 7. Word Cloud Generation for Nepali Text
 8. 1 Billion Nepali high quality Nepali Sentences {HIGH AMBITION / ACHIEVABLE}
+9. Automated bots(chats, recommendations, etc)  in Nepali Language (If you didn't know, Bots are new things, replacing apps)
 
 
 <b>What do I have that is not on the github?</b><br/>
