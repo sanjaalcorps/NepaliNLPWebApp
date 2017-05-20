@@ -68,7 +68,7 @@ public class NepaliStemmer {
 		
 		if(cweMatraReplaced.length() == 1) {
 			String matraReplacedWord = replaceMatras(TextUtils.replaceLast(compoundWord, cwe, "")); //TODO: Document this
-			allowed = matraReplacedWord.length() > 2; //to prvent words like थुम्का being split as थुम् + का
+			allowed = matraReplacedWord.length() > 1; //to prevent words like थुम्का being split as थुम् + का
 			
 		}
 		
@@ -302,6 +302,7 @@ public class NepaliStemmer {
 	    //khandai, gardai
 	    //nakhannus, nagarnos, nathaga --> etc.
 	    //सुनिरहे
+	    //KHAINDO, THAGINDO
 	    
 	    
 	    System.out.println(verbVariations);
