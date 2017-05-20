@@ -17,6 +17,17 @@ public enum LocationWordEnding {
     KHOLA("खोला"),
     SHAHAR("शहर"),
     RAJ("राज"),
+    BASTI("बस्ती"),
+    VASTI("बस्ती"),
+    KHEL("खेल"),
+    BESHI_1("बेशी"),
+    BESHI_2("वेशी"),
+    NAGAR("नगर"),
+    BESHI("बेसी"),
+    BENSHI("बेंसी"),
+    PURI_1("पुरि"),
+    PURI_2("पुरी"),
+    DHAM("धाम"),
     TARI("टारी");
     
     private String nepaliWordEnding;

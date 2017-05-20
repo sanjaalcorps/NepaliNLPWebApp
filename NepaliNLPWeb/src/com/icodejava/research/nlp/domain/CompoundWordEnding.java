@@ -295,6 +295,7 @@ public enum CompoundWordEnding {
     BARE_KO_002("वारेको"),
     BARE_MA_001("बारेमा"),
     BARE_MA_002("वारेमा"),
+    MASTIRA("मास्तिर"),
     YUKTA("युक्त");
     
 	/*
@@ -307,10 +308,11 @@ public enum CompoundWordEnding {
 	 *  
 Haruki
 Rupma
+दोहोरोपनका 
+करण
 
-name ending बहादुर
-
-कुमारी
+गाथा 
+दुष्परिणाम
 
 	 */
 
