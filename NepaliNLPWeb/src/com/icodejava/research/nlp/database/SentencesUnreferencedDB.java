@@ -559,9 +559,14 @@ public class SentencesUnreferencedDB extends DBUtility {
 
     public static void storeNGrams(List<Sentence> sentences) {
         try (Connection conn = NGramsDB.getConnection();) {
+            int count = 1;
             for (Sentence sentence : sentences) {
+                System.out.print (count + " of " + sentences.size() +" ");
+
                 NGramsDB.insertOrUpdateNGrams(conn, sentence.getnGrams());
                 SentencesUnreferencedDB.markNGramExtracted(conn, sentence);
+                
+                count++;
             }
 
         } catch (Exception e) {
