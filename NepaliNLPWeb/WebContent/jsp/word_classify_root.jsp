@@ -58,10 +58,6 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 			<legend><%=word.getWord()%></legend>
 			<div id="controlgroup_<%=word.getId()%>" class="class1">
 			
-				<label for="word_root_<%=word.getId()%>">Root</label>
-				<input type="checkbox" name="word_root_<%=word.getId()%>" id="word_root_<%=word.getId()%>">
-				<label for="word_derived_<%=word.getId()%>">Derived</label> 
-				<input type="checkbox" name="word_derived_<%=word.getId()%>" id="word_derived_<%=word.getId()%>">
 				<label for="word_person_<%=word.getId()%>">Person</label> 
 				<input type="checkbox" name="word_person_<%=word.getId()%>" id="word_person_<%=word.getId()%>">
 				<label for="word_firstname_<%=word.getId()%>">Firstname</label> 
