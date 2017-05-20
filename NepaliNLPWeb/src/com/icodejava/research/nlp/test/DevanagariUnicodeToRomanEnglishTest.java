@@ -152,27 +152,49 @@ public class DevanagariUnicodeToRomanEnglishTest {
         Assert.assertThat(output, is(expected));
     }
     
+    @Test
+    public void test_015() {
+        
+        String input = "एक्काइशौं";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "ēkkāishauṁ";
+        
+        Assert.assertThat(output, is(expected));
+        
+    }
+    @Test
+    public void test_016() {
+        
+        String input = "छिराउछन";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "chhirāuchhan";
+        
+        Assert.assertThat(output, is(expected));
+        
+    }
+    @Test
+    public void test_017() {
+        
+        //System.out.println(DevanagariUnicodeToRomanEnglish.convertSentence("पठाउँछौं  बाँसबारीको साँचोझुठो"));
+        
+        String input = "जागेर";
+        String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+        String expected = "jāgēra";
+        
+        Assert.assertThat(output, is(expected));
+        
+    }
     
 
-	//पालुङकी - Romanized: + pāluṅakī 
-	//खलकले - Romanized: + khalakalē 
-	
-	
 //		3उँḍāko 
 	//मुंनकर्मी - Romanized: + मुंnakarmī 
 	//ओंठ - Romanized: + ओंṭh 
 	//नभाँचिने - Romanized: + naभाँchinē 
 	//पिंकी - Romanized: + पिंkī 
 //	/साँचोझुठो - Romanized: + साँchojhuṭho 
-	//हजारौँका - Romanized: + hajāरौँkā 
 	//हुँdāsammamā 
 	//पठाउँछौं - Romanized: + paṭhāउँछौं 
-	//बडादशैं - Romanized: + baḍādaशैं
-	// गोँगबु - Romanized: + गोँgabu 
 	//बाँसबारीको - Romanized: + बाँsabārīko 
-	//एक्काइशौं - Romanized: + ēkkāiशौं
-	
-	//
 	
 
 

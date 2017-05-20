@@ -308,13 +308,13 @@ https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration
 				|| transformed.endsWith("tha")
 				|| transformed.endsWith("da") 
 				|| transformed.endsWith("dha") 
-				|| (transformed.endsWith("na") && ! transformed.endsWith("nna"))  //TODO: Garin or garina both valid
+				|| (transformed.endsWith("na") && !transformed.endsWith("nna"))  //TODO: Garin or garina both valid
 				|| transformed.endsWith("pa")
 				|| transformed.endsWith("pha")
 				|| transformed.endsWith("ba")
 				|| transformed.endsWith("bha")
 				|| transformed.endsWith("ma")
-				|| transformed.endsWith("ra") //TODO: EXCEPTION KHERA, NIRA, TIRA, JAMERA, KSHETRA
+				|| (transformed.endsWith("ra") && !transformed.endsWith("ēra")) //TODO: EXCEPTION KHERA, NIRA, TIRA, JAMERA, KSHETRA
 				|| transformed.endsWith("la") 
 				|| transformed.endsWith("va")
 				|| transformed.endsWith("sa")
