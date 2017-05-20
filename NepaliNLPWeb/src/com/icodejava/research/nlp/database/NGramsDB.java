@@ -180,5 +180,9 @@ public class NGramsDB extends DBUtility {
         
         return searchResult;
     }
+    
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(DATABASE_URL);
+    }
 
 }
