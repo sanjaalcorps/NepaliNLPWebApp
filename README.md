@@ -32,6 +32,7 @@ A database of
 1. More than 200,000 webpages having Nepali Text (Text already extracted)
 2. More than 600,000 words Nepali Corpus
 3. More than 2 millions of Nepali Sentences
+4. A Mind of a Genius :)
 
 <b>Can you help me?</b><br/>
 
