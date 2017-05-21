@@ -9,12 +9,13 @@ public enum NameWordEnding {
     DEVI("देवी"),
     MAYA("माया"),
     PRAKASH("प्रकाश"),
-    MAAN("मान"),
-    MATI("मती"),
-    MANI("मणि"),
-    RAJ("राज"),
+    //MAAN("मान"),
+    //MATI("मती"),
+    //MANI("मणि"),
+    //RAJ("राज"),
     DEEP("दीप"),
     GOPAL("गोपाल"),
+    NARAYAN("नारायण"),
     SHAMSHER("शमशेर");
     
     

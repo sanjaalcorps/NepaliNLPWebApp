@@ -76,7 +76,7 @@ public class WordsClassificationServlet extends AbstractNLPServlet {
 				} else if (name.startsWith("word_firstname_")) {
 					word.setClassification2("First Name");
 				} else if (name.startsWith("word_surname_")) {
-					word.setClassification3("Surname");
+					word.setClassification2("Surname");
 				} else if (name.startsWith("word_location_")) {
 					word.setClassification1("Place");
 				} else if (name.startsWith("word_english_")) {
