@@ -1,5 +1,5 @@
 # NepaliNLPWebApp
-The web app used for Nepali Language Natural Language Processing - Work in Progress.
+The web app used for Nepali Language Natural Language Processing - Work in Progress - <b>Leisure Time Project.</b>
 
 <b>What is in this app?</b><br/>
 A lot, but here are few things worth mentioning:
