@@ -44,7 +44,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	<form action="/NepaliNLPWeb/LocationsValidationClassificationServlet" method="post">
 
 		<%
-			List<Word> words = WordsUnreferencedService.selectUnverifiedLocations(50);
+			List<Word> words = WordsUnreferencedService.selectUnverifiedLocations(100);
 			int count = 1;
 			for (Word word : words) {
 		%>

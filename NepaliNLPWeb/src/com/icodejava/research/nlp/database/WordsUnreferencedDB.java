@@ -548,6 +548,28 @@ public class WordsUnreferencedDB extends DBUtility {
 		return words;
 	}
 	
+	   public static List<Word> selectRecordsForRomanization(int limit) {
+
+	        String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE VERIFIED='Y' AND (WORD_ROMANIZED='NOT_ROMANIZED' OR WORD_ROMANIZED='T') ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
+
+	        List<Word> words = new ArrayList<Word>();
+	        
+	        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+	                Statement stmt = conn.createStatement();
+	                ResultSet rs = stmt.executeQuery(sql)) {
+
+	            while (rs.next()) {
+	                //System.out.println(rs.getInt("ID") + "\t" + rs.getString("WORD") + "\t" + rs.getString("VERIFIED"));
+	                words.add(new Word(rs.getInt("ID"), rs.getString("WORD"), rs.getString("VERIFIED") ));
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	        
+	        return words;
+	    }
+	
+	
 	public static List<Word> selectRandomCompoundWords(int limit) {
 
 		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE IS_COMPOUND_WORD='Y' AND ROOT_WORD IS NULL ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
