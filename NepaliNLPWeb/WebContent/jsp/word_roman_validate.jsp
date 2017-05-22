@@ -23,7 +23,7 @@ body {
 </head>
 <body>
 
-<div class="parent_400">
+<div>
 <%
 if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 %>
@@ -40,7 +40,8 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 
 	<input type="submit" value="Submit">
 		<%
-			List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(150);
+			//List<Word> words = WordsUnreferencedDB.selectRecordsNotMarkedAsCompoundRandom(150);
+			List<Word> words = WordsUnreferencedDB.selectRecordsForRomanization(100);
 			for (Word word : words) {
 		%>
 		
@@ -49,9 +50,9 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 			<div id="controlgroup_<%=word.getId()%>" class="class1">
 			
 				<label for="word_romanized_<%=word.getId()%>">Correct</label>
-				<input type="checkbox" name="word_romanized_<%=word.getId()%>" id="word_romanized_<%=word.getId()%>">
+				<input type="checkbox" name="word_romanized_<%=word.getId()%>" id="word_romanized_<%=word.getId()%>" checked="checked">
 				
-				<select name="word_classification_<%=word.getId()%>">
+<%-- 				<select name="word_classification_<%=word.getId()%>">
 					<option value=""></option>
 				    <option value="location">Location</option>
 				    <option value="Person">Person</option>
@@ -64,7 +65,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 				    <option value="Derived">Derived</option>
 				    <option value="Dirty">Dirty</option>
 				    <option value="Delete">Delete</option>
-				</select>
+				</select> --%>
 				
 			</div>
 		</fieldset>

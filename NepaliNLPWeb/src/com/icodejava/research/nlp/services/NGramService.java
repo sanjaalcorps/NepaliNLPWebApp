@@ -14,7 +14,6 @@ package com.icodejava.research.nlp.services;
  */
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.icodejava.research.nlp.database.NGramsDB;
@@ -25,7 +24,7 @@ import com.icodejava.research.nlp.ngram.NGramGenerator;
 public class NGramService {
     
     public static void main(String args[]) {
-        int sentenceLimit = 600;
+        int sentenceLimit = 2000;
         createAndStoreCompleteNGrams(sentenceLimit);
 
     }

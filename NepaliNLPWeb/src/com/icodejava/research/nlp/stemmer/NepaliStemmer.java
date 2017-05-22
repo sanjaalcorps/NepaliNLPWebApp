@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.icodejava.research.nlp.domain.CompoundWordEnding;
 import com.icodejava.research.nlp.domain.Grammar;
+import com.icodejava.research.nlp.domain.LocationWordEnding;
+import com.icodejava.research.nlp.domain.NameWordEnding;
 import com.icodejava.research.nlp.utils.TextUtils;
 
 /**
@@ -31,21 +33,72 @@ public class NepaliStemmer {
 	 * @param compoundWord
 	 * @return root word
 	 */
-	public static String getNepaliRootWord(String compoundWord) {
-		for (CompoundWordEnding dir : CompoundWordEnding.values()) {
-			String cwe = dir.getNepaliWordEnding();
+    public static String getNepaliRootWord(String compoundWord) {
 
-			if (compoundWord.endsWith(cwe) && isNotTheSameWord(compoundWord, cwe)
-					&& isAllowedLength(compoundWord, cwe)) {
-				compoundWord = TextUtils.replaceLast(compoundWord, cwe, "");
-			}
+        compoundWord = removeCompoundWordEndings(compoundWord);
 
-		}
+        compoundWord = removeCompoundNameWordEndings(compoundWord);
 
-		compoundWord = compoundWord.trim();
+        compoundWord = removeCompoundLocationWordEndings(compoundWord);
 
-		return compoundWord;
-	}
+        compoundWord = compoundWord.trim();
+
+        return compoundWord;
+    }
+
+    /**
+     * Remove Location Word Endings such as नगर, पुर्, कोट etc
+     * @param compoundWord
+     * @return cleaned word
+     */
+    public static String removeCompoundLocationWordEndings(String compoundWord) {
+
+        for (LocationWordEnding dir : LocationWordEnding.values()) {
+            String lwe = dir.getNepaliWordEnding();
+
+            if (compoundWord.endsWith(lwe) && isNotTheSameWord(compoundWord, lwe) && isAllowedLength(compoundWord, lwe)) {
+                compoundWord = TextUtils.replaceLast(compoundWord, lwe, "");
+            }
+
+        }
+        return compoundWord;
+    }
+
+    /**
+     * Remove Compound Name Word Endings such as प्रसाद, कुमार, राज, बहादुर etc
+     * @param compoundWord
+     * @return cleaned word
+     */
+    public static String removeCompoundNameWordEndings(String compoundWord) {
+
+        for (NameWordEnding dir : NameWordEnding.values()) {
+            String nwe = dir.getNepaliWordEnding();
+
+            if (compoundWord.endsWith(nwe) && isNotTheSameWord(compoundWord, nwe) && isAllowedLength(compoundWord, nwe)) {
+                compoundWord = TextUtils.replaceLast(compoundWord, nwe, "");
+            }
+
+        }
+        return compoundWord;
+    }
+
+    /**
+     * Remove Regular Compound Words such as हरु, देखि, माथि etc
+     * @param compoundWord
+     * @return cleaned word
+     */
+    public static String removeCompoundWordEndings(String compoundWord) {
+
+        for (CompoundWordEnding dir : CompoundWordEnding.values()) {
+            String cwe = dir.getNepaliWordEnding();
+
+            if (compoundWord.endsWith(cwe) && isNotTheSameWord(compoundWord, cwe) && isAllowedLength(compoundWord, cwe)) {
+                compoundWord = TextUtils.replaceLast(compoundWord, cwe, "");
+            }
+
+        }
+        return compoundWord;
+    }
 
     /**
      * Checks if two words are same. For example, we want to no more apply the
@@ -303,6 +356,7 @@ public class NepaliStemmer {
 	    //nakhannus, nagarnos, nathaga --> etc.
 	    //सुनिरहे
 	    //KHAINDO, THAGINDO
+	    //khaindai, thagindai
 	    
 	    
 	    System.out.println(verbVariations);

@@ -27,12 +27,14 @@ select count(*) from sentence_unreferenced where words_count is not null
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2) where ID=6012
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2), VERIFIED='YVER222' where word like '%ले'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2), VERIFIED='VER0KO' where ROOT_WORD IS NULL AND word like '%को'
+update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-2) where ROOT_WORD IS NULL AND VERIFIED='VER0' AND word like '%का%'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-5), VERIFIED = 'Y-VER', IS_COMPOUND_WORD='Y' where word like '%पछिको'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-3), VERIFIED = 'Y-VER22', IS_COMPOUND_WORD='Y' where word like '%लाई'
 update words_unreferenced set ROOT_WORD = SUBSTR(WORD,1,LENGTH(WORD)-6), VERIFIED = 'Y-VER22', IS_COMPOUND_WORD='Y' where word like '%हरूलाई'
 update words_unreferenced set ROOT_WORD = SUBSTR(ROOT_WORD,1,LENGTH(ROOT_WORD)-2), VERIFIED = 'YVER22m', IS_COMPOUND_WORD='Y' where VERIFIED = 'YVER222' and ROOT_WORD like '%हरु'
 update words_unreferenced set ROOT_WORD = SUBSTR(ROOT_WORD,1,LENGTH(ROOT_WORD)-3), ROOT_WORD_EXTRACTED='Y', IS_COMPOUND_WORD='Y', VERIFIED='VER0HARU' where VERIFIED='VER0KO' and ROOT_WORD like '%हरु'
 update words_unreferenced set ROOT_WORD = SUBSTR(ROOT_WORD,1,LENGTH(ROOT_WORD)-3), VERIFIED = 'VER229', IS_COMPOUND_WORD='Y' where ROOT_WORD like '%झैं'
+update words_unreferenced set ROOT_WORD = SUBSTR(ROOT_WORD,1,LENGTH(ROOT_WORD)-5), IS_COMPOUND_WORD='Y' where VERIFIED = 'VER0' AND ROOT_WORD like '%लगायत'
 
 
 update words_unreferenced set ROOT_WORD=NULL WHERE VERIFIED = 'Y-VER2'
@@ -52,3 +54,6 @@ SELECT COUNT(*) FROM WORDS_UNREFERENCED WHERE VERIFIED='Y' AND IS_COMPOUND_WORD 
 
 //distinct count by verified status
 SELECT VERIFIED, COUNT(*) FROM WORDS_UNREFERENCED GROUP BY VERIFIED HAVING VERIFIED NOT NULL
+
+//update root words
+update words_unreferenced set root_word = word, ROOT_WORD_EXTRACTED = 'Y' where verified = "VER_NC" AND ROOT_WORD IS NULL

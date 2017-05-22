@@ -10,6 +10,7 @@ import com.icodejava.research.nlp.database.ArticlesDB;
 import com.icodejava.research.nlp.database.Tables;
 import com.icodejava.research.nlp.database.WordsUnreferencedDB;
 import com.icodejava.research.nlp.domain.CompoundWordEnding;
+import com.icodejava.research.nlp.domain.NameWordEnding;
 import com.icodejava.research.nlp.domain.Word;
 import com.icodejava.research.nlp.stemmer.NepaliStemmer;
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
@@ -32,13 +33,13 @@ public class WordsUnreferencedService {
 		//processUnreferencedWords(10000);
 		// processWordsFromFile("src/com/icodejava/research/nlp/sources/other/misc_words.txt");
 		// getRomanizedWordCount();
-		 removeDuplication();
+		// removeDuplication();
 		 
 		// getRandomCompoundWords(1000);
 		 
 		 //updateWordRootFromKnownRoots();
 		 //updateCompoundWordRootsFromKnownRoots(); //TODO: NEEDS OPTIMIZATION
-
+	    
 	}
 
 	public static List<Word> getRandomCompoundWords(int limit) {
@@ -453,6 +454,24 @@ public class WordsUnreferencedService {
 	       
 	       WordsUnreferencedDB.updateRomanizationISO(rootWord, valueRomanizedISOStandard);
 	   }
-	
+	   
+	   /**
+	    * Returns a list of unverified probable names based on @see {@link NameWordEnding}
+	    * @param limit
+	    * @return
+	    */
+	   public static List<Word> selectUnverifiedNames(int limit) {
+	       return WordsUnreferencedDB.selectUnverifiedNames(limit);
+	   }
+	   
+       /**
+        * Returns a list of unverified probable names based on @see {@link LocationWorddEnding}
+        * @param limit
+        * @return
+        */
+       public static List<Word> selectUnverifiedLocations(int limit) {
+           return WordsUnreferencedDB.selectUnverifiedLocations(limit);
+       }
+    
 	
 }

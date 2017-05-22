@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.icodejava.research.nlp.domain.Grammar;
+import com.icodejava.research.nlp.domain.LocationWordEnding;
+import com.icodejava.research.nlp.domain.NameWordEnding;
 import com.icodejava.research.nlp.domain.Word;
 import com.icodejava.research.nlp.tokenizer.NepaliTokenizer;
+import com.icodejava.research.nlp.utils.TextUtils;
 
 public class WordsUnreferencedDB extends DBUtility {
 	
@@ -47,6 +50,10 @@ public class WordsUnreferencedDB extends DBUtility {
 		//selectRandomCompoundWords(10);
 		
 		//selectRootWordsNotClassified(100);
+	    
+	    //formLikeClause(NameWordEnding.values());
+	    
+	    selectUnverifiedNames(50);
 		
 	}
 	
@@ -541,6 +548,28 @@ public class WordsUnreferencedDB extends DBUtility {
 		return words;
 	}
 	
+	   public static List<Word> selectRecordsForRomanization(int limit) {
+
+	        String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE VERIFIED='Y' AND (WORD_ROMANIZED='NOT_ROMANIZED' OR WORD_ROMANIZED='T') ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
+
+	        List<Word> words = new ArrayList<Word>();
+	        
+	        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+	                Statement stmt = conn.createStatement();
+	                ResultSet rs = stmt.executeQuery(sql)) {
+
+	            while (rs.next()) {
+	                //System.out.println(rs.getInt("ID") + "\t" + rs.getString("WORD") + "\t" + rs.getString("VERIFIED"));
+	                words.add(new Word(rs.getInt("ID"), rs.getString("WORD"), rs.getString("VERIFIED") ));
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	        
+	        return words;
+	    }
+	
+	
 	public static List<Word> selectRandomCompoundWords(int limit) {
 
 		String sql = "SELECT * FROM " +  Tables.WORDS_UNREFERENCED +" WHERE ID IN (SELECT ID FROM " + Tables.WORDS_UNREFERENCED +" WHERE IS_COMPOUND_WORD='Y' AND ROOT_WORD IS NULL ORDER BY RANDOM()  LIMIT " + limit + ") ORDER BY WORD ASC";
@@ -805,7 +834,8 @@ public class WordsUnreferencedDB extends DBUtility {
 	
 	public static void updateWordClassification(Word word) {
 		
-		String sql = "UPDATE " +  Tables.WORDS_UNREFERENCED + " SET IS_COMPOUND_WORD = \"" + word.getIsCompoundWord() + "\"," + 
+		String sql = "UPDATE " +  Tables.WORDS_UNREFERENCED + " SET " + 
+		    " IS_COMPOUND_WORD = \"" + word.getIsCompoundWord() + "\"," + getWordValidClause(word) +
 			" CLASSIFICATION_1=\"" +  word.getClassification1() + "\","  +
 			" CLASSIFICATION_2=\"" +  word.getClassification2() + "\"," +
 			" CLASSIFICATION_3=\"" +  word.getClassification3() + "\"," +
@@ -833,7 +863,20 @@ public class WordsUnreferencedDB extends DBUtility {
 		
 	}
 	
-	public static void updatePartOfSpeech(Word word) {
+	private static String getWordValidClause(Word word) {
+	    String clause ="";
+	    if("Y".equalsIgnoreCase(word.getVerified())) {
+	       clause = "VERIFIED='VER_NC',"; //VERIIFED THROUGH NAME CLASSIFICATION or other classifications
+	               
+	    } else if ("N".equalsIgnoreCase(word.getVerified())) {
+	        clause = "VERIFIED='VER_SKIP',"; //Tag as skip, so it's not picked up next time
+	    }
+	    
+	    return clause;
+    }
+
+
+    public static void updatePartOfSpeech(Word word) {
 		
 		if (word.getPartOfSpeech() == null) {
 			return;
@@ -1032,6 +1075,86 @@ public class WordsUnreferencedDB extends DBUtility {
 
 		return wordsStr;
 	}
+
+
+    public static List<Word> selectUnverifiedNames(int limit) {
+        List<Word> words = new ArrayList<Word>();
+        
+        
+        String sql = "select * from words_unreferenced where (VERIFIED IS NULL OR (verified != 'Y' AND VERIFIED !='VER_NC' AND VERIFIED !='VER_SKIP')) AND " + formLikeClause(NameWordEnding.values())+" LIMIT " + limit + ";";
+        
+        //System.out.println(sql);
+        
+        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Word word = new Word();
+                word.setId(rs.getInt("ID"));
+                word.setWord(rs.getString("WORD"));
+                
+                words.add(word);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return words;
+    }
+    
+    public static List<Word> selectUnverifiedLocations(int limit) {
+        List<Word> words = new ArrayList<Word>();
+        
+        
+        String sql = "select * from words_unreferenced where (VERIFIED IS NULL OR (verified != 'Y' AND VERIFIED !='VER_NC') AND VERIFIED !='VER_SKIP') AND " + formLikeClause(LocationWordEnding.values())+" LIMIT " + limit + ";";
+        
+        System.out.println(sql);
+        
+        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Word word = new Word();
+                word.setId(rs.getInt("ID"));
+                word.setWord(rs.getString("WORD"));
+                
+                words.add(word);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return words;
+    }
+
+    
+    public static String formLikeClause(NameWordEnding[] nwes) {
+        String result = "(";
+        for (NameWordEnding nwe : nwes) {
+            result += "WORD LIKE '%" + nwe.getNepaliWordEnding() + "' OR ";
+
+        }
+
+        result = TextUtils.replaceLast(result, " OR", ")");
+        return result;
+    }
+
+    public static String formLikeClause(LocationWordEnding[] lwes) {
+        String result = "(";
+        for (LocationWordEnding lwe : lwes) {
+            result += "WORD LIKE '%" + lwe.getNepaliWordEnding() + "' OR ";
+
+        }
+
+        result = TextUtils.replaceLast(result, " OR", ")");
+        return result;
+    }
+
+
 
 
 }
