@@ -356,6 +356,7 @@ public class NepaliStemmer {
 	    //nakhannus, nagarnos, nathaga --> etc.
 	    //सुनिरहे
 	    //KHAINDO, THAGINDO
+	    //khaindai, thagindai
 	    
 	    
 	    System.out.println(verbVariations);

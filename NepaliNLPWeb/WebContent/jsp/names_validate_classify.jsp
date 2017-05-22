@@ -44,7 +44,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 	<form action="/NepaliNLPWeb/NamesValidationClassificationServlet" method="post">
 
 		<%
-			List<Word> words = WordsUnreferencedService.selectUnverifiedNames(50);
+			List<Word> words = WordsUnreferencedService.selectUnverifiedNames(100);
 			int count = 1;
 			for (Word word : words) {
 		%>
@@ -56,7 +56,7 @@ if("successful".equalsIgnoreCase(request.getParameter("result"))) {
 				<label for="word_person_<%=word.getId()%>">Person</label> 
 				<input type="checkbox" name="word_person_<%=word.getId()%>" id="word_person_<%=word.getId()%>" checked="checked">
 				<label for="word_firstname_<%=word.getId()%>">Firstname</label> 
-				<input type="checkbox" name="word_firstName_<%=word.getId()%>" id="word_firstname_<%=word.getId()%>" checked="checked">
+				<input type="checkbox" name="word_firstname_<%=word.getId()%>" id="word_firstname_<%=word.getId()%>" checked="checked">
 				<label for="word_surname_<%=word.getId()%>">Surname</label> 
 				<input type="checkbox" name="word_surname_<%=word.getId()%>" id="word_surname_<%=word.getId()%>">
 				<label for="word_skip_<%=word.getId()%>">Skip</label> 
