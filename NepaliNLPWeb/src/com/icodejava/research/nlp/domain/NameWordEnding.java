@@ -8,6 +8,7 @@ public enum NameWordEnding {
     KUMARI("कुमारी"),
     DEVI("देवी"),
     JANG("जंग"),
+    JEET("जीत"),
     MAYA("माया"),
     PRAKASH("प्रकाश"),
     MAAN("मान"),
@@ -17,6 +18,7 @@ public enum NameWordEnding {
     DEEP("दीप"),
     GOPAL("गोपाल"),
     NARAYAN("नारायण"),
+    SINGHA("सिंह"),
     SHAMSHER("शमशेर");
     
     
