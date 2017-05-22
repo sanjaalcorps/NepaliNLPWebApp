@@ -314,7 +314,7 @@ https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration
 				|| transformed.endsWith("ba")
 				|| transformed.endsWith("bha")
 				|| transformed.endsWith("ma")
-				|| (transformed.endsWith("ra") && !transformed.endsWith("ēra")) //TODO: EXCEPTION KHERA, NIRA, TIRA, JAMERA, KSHETRA
+				|| (transformed.endsWith("ra") && !transformed.endsWith("ēra") && !transformed.endsWith("ira")) //TODO: EXCEPTION KHERA, NIRA, TIRA, JAMERA, KSHETRA
 				|| transformed.endsWith("la") 
 				|| transformed.endsWith("va")
 				|| transformed.endsWith("sa")
