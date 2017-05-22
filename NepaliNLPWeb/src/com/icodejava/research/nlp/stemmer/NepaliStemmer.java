@@ -11,10 +11,10 @@ import com.icodejava.research.nlp.utils.TextUtils;
 
 /**
  * 
- * @author Kushal Paudyal www.sanjaal.com | www.inepal.org | www.icodejava.com
- * 
- *         Stemmer Class for Nepali Words
- * 
+ * @author Kushal Paudyal 
+ * @web www.sanjaal.com | www.inepal.org | www.icodejava.com
+ *
+ *	Stemmer Class for Nepali Words
  *         Stemming is a process of finding the root word from a compound word.
  *         e.g. "स्थानलगायत" is stemmed to "स्थान"
  *
@@ -34,13 +34,13 @@ public class NepaliStemmer {
 	 * @return root word
 	 */
     public static String getNepaliRootWord(String compoundWord) {
+    	if(compoundWord == null || compoundWord.trim().length() == 0) {
+    		return "";
+    	}
 
         compoundWord = removeCompoundWordEndings(compoundWord);
-
         compoundWord = removeCompoundNameWordEndings(compoundWord);
-
         compoundWord = removeCompoundLocationWordEndings(compoundWord);
-
         compoundWord = compoundWord.trim();
 
         return compoundWord;
@@ -113,6 +113,13 @@ public class NepaliStemmer {
         return compoundWord.length() > cwe.length();
     }
 
+    /**
+     * To avoid low level of accuracy specially of shorter String, this method checks a minimum length before stripping 
+     * compound word forming Suffixes
+     * @param compoundWord
+     * @param cwe
+     * @return
+     */
 	private static boolean isAllowedLength(String compoundWord, String cwe) {
 		
 		boolean allowed = true;
@@ -129,7 +136,7 @@ public class NepaliStemmer {
 	}
 
 	/**
-	 * This method takes a Nepali Word, repalces all the matras and returns the
+	 * This method takes a Nepali Word, replaces all the MATRAS and returns the
 	 * transformed word. e.g. ट्रान्सफर --> टरनसफर
 	 * 
 	 * @param word
@@ -347,16 +354,21 @@ public class NepaliStemmer {
 
 	    
 	    
-	    //TODO: Implement the following
-	    //KHAUNJEL, RAMAUNJEL, CHALUNJEN, THAGUNJEL
-	    //khainu, ramainu, chalinu, thaginu
-	    //khayera, ramayera, chalera, thagiyera
-	    //Khandaina, ramaundaina,, --> other negations
-	    //khandai, gardai
-	    //nakhannus, nagarnos, nathaga --> etc.
-	    //सुनिरहे
-	    //KHAINDO, THAGINDO
-	    //khaindai, thagindai
+	    /**
+	    TODO: Implement the following
+		    KHAUNJEL, RAMAUNJEL, CHALUNJEN, THAGUNJEL
+		    khainu, ramainu, chalinu, thaginu
+		    khayera, ramayera, chalera, thagiyera
+		    Khandaina, ramaundaina,, --> other negations
+		    khandai, gardai
+		    nakhannus, nagarnos, nathaga --> etc.
+		    सुनिरहे
+		    KHAINDO, THAGINDO
+		    khaindai, thagindai
+		    khaikana, thagikana, nakhaikana, nathagikana //CONJUNCTIVE PARTICIPLES
+		    KHAINU, THAGINU, NAKHAINU, NATHAGINU
+		    KHAIYO, THAGIYO, KHAIYENA, THAGIYENA, 
+	    **/
 	    
 	    
 	    System.out.println(verbVariations);
