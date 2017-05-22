@@ -38,6 +38,9 @@ body {
 	<br><a target="_blank" href="web_tokenizer.jsp">--Web Tokenizer</a>
 	<br><a target="_blank" href="verb_variations.jsp">--Verb Variations</a>
 	<br/>
+	<br><a target="_blank" href="names_validate_classify.jsp">->Names Validate/Classify</a>
+	<br><a target="_blank" href="locations_validate_classify.jsp">->Locations Validate/Classify</a>
+	<br/>
 	<br><a target="_blank" href="statistics.jsp">Admin - Statistics</a>
 	<br><a target="_blank" href="admin_tools.jsp">Admin - Tools</a>
 	
