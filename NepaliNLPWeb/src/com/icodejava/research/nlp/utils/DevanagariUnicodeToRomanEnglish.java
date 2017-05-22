@@ -1,11 +1,15 @@
 package com.icodejava.research.nlp.utils;
 /**
  * @author Kushal Paudyal
- * www.icodejava.com | www.inepal.org
+ * @web www.icodejava.com | www.inepal.org | www.sanjaal.com
+ * @Modified 5/22/2017
  * 
  * This class can convert a text written in unicode to Devanagari.
  * 
  * Alternate is also possible, if the Romanized English is in the proper ISO standard.
+ * Refer to the following Wiki Page for Transliteration Rules and Standards
+ * https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration
+ * 
  */
 
 import java.util.Arrays;
@@ -17,7 +21,7 @@ import com.icodejava.research.nlp.stemmer.NepaliStemmer;
 public class DevanagariUnicodeToRomanEnglish {
 	
 	
-	static List<String> unicodeSet = Arrays.asList(new String[]{
+	public static List<String> unicodeSet = Arrays.asList(new String[]{
             "१","२","३","४","५","६","७","८","९","०",
             "अ", "आ","इ", "ई", "उ", "ऊ","ए","ऐ","ओ","औ","अं","अ:","अँ",
             "क", "का", "कि", "की", "कु", "कू", "के", "कै", "को", "कौ", "कं", "क:", "क्","कृ",
@@ -57,10 +61,23 @@ public class DevanagariUnicodeToRomanEnglish {
             "त्र", "त्रा", "त्रि", "त्री", "त्रु", "त्रू", "त्रे", "त्रै", "त्रो", "त्रौ", "त्रं", "त्र:","त्र्",
             "ज्ञ", "ज्ञा", "ज्ञि", "ज्ञी", "ज्ञु", "ज्ञू", "ज्ञे", "ज्ञै", "ज्ञो", "ज्ञौ", "ज्ञं", "ज्ञ:","ज्ञ्",
             //special cases
-            "ऋ","यूँ", "ः"
+            "ऋ","यूँ", "ः",
+            //Additional Consonants Less Frequently Used
+            "क़", "क़ा", "क़ि", "क़ी", "क़ु", "क़ू", "क़े", "क़ै", "क़ो", "क़ौ", "क़ं", "क़:",
+            "ख़", "ख़ा", "ख़ि", "ख़ी", "ख़ु", "ख़ू", "ख़े", "ख़ै", "ख़ो", "ख़ौ", "ख़ं", "ख़:",
+            "ग़", "ग़ा", "ग़ि", "ग़ी", "ग़ु", "ग़ू", "ग़े", "ग़ै", "ग़ो", "ग़ौ", "ग़ं", "ग़:",
+            "ज़", "ज़ा", "ज़ि", "ज़ी", "ज़ु", "ज़ू", "ज़े", "ज़ै", "ज़ो", "ज़ौ", "ज़ं", "ज़:",
+            "ड़", "ड़ा", "ड़ि", "ड़ी", "ड़ु", "ड़ू", "ड़े", "ड़ै", "ड़ो", "ड़ौ", "ड़ं", "ड़:",
+            "ढ़", "ढ़ा", "ढ़ि", "ढ़ी", "ढ़ु", "ढ़ू", "ढ़े", "ढ़ै", "ढ़ो", "ढ़ौ", "ढ़ं", "ढ़:",
+            "फ़", "फ़ा", "फ़ि", "फ़ी", "फ़ु", "फ़ू", "फ़े", "फ़ै", "फ़ो", "फ़ौ", "फ़ं", "फ़:",
+            "य़", "य़ा", "य़ि", "य़ी", "य़ु", "य़ू", "य़े", "य़ै", "य़ो", "य़ौ", "य़ं", "य़:",
+            "त़", "त़ा", "त़ि", "त़ी", "त़ु", "त़ू", "त़े", "त़ै", "त़ो", "त़ौ", "त़ं", "त़:",
+            "स़", "स़ा", "स़ि", "स़ी", "स़ु", "स़ू", "स़े", "स़ै", "स़ो", "स़ौ", "स़ं", "स़:",
+            "ह़", "ह़ा", "ह़ि", "ह़ी", "ह़ु", "ह़ू", "ह़े", "ह़ै", "ह़ो", "ह़ौ", "ह़ं", "ह़:",
+            "व़", "व़ा", "व़ि", "व़ी", "व़ु", "व़ू", "व़े", "व़ै", "व़ो", "व़ौ", "व़ं", "व़:"
   });
 	
-  static List<String> romanizedEnglishSet = Arrays.asList(new String[]{
+  public static List<String> romanizedEnglishSet = Arrays.asList(new String[]{
             "1","2","3","4","5","6","7","8","9","0",
             "a", "ā","i", "ī", "u", "ū","ē","ai","ō","au","aṁ","a:","aṅ",
             "ka", "kā", "ki", "kī", "ku", "kū", "kē", "kai", "ko", "kau", "kṁ", "ka:","k","kri",
@@ -99,42 +116,36 @@ public class DevanagariUnicodeToRomanEnglish {
             "ksha", "kshā", "kshi", "kshī", "kshu", "kshū", "kshē", "kshai", "ksho", "kshau", "kshṁ", "ksha:","ksh",
             "tra", "trā", "tri", "trī", "tru", "trū", "trē", "trai", "tro", "trau", "trṁ", "tra:","tr",
             "gya", "gyā", "gyi", "gyī", "gyu", "gyū", "gyē", "gyai", "gyo", "gyau", "gyṁ", "gya:","gy",
-            //extra
-            "r̥","yūm̐", ":"
+            //Special Cases
+            "r̥","yūm̐", ":",
+            //Consonants Less Frequently used
+            "qa", "qā", "qi", "qī", "qu", "qū", "qē", "qai", "qo", "qau", "qṁ", "qa:",
+            "ḵẖa", "ḵẖā", "ḵẖi", "ḵẖī", "ḵẖu", "ḵẖū", "ḵẖē", "ḵẖai", "ḵẖo", "ḵẖau", "ḵẖṁ", "ḵẖa:",
+            "ġa", "ġā", "ġi", "ġī", "ġu", "ġū", "ġē", "ġai", "ġo", "ġau", "ġṁ", "ġa:",
+            "za", "zā", "zi", "zī", "zu", "zū", "zē", "zai", "zo", "zau", "zṁ", "za:",
+            "ṛa", "ṛā", "ṛi", "ṛī", "ṛu", "ṛū", "ṛē", "ṛai", "ṛo", "ṛau", "ṛṁ", "ṛa:",
+            "ṛha", "ṛhā", "ṛhi", "ṛhī", "ṛhu", "ṛhū", "ṛhē", "ṛhai", "ṛho", "ṛhau", "ṛhṁ", "ṛha:",
+            "fa", "fā", "fi", "fī", "fu", "fū", "fē", "fai", "fo", "fau", "fṁ", "fa:",
+            "ẏa", "ẏā", "ẏi", "ẏī", "ẏu", "ẏū", "ẏē", "ẏai", "ẏo", "ẏau", "ẏṁ", "ẏa:",
+            "t̤a", "t̤ā", "t̤i", "t̤ī", "t̤u", "t̤ū", "t̤ē", "t̤ai", "t̤o", "t̤au", "t̤ṁ", "t̤a:",
+            "s̤a", "s̤ā", "s̤i", "s̤ī", "s̤u", "s̤ū", "s̤ē", "s̤ai", "s̤o", "s̤au", "s̤ṁ", "s̤a:",
+            "h̤a", "h̤ā", "h̤i", "h̤ī", "h̤u", "h̤ū", "h̤ē", "h̤ai", "h̤o", "h̤au", "h̤ṁ", "h̤a:",
+            "wa", "wā", "wi", "wī", "wu", "wū", "wē", "wai", "wo", "wau", "wṁ", "wa:",
 
   });
 	
 	public static String set_of_matras = "ा ि ी ु ू ृ े ै ो ौ ं : ँ ॅ्" ;
 	
-	public static void main(String args []) {
-		
-
-//		NPTokenizer.isMalformedWord("भनेझ्ैं");
-//		NPTokenizer.isMalformedWord("भनेझैं");
-//		
-//		NPTokenizer.fixMalformedWord("िबचार");
-//		NPTokenizer.fixMalformedWord("अोचार");
-		
-//      System.out.println("Unicode Set Length " + unicodeSet.size());
-//
-		//System.out.println("भनेझ्ैं".replaceAll("् ै ं ", " ै ं "));
-		
-		//conertFile("C:\\temp\\np4.txt");
-	}
-
-
-	
-    public static void sanityCheck() {
+    public static boolean sanityCheck() {
 
         for(int i = 0; i < romanizedEnglishSet.size(); i ++) {
             System.out.println(romanizedEnglishSet.get(i) + "-->" + unicodeSet.get(i));
         }
         
-        
-
+        return romanizedEnglishSet.size() == unicodeSet.size();
     }
     
-    private static void convertFile(String fileName) {
+    public static void convertFile(String fileName) {
 
         String str = FileUtilities.readUTF8File(fileName);
 
@@ -279,7 +290,6 @@ f						m			m
 y, r, l, v, ś, ṣ, 
 s, h ẏ					n			n
 
-https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration
 		 */
     }
 

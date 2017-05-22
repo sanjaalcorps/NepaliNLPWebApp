@@ -6,14 +6,20 @@ public class DevUnicode {
         //U+0900..U+097F (128 code points)
 
         String str = "\"क\", \"का\", \"कि\", \"की\", \"कु\", \"कू\", \"के\", \"कै\", \"को\", \"कौ\", \"कं\", \"क:\"" ;
-    	String strEng = "\"ka\", \"kā\", \"ki\", \"kī\", \"ku\", \"kū\", \"kē\", \"kai\", \"ko\", \"kau\", \"kṁ\", \"ka:\"" ;
+        String strEng = "\"ka\", \"kā\", \"ki\", \"kī\", \"ku\", \"kū\", \"kē\", \"kai\", \"ko\", \"kau\", \"kṁ\", \"ka:\"" ;
+
+        String additionalConsonants = "\"क़\", \"क़ा\", \"क़ि\", \"क़ी\", \"क़ु\", \"क़ू\", \"क़े\", \"क़ै\", \"क़ो\", \"क़ौ\", \"क़ं\", \"क़:\""; 
+        String additionalConsonantsEng = "\"qa\", \"qā\", \"qi\", \"qī\", \"qu\", \"qū\", \"qē\", \"qai\", \"qo\", \"qau\", \"qṁ\", \"qa:\"" ;
+
         //String str = "क, का, कि, की, कु, कू, के, कै, को, कौ, कं, क:" ;
         
         
         
-        generateNP(str);
-        
-        generateEN(strEng);
+        //generateNP(str);
+        //generateEN(strEng);
+        //System.out.println();
+        generateNPAdditionalConsonants(additionalConsonants);
+        generateENAdditionalConsonants(additionalConsonantsEng);
 
 
 
@@ -96,8 +102,6 @@ public class DevUnicode {
 	
 	private static void generateNP(String str) {
 		String strOriginal = str;
-        //कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसहक्षत्रज्ञ
-        //अआइईउऊएऐओऔअंअ:
         System. out.println(str);
         System. out.println(str.replaceAll("क" , "ख" ));
         str=strOriginal;
@@ -169,5 +173,59 @@ public class DevUnicode {
         str=strOriginal;
         System. out.println(str.replaceAll("क" , "ज्ञ" ));
 	}
+	
+	private static void generateNPAdditionalConsonants(String str) {
+		String strOriginal = str;
+        System. out.println(str);
+        System. out.println(str.replaceAll("क़" , "ख़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "ग़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "ज़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "ड़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "ढ़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "फ़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "य़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "त़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "स़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "ह़" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("क़" , "व़" ));
+      
+	}
+	
+	private static void generateENAdditionalConsonants(String str) {
+		String strOriginal = str;
 
+		System. out.println(str);
+        System. out.println(str.replaceAll("q" , "ḵẖ" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "ġ" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "z" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "ṛ" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "ṛh" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "f" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "ẏ" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "t̤" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "s̤" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "h̤" ));
+        str=strOriginal;
+        System. out.println(str.replaceAll("q" , "w" ));
+	}
+	
 }
