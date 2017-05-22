@@ -309,7 +309,7 @@ s, h ẏ					n			n
 				|| (transformed.endsWith("cha") && !transformed.endsWith("rcha")) //kharcha, pracha
 				|| transformed.endsWith("ja")
 				|| transformed.endsWith("jha")
-				|| transformed.endsWith("ṭa")
+				|| (transformed.endsWith("ṭa") && !transformed.endsWith("bāta"))
 				|| transformed.endsWith("ṭha")
 				|| transformed.endsWith("ḍa")
 				|| transformed.endsWith("ḍha")
@@ -376,6 +376,16 @@ s, h ẏ					n			n
 		if(transformed.endsWith("palē")) {
 			transformed = transformed.substring(0, transformed.lastIndexOf("palē")) + "plē"; //e.g. चित्ररुपले  > chitrarupalē > chitraruplē
 			
+		}
+		
+		if(transformed.endsWith("nalē")) {
+		    transformed = transformed.substring(0, transformed.lastIndexOf("nalē")) + "nlē"; //e.g. वर्तमानले > vartamānalē > vartamānlē
+		    
+		}
+		
+		if(transformed.endsWith("ralē")) {
+		    transformed = transformed.substring(0, transformed.lastIndexOf("ralē")) + "rlē"; //e.g. वीरबहादुरले  > vīrbahāduralē > vīrbahādurlē
+		    
 		}
 		
 		if(transformed.endsWith("nakai")) {

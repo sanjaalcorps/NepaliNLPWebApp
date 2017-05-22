@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.icodejava.research.nlp.domain.CompoundWordEnding;
+import com.icodejava.research.nlp.domain.CompoundWordEndingExtended;
 import com.icodejava.research.nlp.domain.Grammar;
 import com.icodejava.research.nlp.domain.LocationWordEnding;
 import com.icodejava.research.nlp.domain.NameWordEnding;
@@ -41,6 +42,7 @@ public class NepaliStemmer {
         compoundWord = removeCompoundWordEndings(compoundWord);
         compoundWord = removeCompoundNameWordEndings(compoundWord);
         compoundWord = removeCompoundLocationWordEndings(compoundWord);
+        compoundWord = removeCompoundWordEndingsExtended(compoundWord);//TODO: Do this for Romanization calls only
         compoundWord = compoundWord.trim();
 
         return compoundWord;
@@ -90,6 +92,24 @@ public class NepaliStemmer {
     public static String removeCompoundWordEndings(String compoundWord) {
 
         for (CompoundWordEnding dir : CompoundWordEnding.values()) {
+            String cwe = dir.getNepaliWordEnding();
+
+            if (compoundWord.endsWith(cwe) && isNotTheSameWord(compoundWord, cwe) && isAllowedLength(compoundWord, cwe)) {
+                compoundWord = TextUtils.replaceLast(compoundWord, cwe, "");
+            }
+
+        }
+        return compoundWord;
+    }
+    
+    /**
+     * Remove Regular Compound Words such as करण, बाद, बादी, वाण etc. Use this method for Romanizaiton Stemming only.
+     * @param compoundWord
+     * @return cleaned word
+     */
+    public static String removeCompoundWordEndingsExtended(String compoundWord) {
+
+        for (CompoundWordEndingExtended dir : CompoundWordEndingExtended.values()) {
             String cwe = dir.getNepaliWordEnding();
 
             if (compoundWord.endsWith(cwe) && isNotTheSameWord(compoundWord, cwe) && isAllowedLength(compoundWord, cwe)) {
