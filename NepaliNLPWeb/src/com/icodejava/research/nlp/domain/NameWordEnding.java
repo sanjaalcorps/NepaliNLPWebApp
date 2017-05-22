@@ -1,5 +1,12 @@
 package com.icodejava.research.nlp.domain;
-
+/**
+ * 
+ * @author Kushal Paudyal
+ * @web www.icodejava.com | www.inepal.org | www.sanjaal.com
+ * @created 05/17/2017
+ * @Modifie 05/22/2017
+ *
+ */
 public enum NameWordEnding {
     
     KUMAR("कुमार"),
@@ -19,8 +26,11 @@ public enum NameWordEnding {
     GOPAL("गोपाल"),
     NARAYAN("नारायण"),
     SINGHA("सिंह"),
+    NDRA("न्द्र"),
+    BABU("बाबु"),
+    RAM("राम"),
+    LAL("लाल"),
     SHAMSHER("शमशेर");
-    
     
     private String nepaliWordEnding;
 
