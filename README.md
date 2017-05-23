@@ -24,6 +24,8 @@ A lot, but here are few things worth mentioning:
 8. 1 Billion Nepali high quality Nepali Sentences {HIGH AMBITION / ACHIEVABLE}
 9. Automated bots(chats, recommendations, etc)  in Nepali Language (If you didn't know, Bots are new things, replacing apps)
 10. Simple Question Answer Web (Machine Generated Question Answer Based on Data Fed. E.g. Who is the current prime minister of Nepal? XYZ). Chatbot could be used instead of apps. For example, you type in questions to a chat bot, they will answer you. 
+11. Nepali Text To Speech
+12. Nepali Speech Recognition and Speech to Text
 
 
 <b>What do I have that is not on the github?</b><br/>
