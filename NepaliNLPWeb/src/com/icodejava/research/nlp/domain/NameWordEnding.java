@@ -5,7 +5,7 @@ package com.icodejava.research.nlp.domain;
  * @web www.icodejava.com | www.inepal.org | www.sanjaal.com
  * @created 05/17/2017
  * @Modifie 05/22/2017
- *
+ * Denotes Typical Word Endings (Suffixes) for Nepali Names.
  */
 public enum NameWordEnding {
     

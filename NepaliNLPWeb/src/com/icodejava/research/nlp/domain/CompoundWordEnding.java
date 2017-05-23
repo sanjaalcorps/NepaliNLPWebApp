@@ -320,6 +320,7 @@ Rupma
 गाथा 
 दुष्परिणाम
 
+Words ending in Une --> Bisheshan?
 	 */
 
 	private String nepaliWordEnding;

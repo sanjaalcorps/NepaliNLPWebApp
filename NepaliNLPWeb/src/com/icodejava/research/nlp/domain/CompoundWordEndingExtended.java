@@ -14,6 +14,7 @@ public enum CompoundWordEndingExtended {
     BAD("बाद"),
     BAN("वाण"),
     DUT("दूत"),
+    RAAT("रात"),
     CHHAM("छाम"); 
 
     private String nepaliWordEnding;
