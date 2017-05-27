@@ -215,6 +215,16 @@ public class DevanagariUnicodeToRomanEnglishTest {
 		Assert.assertThat(output, is(expected));
 
 	}
+	
+	@Test
+	public void test_020() {
+		String input = "ज्ञानी";
+		String output = DevanagariUnicodeToRomanEnglish.convertSentence(input);
+		String expected = "gyani";
+		
+		Assert.assertThat(output, is(expected));
+
+	}
 
 	// System.out.println(DevanagariUnicodeToRomanEnglish.convertSentence("पठाउँछौं
 	// बाँसबारीको साँचोझुठो"));
