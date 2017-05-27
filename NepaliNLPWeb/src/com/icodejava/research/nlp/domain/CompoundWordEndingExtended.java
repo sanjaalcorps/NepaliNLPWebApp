@@ -15,7 +15,19 @@ public enum CompoundWordEndingExtended {
     BAN("वाण"),
     DUT("दूत"),
     RAAT("रात"),
-    CHHAM("छाम"); 
+    CHHAM("छाम"),
+	PATRA("पत्र"),
+	SUTRA_1("सुत्र"),
+	SUTRA_2("सूत्र"),
+	GHAR("घर"),
+	DAAN("दान"),
+	ROG("रोग"),
+	PAATRA("पात्र");
+	
+	  
+	/*
+   
+	 */
 
     private String nepaliWordEnding;
 
