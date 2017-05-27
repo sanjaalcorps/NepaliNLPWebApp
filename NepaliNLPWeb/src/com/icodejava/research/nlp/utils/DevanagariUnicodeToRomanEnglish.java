@@ -368,6 +368,11 @@ s, h ẏ					n			n
 			transformed = transformed.substring(0, transformed.lastIndexOf("ṇakā")) + "ṇkā"; //e.g. कारणका  > kāraṇakā > kāraṇkā
 		}
 		
+		if(transformed.endsWith("dalē")) {
+			transformed = transformed.substring(0, transformed.lastIndexOf("dalē")) + "dlē"; //e.g. गिरिजाप्रसादले  > girijāprasādalē > girijāprasādlē
+			
+		}
+
 		if(transformed.endsWith("valē")) {
 			transformed = transformed.substring(0, transformed.lastIndexOf("valē")) + "vlē"; //e.g. गरिवले > garivalē > garivlē
 			

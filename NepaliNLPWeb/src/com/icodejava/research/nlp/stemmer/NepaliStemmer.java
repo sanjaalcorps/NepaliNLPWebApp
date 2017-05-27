@@ -388,6 +388,7 @@ public class NepaliStemmer {
 		    khaikana, thagikana, nakhaikana, nathagikana //CONJUNCTIVE PARTICIPLES
 		    KHAINU, THAGINU, NAKHAINU, NATHAGINU
 		    KHAIYO, THAGIYO, KHAIYENA, THAGIYENA, 
+		    khayekale, nakhayekale
 	    **/
 	    
 	    
