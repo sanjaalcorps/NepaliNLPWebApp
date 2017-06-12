@@ -29,6 +29,7 @@ public enum NameWordEnding {
     NDRA("न्द्र"),
     BABU("बाबु"),
     RAM("राम"),
+    SHARAN("शरण"),
     LAL("लाल"),
     SHAMSHER("शमशेर");
     
