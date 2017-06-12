@@ -311,13 +311,13 @@ public class NepaliStemmer {
 	        verbVariations.add(removeHalant(root) + "\u093F" + "नस"); //चलिनस
 	        verbVariations.add(removeHalant(root) + "\u0940" + "न"); //चलीन Wrong Hraswa/Dirgha but possible
 	        verbVariations.add(removeHalant(root) + "\u093F"); // चलिन 
-	        verbVariations.add(removeHalant(root) + "\u093F" + "छे"); //चलिछे
+	        verbVariations.add(removeHalant(root) + "\u093F" + "नछे"); //चलिनछे
 
 	        
 	    } else {
 	    
 	    	verbVariations.add("न" + root + "एको");  //नखाएको, नरमाएको
-	    	verbVariations.add("न" + root + "येको");  //खायेको, रमायेको
+	    	verbVariations.add("न" + root + "येको");  //नखायेको, नरमायेको
 	    	verbVariations.add("न" + root + "ऊ");//नखाऊ, नरमाऊ
 	    	verbVariations.add(root + "एन"); //खाएन, रमाएन
 		    verbVariations.add(root + "एनौ"); //खाएनौ, रमाएनौ
@@ -327,31 +327,30 @@ public class NepaliStemmer {
 	        verbVariations.add(root + "एनन");//खाएनन, रमायेनन
 	        verbVariations.add(root + "येनन");//खायेनन, रमायेनन
 	        verbVariations.add(root + "ईनन");//खाईनन, रमाईनन
-	        verbVariations.add(root + "ईनस"); //खाईस, रमाईनस
+	        verbVariations.add(root + "ईनस"); //खाईनस, रमाईनस
 	        verbVariations.add(root + "ईन"); //खाईन, रमाईन
 	        verbVariations.add(root + "इनन");//खाइनन, रमाइनन
             verbVariations.add(root + "इनस"); //खाइनस, रमाइनस
-	        verbVariations.add(root + "नछे"); //खाइनछे, रमाइनछे
+	        verbVariations.add(root + "इनछे"); //खाइनछे, रमाइनछे
 	        
 	    }
-
 	    
 	    if(wordEndingInNU.endsWith("उनु")) {
 	    	System.out.println("Here");
-	    	verbVariations.add("न" + root + "उनोस");//naramaunos
-	    	verbVariations.add("न" + root + "उनुस"); //naramaunus
-	    	verbVariations.add("न" + root + "उनुहोस"); //naramaunuhos
-	    	verbVariations.add(root + "उनेछु"); //ramaunechhu
-		    verbVariations.add(root + "उनुहुनेछ");//ramaunuhunechha
-		    verbVariations.add(root + "उनेछन");//ramaunechhan
-		    verbVariations.add(root + "उँछन");//ramaunechhan
-		    verbVariations.add(root + "उँछिन");//ramaunchhin
-		    verbVariations.add(root + "उँछु"); //ramaunchhu
-		    verbVariations.add(root + "उँछे"); //ramaunchhe
-		    verbVariations.add(root + "उँछ"); //ramaunchha
-		    verbVariations.add(root + "उनेछौ"); //ramaunechhau
-		    verbVariations.add(root + "उनेछिन"); //ramaunechhin
-		    verbVariations.add(root + "उनेछ"); //ramaunechha
+	    	verbVariations.add("न" + root + "उनोस");//नरमाउनोस
+	    	verbVariations.add("न" + root + "उनुस"); //नरमाउनुस
+	    	verbVariations.add("न" + root + "उनुहोस"); //नरमाउनुहोस
+	    	verbVariations.add(root + "उनेछैन"); //रमाउनेछैन
+		    verbVariations.add(root + "उनुहुनेछैन");//रमाउनुहुनेछैन
+		    verbVariations.add(root + "उनेछैनन");//रमाउनेछैनन
+		    verbVariations.add(root + "उँदैनन");//रमाउँदैनन
+		    verbVariations.add(root + "उँदिनन");//रमाउँदिनन
+		    verbVariations.add(root + "उँदिन"); //रमाउँदिन
+		    verbVariations.add(root + "उँदिने"); //रमाउँदिने
+		    verbVariations.add(root + "उँदैन"); //रमाउँदैन
+		    verbVariations.add(root + "उनेछैनौ"); //रमाउनेछैनौ
+		    verbVariations.add(root + "उनेछैनन"); //रमाउनेछैनन
+		    verbVariations.add(root + "उनेछैन"); //रमाउनेछैन
 		    verbVariations.add(root + "उनुभएन"); //रमाउनुभएन
 
 	    } else if(wordEndingInNU.endsWith("नु"))  {
