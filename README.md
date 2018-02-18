@@ -1,4 +1,6 @@
 # NepaliNLPWebApp
+
+## UPDATE: The active coding of this is done in private in BitBucket. When I release the project, I do intend to make it public. If you are interested in the project, contact me.
 The web app used for Nepali Language Natural Language Processing - Work in Progress - <b>Leisure Time Project.</b>
 
 <b>What is in this app?</b><br/>
